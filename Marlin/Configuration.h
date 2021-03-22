@@ -913,7 +913,19 @@
  * Override with M92
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400.5, 381 }
+#ifdef BMG
+    #define eSteps 413   //BMG
+#endif
+#ifdef HEMERA
+    #define eSteps 409   //HEMERA
+#endif
+#ifdef MATRIX
+    #define eSteps 335   //MATRIX
+#endif
+#ifdef TITAN
+    #define eSteps 381   //STOCK
+#endif
+  #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400.5, eSteps }
 
 /**
  * Default Max Feed Rate (mm/s)
