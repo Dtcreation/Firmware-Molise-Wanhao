@@ -79,8 +79,8 @@
 
 /*** Section 1 Wanhao Printer ***/
 
-//#define D12-230
-//#define D12-300
+//#define D12_230
+//#define D12_300
 
 /*** Section 2 Extruder Type ***/
 
@@ -261,10 +261,10 @@
 #endif
 
 // Name displayed in the LCD "Ready" message and Info menu
-#ifdef D12-230
+#ifdef D12_230
     #define CUSTOM_MACHINE_NAME "Wanhao D12-230"
   #endif
-#ifdef D12-300
+#ifdef D12_300
     #define CUSTOM_MACHINE_NAME "Wanhao D12-300"
   #endif
 
@@ -1380,11 +1380,11 @@
 // @section machine
 
 // The size of the print bed
-#ifdef D12-230
+#ifdef D12_230
   #define X_BED_SIZE 230
   #define Y_BED_SIZE 230
 #endif
-#ifdef D12-300
+#ifdef D12_300
   #define X_BED_SIZE 300
   #define Y_BED_SIZE 300
 #endif
@@ -1395,10 +1395,10 @@
 #define Z_MIN_POS 0
 #define X_MAX_POS X_BED_SIZE
 #define Y_MAX_POS Y_BED_SIZE
-#ifdef D12-230
+#ifdef D12_230
   #define Z_MAX_POS 240
 #endif
-#ifdef D12-300
+#ifdef D12_300
   #define Z_MAX_POS 400
 #endif
 
