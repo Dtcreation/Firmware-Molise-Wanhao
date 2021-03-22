@@ -82,14 +82,19 @@
 //#define D12_230
 //#define D12_300
 
-/*** Section 2 Extruder Type ***/
+/*** Section 2 Mono or Dual ***/
+
+//#define MONO
+//#define DUAL
+
+/*** Section 3 Extruder Type ***/
 
 //#define TITAN       // Stock Extruder
 //#define BMG         // Choose this if you are using BMG/BMG Wind
 //#define HEMERA      // Choose this if you are using HEMERA
 //#define MATRIX      // Choose this if you are using MATRIX
 
-/*** Section 3 Drivers Type ***/
+/*** Section 4 Drivers Type ***/
 
   /*** XY Drivers ***/
 //#define TMC_2209_STA    // Stock Drivers
@@ -276,19 +281,29 @@
 
 // This defines the number of extruders
 // :[0, 1, 2, 3, 4, 5, 6, 7, 8]
+#ifdef MONO
 #define EXTRUDERS 1
+#endif
+#ifdef DUAL
+#define EXTRUDERS 2
+#endif
+
 
 // Generally expected filament diameter (1.75, 2.85, 3.0, ...). Used for Volumetric, Filament Width Sensor, etc.
 #define DEFAULT_NOMINAL_FILAMENT_DIA 1.75
 
 // For Cyclops or any "multi-extruder" that shares a single nozzle.
-//#define SINGLENOZZLE
+#ifdef DUAL
+#define SINGLENOZZLE
+  #else
+  //#define SINGLENOZZLE
+#endif
 
 // Save and restore temperature and fan speed on tool-change.
 // Set standby for the unselected tool with M104/106/109 T...
 #if ENABLED(SINGLENOZZLE)
-  //#define SINGLENOZZLE_STANDBY_TEMP
-  //#define SINGLENOZZLE_STANDBY_FAN
+  #define SINGLENOZZLE_STANDBY_TEMP
+  #define SINGLENOZZLE_STANDBY_FAN
 #endif
 
 /**
