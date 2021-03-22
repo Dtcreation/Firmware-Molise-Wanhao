@@ -79,12 +79,12 @@
 
 /*** Section 1 Wanhao Printer ***/
 
-//#define D12_230
+#define D12_230
 //#define D12_300
 
 /*** Section 2 Extruder Type ***/
 
-//#define TITAN       // Stock Extruder
+#define TITAN       // Stock Extruder
 //#define BMG         // Choose this if you are using BMG/BMG Wind
 //#define HEMERA      // Choose this if you are using HEMERA
 //#define MATRIX      // Choose this if you are using MATRIX
@@ -92,7 +92,7 @@
 /*** Section 3 Drivers Type ***/
 
   /*** XY Drivers ***/
-//#define TMC_2209_STA    // Stock Drivers
+#define TMC_2209_STA    // Stock Drivers
 //#define TMC_2208_STA    // Standalone Mode
 //#define TMC_2100
 //#define A_4988
@@ -101,7 +101,7 @@
 //#define TMC_2209        // UART Mode
 
   /*** Z E0 E1 Drivers ***/
-//#define A_4988_2          // Stock Drivers
+#define A_4988_2          // Stock Drivers
 //#define TMC_2100_2
 //#define TMC_2209_STA_2    // Standalone Modes
 //#define TMC_2208_STA_2    // Standalone Mode
@@ -132,7 +132,7 @@
     //#define TOUCH_MI_MANUAL_DEPLOY                // For manual deploy (LCD menu)
 #endif
 
-//#define MESH_BED_LEVELING                         //uncomment if you want to use Mesh Bed Leveling
+#define MESH_BED_LEVELING                         //uncomment if you want to use Mesh Bed Leveling
 
 /*** Section 6 Options ***/
 
@@ -1285,7 +1285,15 @@
 #define Z_PROBE_OFFSET_RANGE_MAX 20
 
 // Enable the M48 repeatability test to test probe accuracy
-#define Z_MIN_PROBE_REPEATABILITY_TEST
+#ifdef BLTOUCH
+    #define Z_MIN_PROBE_REPEATABILITY_TEST
+ #else
+  #ifdef ZMIN_SENSOR_AS_PROBE
+    #define Z_MIN_PROBE_REPEATABILITY_TEST
+  #else
+    //#define Z_MIN_PROBE_REPEATABILITY_TEST
+  #endif
+#endif
 
 // Before deploy/stow pause for user confirmation
 //#define PAUSE_BEFORE_DEPLOY_STOW
@@ -1497,6 +1505,8 @@
 #if ENABLED(FILAMENT_RUNOUT_SENSOR)
   #define FIL_RUNOUT_ENABLED_DEFAULT true // Enable the sensor on startup. Override with M412 followed by M500.
   #define NUM_RUNOUT_SENSORS   1          // Number of sensors, up to one per extruder. Define a FIL_RUNOUT#_PIN for each.
+  #define FIL_RUNOUT_PIN                    PA4
+  #define FIL_RUNOUT2_PIN                   PE6
 
   #define FIL_RUNOUT_STATE     LOW        // Pin state indicating that filament is NOT present.
   #define FIL_RUNOUT_PULLUP               // Use internal pullup for filament runout pins.
@@ -1746,7 +1756,11 @@
   #define LEVEL_CORNERS_HEIGHT      0.0   // (mm) Z height of nozzle at leveling points
   #define LEVEL_CORNERS_Z_HOP       4.0   // (mm) Z height of nozzle between leveling points
   //#define LEVEL_CENTER_TOO              // Move to the center after the last corner
+  #if ENABLED(BLTOUCH) || ENABLED(TOUCH_MI_PROBE) || ENABLED(ZMIN_SENSOR_AS_PROBE)
   #define LEVEL_CORNERS_USE_PROBE
+    #else
+    //#define LEVEL_CORNERS_USE_PROBE
+  #endif
   #if ENABLED(LEVEL_CORNERS_USE_PROBE)
     #define LEVEL_CORNERS_PROBE_TOLERANCE 0.1
     #define LEVEL_CORNERS_VERIFY_RAISED   // After adjustment triggers the probe, re-probe to verify
