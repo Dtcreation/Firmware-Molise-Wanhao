@@ -1,4 +1,57 @@
+//===========================================================================
+//================================== Intro ==================================
+//===========================================================================
 /**
+* ****************** Molise 1.3 Firmware for Wanhao D12 based on Marlin Bugfix 2.0.x************** **********
+*
+* Molise 1.3 firmware is brought to you by David TOUTON, the awesome 3D printing community, and of course we can't forget the Marlin team who spent countless days, nights and years building Marlin how far it is today.
+*
+* Simple and advanced configuration assistant in 7 sections for "stock" or upgraded printer with:
+* - TMC 2208 or 2209 drivers and LV8729
+* - MKS Robin Nano
+* - Extruder BMG, Hemera and Matrix
+* Taking in exchange for:
+* - BlTouch
+* - TouchMi
+* - 3DPRINTBEGINNER Z MIN SENSOR AS ABL BED MESH PROBE MOD
+* - Sensorless Homing
+* - MBL
+* - M600
+* - Etc ...
+*
+* You just have to uncomment your configuration for the 7 sections in Configuration.h at the beginning in “Molise Options” and to compile with VS code only.
+* You choose or set something by removing // in front of the code.
+* You can ignore a code by keeping // in front of the code
+*
+* Molise 1.3 firmware is provided to you free of charge, in an "as is" state. We cannot be held responsible for any damage it may do to your 3D printer if it occurs. Please proceed with caution.
+*
+* ------------------------------------------------- -------------------------------------------
+* 
+* ******************Firmware Molise 1.3 pour Imprimante Wanhao D12 sur Marlin Bugfix 2.0.x************************
+*
+* Le firmware Molise 1.3 vous est fourni par David TOUTON, la géniale communauté d’impression 3D, et bien sûr, nous ne pouvons pas oublier l’équipe Marlin qui a passé d’innombrables jours, nuits et années à construire Marlin jusqu’où il est aujourd’hui.
+*
+* Assisant de configuration simple et avancé en 7 sections pour imprimante « stock » ou upgradé avec :
+* - TMC 2208 or 2209 drivers and LV8729
+* - MKS Robin Nano
+* - Extruder BMG, Hemera and Matrix
+* Prise en change de :
+* - BlTouch
+* - TouchMi
+* - 3DPRINTBEGINNER Z MIN SENSOR AS ABL BED MESH PROBE MOD
+* - Sensorless Homing
+* - MBL
+* - M600
+* -	Etc…
+*
+* Il vous suffit de décommenter votre configuration pour les 7 sections dans Configuration.h au début dans « Molise Options » et de compiler avec VS code uniquement.
+* Vous choisissez ou définissez quelque chose en supprimant // devant le code.
+* Vous pouvez ignorer un code en gardant // devant le code
+*
+* Le firmware Molise 1.3 vous est fourni gratuitement, dans un état « tel quel ». Nous ne pouvons pas être tenus responsables des dommages qu’il pourrait fait à votre imprimante 3D le cas échéant. S’il vous plaît procéder avec prudence.
+
+ * --------------------------------------------------------------------------------------------
+ *
  * Marlin 3D Printer Firmware
  * Copyright (c) 2020 MarlinFirmware [https://github.com/MarlinFirmware/Marlin]
  *
@@ -19,6 +72,82 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
  */
+
+//===========================================================================
+//============================= Molise Options ============================== 
+//=========================================================================== 
+
+/*** Section 1 Wanhao Printer ***/
+
+//#define D12-230
+//#define D12-300
+
+/*** Section 2 Extruder Type ***/
+
+//#define TITAN       // Stock Extruder
+//#define BMG         // Choose this if you are using BMG/BMG Wind
+//#define HEMERA      // Choose this if you are using HEMERA
+//#define MATRIX      // Choose this if you are using MATRIX
+
+/*** Section 3 Drivers Type ***/
+
+  /*** XY Drivers ***/
+//#define TMC_2209_STA    // Stock Drivers
+//#define TMC_2208_STA    // Standalone Mode
+//#define TMC_2100
+//#define A_4988
+//#define LV_8729
+//#define TMC_2208        // UART Mode
+//#define TMC_2209        // UART Mode
+
+  /*** Z E0 E1 Drivers ***/
+//#define A_4988_2          // Stock Drivers
+//#define TMC_2100_2
+//#define TMC_2209_STA_2    // Standalone Modes
+//#define TMC_2208_STA_2    // Standalone Mode
+//#define LV_8729_2
+//#define TMC_2208_2        // UART Mode
+//#define TMC_2209_2        // UART Mode
+
+/*** Section 5 Bed Leveling ***/
+
+//#define BLTOUCH      //uncomment if you use a BLTouch
+  #ifdef BLTOUCH
+    #define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
+    #define NOZZLE_TO_PROBE_OFFSET { -30, 0, 0 }   //Offset preset for this fanduct : Sidewinder X1 Waggster Mod BLTouch with improved Fan Duct  by 3dprintbeginnercom on Thingiverse: https://www.thingiverse.com/thing:3972011
+  #endif
+
+//#define ZMIN_SENSOR_AS_PROBE                      //uncomment to use Z min as Probe for bed leveling (incompatible with BLTouch)
+  #ifdef ZMIN_SENSOR_AS_PROBE
+    #define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
+    #define NOZZLE_TO_PROBE_OFFSET { 0, 0, 0 }   
+  #endif
+
+//#define TOUCH_MI_PROBE                            //uncomment if you use a Touch Mi
+  #ifdef TOUCH_MI_PROBE
+    #define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
+    #define NOZZLE_TO_PROBE_OFFSET { -30, 0, 0 }  //Offset preset for this fanduct : https://www.thingiverse.com/thing:4713319
+    #define TOUCH_MI_RETRACT_Z 0.5                  // Height at which the probe retracts
+    //#define TOUCH_MI_DEPLOY_XPOS (X_MAX_BED + 2)  // For a magnet on the right side of the bed
+    //#define TOUCH_MI_MANUAL_DEPLOY                // For manual deploy (LCD menu)
+#endif
+
+//#define MESH_BED_LEVELING                         //uncomment if you want to use Mesh Bed Leveling
+
+/*** Section 6 Options ***/
+
+//#define GraphicalLCD                              // Will work next to MKS TFT
+//#define NEOPIXEL_PERSO                            // If you want to use a personal Neopixel LED on the Neopixel Port
+
+
+/*** Section 7 Sensorless Homing XY ***/
+
+//#define SENSHOME // Active sensorless homing ONLY for TMC 2208 UART and 2009 UART with SKR 1.3 (extra wiring needed) and SKR 1.4 (no extra wiring needed)
+
+
+
+
+
 #pragma once
 
 /**
@@ -70,7 +199,7 @@
 // @section info
 
 // Author info of this build printed to the host during boot and M115
-#define STRING_CONFIG_H_AUTHOR "(none, default config)" // Who made the changes.
+#define STRING_CONFIG_H_AUTHOR "(Molise)" // Who made the changes.
 //#define CUSTOM_VERSION_FILE Version.h // Path from the root directory (no quotes)
 
 /**
@@ -132,7 +261,12 @@
 #endif
 
 // Name displayed in the LCD "Ready" message and Info menu
-//#define CUSTOM_MACHINE_NAME "3D Printer"
+#ifdef D12-230
+    #define CUSTOM_MACHINE_NAME "Wanhao D12-230"
+  #endif
+#ifdef D12-300
+    #define CUSTOM_MACHINE_NAME "Wanhao D12-300"
+  #endif
 
 // Printer's unique ID, used by some programs to differentiate between machines.
 // Choose your own or use a service like https://www.uuidgenerator.net/version4
@@ -673,16 +807,59 @@
  *          TMC5130, TMC5130_STANDALONE, TMC5160, TMC5160_STANDALONE
  * :['A4988', 'A5984', 'DRV8825', 'LV8729', 'L6470', 'L6474', 'POWERSTEP01', 'TB6560', 'TB6600', 'TMC2100', 'TMC2130', 'TMC2130_STANDALONE', 'TMC2160', 'TMC2160_STANDALONE', 'TMC2208', 'TMC2208_STANDALONE', 'TMC2209', 'TMC2209_STANDALONE', 'TMC26X', 'TMC26X_STANDALONE', 'TMC2660', 'TMC2660_STANDALONE', 'TMC5130', 'TMC5130_STANDALONE', 'TMC5160', 'TMC5160_STANDALONE']
  */
-#define X_DRIVER_TYPE  A4988
-#define Y_DRIVER_TYPE  A4988
-#define Z_DRIVER_TYPE  A4988
+#ifdef TMC_2100
+    #define drivertype TMC2100
+#endif
+#ifdef A_4988
+    #define drivertype A4988
+#endif
+#ifdef TMC_2208
+    #define drivertype TMC2208
+#endif
+#ifdef TMC_2208_STA
+    #define drivertype TMC2208_STANDALONE
+#endif
+#ifdef TMC_2209_STA
+    #define drivertype TMC2209_STANDALONE
+#endif
+#ifdef TMC_2209
+    #define drivertype TMC2209
+#endif
+#ifdef LV_8729
+    #define drivertype LV8729
+#endif
+#ifdef TMC_2100_2
+    #define drivertype2 TMC2100
+#endif
+#ifdef A_4988_2
+    #define drivertype2 A4988
+#endif
+#ifdef TMC_2208_2
+    #define drivertype2 TMC2208
+#endif
+#ifdef TMC_2208_STA_2
+    #define drivertype2 TMC2208_STANDALONE
+#endif
+#ifdef TMC_2209_STA_2
+    #define drivertype2 TMC2209_STANDALONE
+#endif
+#ifdef TMC_2209_2
+    #define drivertype2 TMC2209
+#endif
+#ifdef LV_8729_2
+    #define drivertype2 LV8729
+#endif
+
+#define X_DRIVER_TYPE  drivertype
+#define Y_DRIVER_TYPE  drivertype
+#define Z_DRIVER_TYPE  drivertype2
 //#define X2_DRIVER_TYPE A4988
 //#define Y2_DRIVER_TYPE A4988
 //#define Z2_DRIVER_TYPE A4988
 //#define Z3_DRIVER_TYPE A4988
 //#define Z4_DRIVER_TYPE A4988
-#define E0_DRIVER_TYPE A4988
-//#define E1_DRIVER_TYPE A4988
+#define E0_DRIVER_TYPE drivertype2
+#define E1_DRIVER_TYPE drivertype2
 //#define E2_DRIVER_TYPE A4988
 //#define E3_DRIVER_TYPE A4988
 //#define E4_DRIVER_TYPE A4988
@@ -1120,15 +1297,62 @@
 // @section machine
 
 // Invert the stepper direction. Change (or reverse the motor connector) if an axis goes the wrong way.
-#define INVERT_X_DIR false
-#define INVERT_Y_DIR true
-#define INVERT_Z_DIR false
+#if ENABLED(TMC_2209) || ENABLED(TMC_2208) || ENABLED(TMC_2208_STA)|| ENABLED(LV_8729)|| ENABLED(TMC_2209_STA)
+  #define INVERT_X_DIR true
+  #define INVERT_Y_DIR true
+#endif
+#if ENABLED(TMC_2100) || ENABLED(A_4988)
+  #define INVERT_X_DIR false
+  #define INVERT_Y_DIR false
+#endif
+#if ENABLED(TMC_2209_2) || ENABLED(TMC_2208_2) || ENABLED(TMC_2208_STA_2)|| ENABLED(LV_8729_2)|| ENABLED(TMC_2209_STA_2)
+  #define INVERT_Z_DIR false
+#endif
+#if ENABLED(TMC_2100_2) || ENABLED(A_4988_2)
+  #define INVERT_Z_DIR true
+#endif
 
 // @section extruder
 
 // For direct drive extruder v9 set to true, for geared extruder set to false.
-#define INVERT_E0_DIR false
-#define INVERT_E1_DIR false
+#if ENABLED(TMC_2209_2) || ENABLED(TMC_2208_2) || ENABLED(TMC_2208_STA_2)|| ENABLED(LV_8729_2)|| ENABLED(TMC_2209_STA_2)
+  #ifdef BMG
+    #define INVERT_E0_DIR true
+    #define INVERT_E1_DIR true
+  #endif
+  #ifdef HEMERA
+    #define INVERT_E0_DIR true
+    #define INVERT_E1_DIR true
+  #endif
+    #ifdef MATRIX
+    #define INVERT_E0_DIR true
+    #define INVERT_E1_DIR true
+  #endif
+  #ifdef TITAN
+    #define INVERT_E0_DIR false
+    #define INVERT_E1_DIR false
+  #endif
+#endif
+
+#if ENABLED(TMC_2100_2) || ENABLED(A_4988_2)
+  #ifdef BMG
+    #define INVERT_E0_DIR false
+    #define INVERT_E1_DIR false
+  #endif
+  #ifdef HEMERA
+    #define INVERT_E0_DIR false
+    #define INVERT_E1_DIR false
+  #endif
+    #ifdef MATRIX
+    #define INVERT_E0_DIR false
+    #define INVERT_E1_DIR false
+  #endif
+  #ifdef TITAN
+    #define INVERT_E0_DIR true
+    #define INVERT_E1_DIR true
+  #endif
+#endif
+
 #define INVERT_E2_DIR false
 #define INVERT_E3_DIR false
 #define INVERT_E4_DIR false
@@ -1156,8 +1380,14 @@
 // @section machine
 
 // The size of the print bed
-#define X_BED_SIZE 200
-#define Y_BED_SIZE 200
+#ifdef D12-230
+  #define X_BED_SIZE 230
+  #define Y_BED_SIZE 230
+#endif
+#ifdef D12-300
+  #define X_BED_SIZE 300
+  #define Y_BED_SIZE 300
+#endif
 
 // Travel limits (mm) after homing, corresponding to endstop positions.
 #define X_MIN_POS 0
@@ -1165,7 +1395,12 @@
 #define Z_MIN_POS 0
 #define X_MAX_POS X_BED_SIZE
 #define Y_MAX_POS Y_BED_SIZE
-#define Z_MAX_POS 200
+#ifdef D12-230
+  #define Z_MAX_POS 240
+#endif
+#ifdef D12-300
+  #define Z_MAX_POS 400
+#endif
 
 /**
  * Software Endstops
