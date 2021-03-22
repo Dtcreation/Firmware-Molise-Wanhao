@@ -475,7 +475,7 @@
  * the fan will turn on when any selected extruder is above the threshold.
  */
 #define E0_AUTO_FAN_PIN PB0
-#define E1_AUTO_FAN_PIN -1
+#define E1_AUTO_FAN_PIN PB0
 #define E2_AUTO_FAN_PIN -1
 #define E3_AUTO_FAN_PIN -1
 #define E4_AUTO_FAN_PIN -1
@@ -1089,7 +1089,7 @@
 
   // Add Probe Z Offset calibration to the Z Probe Offsets menu
   #if HAS_BED_PROBE
-    #define PROBE_OFFSET_WIZARD
+    //#define PROBE_OFFSET_WIZARD
     #if ENABLED(PROBE_OFFSET_WIZARD)
       //
       // Enable to init the Probe Z-Offset when starting the Wizard.
