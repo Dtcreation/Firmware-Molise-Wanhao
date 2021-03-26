@@ -137,16 +137,16 @@
     //#define TOUCH_MI_MANUAL_DEPLOY                // For manual deploy (LCD menu)
 #endif
 
-#define MESH_BED_LEVELING                         //uncomment if you want to use Mesh Bed Leveling
+//#define MESH_BED_LEVELING                         //uncomment if you want to use Mesh Bed Leveling
 
 /*** Section 6 Options ***/
 
-//#define GRAPHIC_MODE                              // If you prefere TFT Graphic Mode
+//#define GRAPHIC_MODE                           // If you prefere TFT Graphic Mode
 
 
 /*** Section 7 Sensorless Homing XY ***/
 
-//#define SENSHOME // Active sensorless homing ONLY for TMC 2208 UART and 2009 UART with SKR 1.3 (extra wiring needed) and SKR 1.4 (no extra wiring needed)
+//#define SENSHOME                              // Not Active yet
 
 
 

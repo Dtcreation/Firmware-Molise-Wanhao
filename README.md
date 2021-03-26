@@ -1,113 +1,84 @@
-# Mks-Robin-Nano-Marlin2.0-Firmware
-## Features
-The firmware of MKS Robin Nano, based on [Marlin2.0.x](https://github.com/MarlinFirmware/Marlin), added the [LittlevGL](https://github.com/littlevgl/lvgl), supporting colourful GUI and touch screen. It is developed on PlatformIO, we hope more and more developers will participate the development of this repository.
+# Molise Firmware 
 
-![](https://github.com/makerbase-mks/Mks-Robin-Nano-Marlin2.0-Firmware/blob/master/Images/MKS_Robin_Nano_printing.png)
+N'hésitez pas à me soutenir. Payez moi une 🍺 ou un ☕ : [https://paypal.me/dtouton](https://paypal.me/dtouton)
 
-## Build
-As the firmware is based on Marlin2.0.x which is built on the core of PlatformIO, the buid compiling steps are the same as Marlin2.0.x. You can directly using [PlatformIO Shell Commands](https://docs.platformio.org/en/latest/core/installation.html#piocore-install-shell-commands), or using IDEs contain built-in PlatformIO Core(CLI), for example, [VSCode](https://docs.platformio.org/en/latest/integration/ide/vscode.html#ide-vscode) and [Atom](https://docs.platformio.org/en/latest/integration/ide/atom.html). VSCode is recommended.
+Ma chaine Youtube : [Dtcreation 3D](https://www.youtube.com/channel/UCQOsiY8l6Of56zkFhtDT0Sw)
 
-## About the gcode file preview
-The images should be added to gcode file when slicing, and MKS has developed the [plugin for Cura](https://github.com/makerbase-mks/mks-wifi-plugin) to make it.
+Rejoignez notre groupe facebook : [Molise Firmware](https://www.facebook.com/groups/molisefirmware)
 
-## About the image conversion
-- Open [LVGL online image converter tool](https://lvgl.io/tools/imageconverter). 
-- Open bmp images.
-- Enter the saved file name.
-- Choose color format:True color.
-- Choose file output format:Binary RGB565.
-- Start convertion.
-- Save bin file.
-- Copy the converted bin file to the assets folder.
-- Copy the assets folder to the SD card.
-- SD card is connected to the motherboard, and you can see the update interface after powering on.
+## FRENCH - ENGLISH DOWN
 
-## Firmware Can be run on Robin Nano V1.x / V2.x boards and V3.x boards
-## MKS Robin Nano V1.x build and update firmware
+### Qu'est ce que le firmware Molise
 
-1. Build config:
-     
-- platformio.ini: 
-     
-     default_envs = mks_robin_nano35    
-- Configuation.h:  
-     #define SERIAL_PORT 3  
-     #define MKS_ROBIN_TFT35  
-     #define MOTHERBOARD BOARD_MKS_ROBIN_NANO  
-     #define TFT_LVGL_UI  
-     #define TOUCH_SCREEN  
+Molise est un firmware modifié pour les imprimantes de la marque [Wanhao](https://www.wanhaofrance.com/). Le firmware support atuellement la D12/230 et la D12/300.
 
-2. Update firmware:
-   
-- Enter the `.pio\build\mks_robin_nano35` directory, copy the `assets` folder and `Robin_nano35.bin` to the sd card
-- Insert SD card to the motherboard, and you can see the update interface after power on.   
+### Version actuelle
 
-## MKS Robin Nano V2.x build and update firmware
+Dernière version de Molise __1.4.0__ basée sur [Marlin BugFix 2.0.x](https://github.com/MarlinFirmware/Marlin/tree/bugfix-2.0.x)
 
-1. Build config:
-     
-- platformio.ini: 
-     
-     default_envs = mks_robin_nano35    
-- Configuation.h:   
-     #define SERIAL_PORT 3  
-     #define MKS_TS35_V2_0  
-     #define MOTHERBOARD BOARD_MKS_ROBIN_NANO_V2     
-     #define TFT_LVGL_UI  
-     #define TOUCH_SCREEN  
+### A propos du Firmware Molise
 
-2. Update firmware:
-   
-- Enter the `.pio\build\mks_robin_nano35` directory, copy the `assets` folder and `Robin_nano35.bin` to the sd card
-- Insert SD card is to the motherboard, and you can see the update interface after power on.   
+Voici un listing de ce que propose actuellement le Firmware : 
 
-## MKS Robin Nano V3.x build and update firmware
+Le Firmware supporte actuellement le hardware suivant : 
 
-1. Build config:
-     
-- platformio.ini: 
-     
-     default_envs = mks_robin_nano_v3_usb_flash_drive_msc
-- Configuation.h:   
-     #define SERIAL_PORT -1  
-     #define MKS_TS35_V2_0  
-     #define MOTHERBOARD BOARD_MKS_ROBIN_NANO_V3     
-     #define TFT_LVGL_UI  
-     #define TOUCH_SCREEN
+- Drivers A4988, TMC 2100, 2208 ou 2209 et LV8729
+- Carte mère MKS Robin Nano V1.2
+- Extruder BMG, Hemera et Matrix
+- BlTouch
+- Mono et Dual Color
+- TFT mode Marlin ou Graphique
 
-- Configuation_adv.h:    
-     Now you can either use the TF card or USB disk, use TF card:   
-    // #define USB_FLASH_DRIVE_SUPPORT  
-    Use USB disk:  
-     #define USB_FLASH_DRIVE_SUPPORT  
+Le Firmware apporte les modifications suivantes à Marlin (par rapport à la version stock)
 
-2. Update firmware:
-   
-- Enter the `.pio\build\mks_robin_nano35` directory, copy the `assets` folder and `Robin_nano_v3.bin` to the sd card or usb disk
-- Insert sdcard or usb disk to the motherboard, and you can see the update interface after power on.  
+- Support du BlTouch
+- Le M600 : permet de changer de couleur en cours de print (Compatible avec la carte SD, et Ocotprint)
+- Mesh Bed Leveling : MBL - Permet de palper manuellement plusieurs points de votre plateau comme un BLTouch le ferait automatiquement
+- Babystepping
+- PID auto tune
+- Level Corner with Probe
+- M73
+- ABL
+- Z Offset Auto
+- Chargement-Déchargement de filament assisté
+- ...
 
-3. Example build config:
+Le code du fichier `Configuration.h` a été découpé en 7 sections afin de rendre le code plus lisible. Ainsi, pour les personnes souhaitant compiler le code à partir des sources, le travail sera plus simple. Pour plus d'explication sur la compilation du code, merci de vous reporter à la page du [wiki dédiée](https://github.com/Dtcreation/Firmware-Molise-Wanhao/wiki)
 
-- [Open the example configuration file](https://github.com/makerbase-mks/Mks-Robin-Nano-Marlin2.0-Firmware/tree/master/config/MKS%20Robin%20nano%20v3.0).
-- Modify the parameters, replace configuration.h and configuration_adv.h in the Marlin path of the source code.
-- Compile the firmware.
+Le firmware Molise 1.4 vous est fourni gratuitement, dans un état « tel quel ». Nous ne pouvons pas être tenus responsables des dommages qu’il pourrait faire à votre imprimante 3D le cas échéant. S’il vous plaît procéder avec prudence.
 
-4. Prebuilt *.bin firmware for update
+Pour vous faciliter la tâche, le firmware molise vous est fourni "pré-compilé" pour les 4 cas de figures suivants:
 
-- We have prebuilt the robin nano v3 [firmware](https://github.com/makerbase-mks/MKS-Robin-Nano-V3.X/tree/main/firmware/Marlin-bugfix2.0.x-MKS-2.1.2) for some type of printers and some extended usage. 
+- D12/230 Stock + MBL (Z driver A4988)
+- D12/230 Stock + MBL (Z driver TMC2209)
+- D12/230 Stock + BLTouch (Z driver A4988)
+- D12/230 Stock + BLTouch (Z driver TMC2209)
+
+Si vous l'aimez ou si vous souhaitez contribuer à d'autres améliorations de ce firmware, veuillez envisager la possibilité de faire un don à :
+
+https://paypal.me/dtouton
+
+Merci !
+
+### Installation et configuration
+
+Afin de vous aider dans l'installation et la configuration du Firmware, merci de faire un tour sur le [Wiki](https://github.com/Dtcreation/Firmware-Molise-Wanhao/wiki)
+
+PROCÉDURES DE MISE À JOUR DE MARLIN FW:
+
+Copiez les fichiers sur la carte SD, insérez la carte dans l'imprimante éteinte, allumez l'imprimante et attendez qu'elle ait fini !!
+### Changelog
+
+#### 1.4.0
+
+- First Release
+
+# Remerciement
+
+Le firmware Molise 1.2 vous est fourni par David TOUTON, [la géniale communauté d’impression 3D sur Facebook](https://www.facebook.com/groups/molisefirmware), et bien sûr, nous ne pouvons pas oublier l’équipe Marlin qui a passé d’innombrables jours, nuits et années à construire Marlin jusqu’où il est aujourd’hui.
 
 
-## For more function configuration, please refer to Robin nano series Wiki
-- [MKS Robin Nano V1.x Wiki](https://github.com/makerbase-mks/MKS-Robin-Nano-V1.X/wiki). 
-- [MKS Robin Nano V2.x Wiki](https://github.com/makerbase-mks/MKS-Robin-Nano-V2.X/wiki). 
-- [MKS Robin Nano V3.x Wiki](https://github.com/makerbase-mks/MKS-Robin-Nano-V3.X/wiki).
 
-## More information about the Robin Nano V1.X
-Please refer to [MKS Robin Nano github](https://github.com/makerbase-mks/MKS-Robin-Nano-V1.X).
+## ENGLISH
 
-##  More information about the Robin Nano V2.X
-Please refer to [MKS Robin Nano V2 github](https://github.com/makerbase-mks/MKS-Robin-Nano-V2).
-
-##  More information about the Robin Nano V3.X
-Please refer to [MKS Robin Nano V3 github](https://github.com/makerbase-mks/MKS-Robin-Nano-V3.X).
-
+# Molise Firmware
