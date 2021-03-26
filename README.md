@@ -66,7 +66,7 @@ Afin de vous aider dans l'installation et la configuration du Firmware, merci de
 
 PROCÉDURES DE MISE À JOUR DE MARLIN FW:
 
-Copiez les fichiers sur la carte SD, insérez la carte dans l'imprimante éteinte, allumez l'imprimante et attendez qu'elle ait fini !!
+Copiez le fichier "Robin_nano35.bin" sur la carte SD, insérez la carte dans l'imprimante éteinte, allumez l'imprimante et attendez qu'elle ait fini !!
 ### Changelog
 
 #### 1.4.0
