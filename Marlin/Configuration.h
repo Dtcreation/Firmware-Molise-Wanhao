@@ -79,17 +79,17 @@
 
 /*** Section 1 Wanhao Printer ***/
 
-//#define D12_230
+#define D12_230
 //#define D12_300
 
 /*** Section 2 Mono or Dual ***/
 
-//#define MONO
+#define MONO
 //#define DUAL
 
 /*** Section 3 Extruder Type ***/
 
-//#define TITAN       // Stock Extruder
+#define TITAN       // Stock Extruder
 //#define BMG         // Choose this if you are using BMG/BMG Wind
 //#define HEMERA      // Choose this if you are using HEMERA
 //#define MATRIX      // Choose this if you are using MATRIX
@@ -97,7 +97,7 @@
 /*** Section 4 Drivers Type ***/
 
   /*** XY Drivers ***/
-//#define TMC_2209_STA    // Stock Drivers
+#define TMC_2209_STA    // Stock Drivers
 //#define TMC_2208_STA    // Standalone Mode
 //#define TMC_2100
 //#define A_4988
@@ -106,7 +106,7 @@
 //#define TMC_2209        // UART Mode
 
   /*** Z E0 E1 Drivers ***/
-//#define A_4988_2          // Stock Drivers
+#define A_4988_2          // Stock Drivers
 //#define TMC_2100_2
 //#define TMC_2209_STA_2    // Standalone Modes
 //#define TMC_2208_STA_2    // Standalone Mode
@@ -141,7 +141,7 @@
 
 /*** Section 6 Options ***/
 
-//#define GraphicalLCD                              // Will work next to MKS TFT
+//#define GRAPHIC_MODE                              // If you prefere TFT Graphic Mode
 //#define NEOPIXEL_PERSO                            // If you want to use a personal Neopixel LED on the Neopixel Port
 
 
@@ -2754,8 +2754,11 @@
  *   root of your SD card, together with the compiled firmware.
  */
 //#define TFT_CLASSIC_UI
-//#define TFT_COLOR_UI
+#ifdef GRAPHIC_MODE
 #define TFT_LVGL_UI
+#else
+  #define TFT_COLOR_UI
+#endif
 
 #if ENABLED(TFT_LVGL_UI)
   #define MKS_WIFI_MODULE  // MKS WiFi module
