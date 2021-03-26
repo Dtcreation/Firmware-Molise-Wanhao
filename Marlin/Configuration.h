@@ -7,7 +7,7 @@
 * Molise 1.3 firmware is brought to you by David TOUTON, the awesome 3D printing community, and of course we can't forget the Marlin team who spent countless days, nights and years building Marlin how far it is today.
 *
 * Simple and advanced configuration assistant in 7 sections for "stock" or upgraded printer with:
-* - TMC 2208 or 2209 drivers, A4988 and LV8729
+* - TMC 2100, 2208 or 2209 drivers, A4988 and LV8729
 * - MKS Robin Nano V1.2
 * - Extruder Titan, BMG, Hemera and Matrix
 * Taking in exchange for:
@@ -29,7 +29,7 @@
 * Le firmware Molise 1.3 vous est fourni par David TOUTON, la géniale communauté d’impression 3D, et bien sûr, nous ne pouvons pas oublier l’équipe Marlin qui a passé d’innombrables jours, nuits et années à construire Marlin jusqu’où il est aujourd’hui.
 *
 * Assisant de configuration simple et avancé en 7 sections pour imprimante « stock » ou upgradé avec :
-* - TMC 2208 or 2209 drivers, A4988 and LV8729
+* - TMC 2100, 2208 or 2209 drivers, A4988 and LV8729
 * - MKS Robin Nano V1.2
 * - Extruder Titan, BMG, Hemera and Matrix
 * Prise en change de :
