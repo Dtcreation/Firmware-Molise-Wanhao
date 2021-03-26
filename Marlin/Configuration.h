@@ -141,7 +141,7 @@
 
 /*** Section 6 Options ***/
 
-//#define GraphicalLCD                              // Will work next to MKS TFT
+//#define GRAPHIC_MODE                              // If you prefere TFT Graphic Mode
 //#define NEOPIXEL_PERSO                            // If you want to use a personal Neopixel LED on the Neopixel Port
 
 
@@ -2754,8 +2754,11 @@
  *   root of your SD card, together with the compiled firmware.
  */
 //#define TFT_CLASSIC_UI
-//#define TFT_COLOR_UI
+#ifdef GRAPHIC_MODE
 #define TFT_LVGL_UI
+#else
+  #define TFT_COLOR_UI
+#endif
 
 #if ENABLED(TFT_LVGL_UI)
   #define MKS_WIFI_MODULE  // MKS WiFi module
