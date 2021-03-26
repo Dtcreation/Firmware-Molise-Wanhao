@@ -79,17 +79,17 @@
 
 /*** Section 1 Wanhao Printer ***/
 
-#define D12_230
+//#define D12_230
 //#define D12_300
 
 /*** Section 2 Mono or Dual ***/
 
-#define MONO
+//#define MONO
 //#define DUAL
 
 /*** Section 3 Extruder Type ***/
 
-#define TITAN       // Stock Extruder
+//#define TITAN       // Stock Extruder
 //#define BMG         // Choose this if you are using BMG/BMG Wind
 //#define HEMERA      // Choose this if you are using HEMERA
 //#define MATRIX      // Choose this if you are using MATRIX
@@ -97,7 +97,7 @@
 /*** Section 4 Drivers Type ***/
 
   /*** XY Drivers ***/
-#define TMC_2209_STA    // Stock Drivers
+//#define TMC_2209_STA    // Stock Drivers
 //#define TMC_2208_STA    // Standalone Mode
 //#define TMC_2100
 //#define A_4988
@@ -106,9 +106,9 @@
 //#define TMC_2209        // UART Mode
 
   /*** Z E0 E1 Drivers ***/
-#define A_4988_2          // Stock Drivers
+//#define A_4988_2          // Stock Drivers / Standalone
 //#define TMC_2100_2
-//#define TMC_2209_STA_2    // Standalone Modes
+//#define TMC_2209_STA_2    // Stock Drivers / Standalone
 //#define TMC_2208_STA_2    // Standalone Mode
 //#define LV_8729_2
 //#define TMC_2208_2        // UART Mode
