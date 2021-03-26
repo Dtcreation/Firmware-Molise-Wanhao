@@ -2,19 +2,16 @@
 //================================== Intro ==================================
 //===========================================================================
 /**
-* ****************** Molise 1.3 Firmware for Wanhao D12 based on Marlin Bugfix 2.0.x************** **********
+* ****************** Molise 1.4 Firmware for Wanhao D12 based on Marlin Bugfix 2.0.x************** **********
 *
 * Molise 1.3 firmware is brought to you by David TOUTON, the awesome 3D printing community, and of course we can't forget the Marlin team who spent countless days, nights and years building Marlin how far it is today.
 *
 * Simple and advanced configuration assistant in 7 sections for "stock" or upgraded printer with:
-* - TMC 2208 or 2209 drivers and LV8729
-* - MKS Robin Nano
-* - Extruder BMG, Hemera and Matrix
+* - TMC 2208 or 2209 drivers, A4988 and LV8729
+* - MKS Robin Nano V1.2
+* - Extruder Titan, BMG, Hemera and Matrix
 * Taking in exchange for:
 * - BlTouch
-* - TouchMi
-* - 3DPRINTBEGINNER Z MIN SENSOR AS ABL BED MESH PROBE MOD
-* - Sensorless Homing
 * - MBL
 * - M600
 * - Etc ...
@@ -23,7 +20,7 @@
 * You choose or set something by removing // in front of the code.
 * You can ignore a code by keeping // in front of the code
 *
-* Molise 1.3 firmware is provided to you free of charge, in an "as is" state. We cannot be held responsible for any damage it may do to your 3D printer if it occurs. Please proceed with caution.
+* Molise 1.4 firmware is provided to you free of charge, in an "as is" state. We cannot be held responsible for any damage it may do to your 3D printer if it occurs. Please proceed with caution.
 *
 * ------------------------------------------------- -------------------------------------------
 * 
@@ -32,23 +29,20 @@
 * Le firmware Molise 1.3 vous est fourni par David TOUTON, la géniale communauté d’impression 3D, et bien sûr, nous ne pouvons pas oublier l’équipe Marlin qui a passé d’innombrables jours, nuits et années à construire Marlin jusqu’où il est aujourd’hui.
 *
 * Assisant de configuration simple et avancé en 7 sections pour imprimante « stock » ou upgradé avec :
-* - TMC 2208 or 2209 drivers and LV8729
-* - MKS Robin Nano
-* - Extruder BMG, Hemera and Matrix
+* - TMC 2208 or 2209 drivers, A4988 and LV8729
+* - MKS Robin Nano V1.2
+* - Extruder Titan, BMG, Hemera and Matrix
 * Prise en change de :
 * - BlTouch
-* - TouchMi
-* - 3DPRINTBEGINNER Z MIN SENSOR AS ABL BED MESH PROBE MOD
-* - Sensorless Homing
 * - MBL
 * - M600
-* -	Etc…
+* - Etc ...
 *
 * Il vous suffit de décommenter votre configuration pour les 7 sections dans Configuration.h au début dans « Molise Options » et de compiler avec VS code uniquement.
 * Vous choisissez ou définissez quelque chose en supprimant // devant le code.
 * Vous pouvez ignorer un code en gardant // devant le code
 *
-* Le firmware Molise 1.3 vous est fourni gratuitement, dans un état « tel quel ». Nous ne pouvons pas être tenus responsables des dommages qu’il pourrait fait à votre imprimante 3D le cas échéant. S’il vous plaît procéder avec prudence.
+* Le firmware Molise 1.4 vous est fourni gratuitement, dans un état « tel quel ». Nous ne pouvons pas être tenus responsables des dommages qu’il pourrait fait à votre imprimante 3D le cas échéant. S’il vous plaît procéder avec prudence.
 
  * --------------------------------------------------------------------------------------------
  *
