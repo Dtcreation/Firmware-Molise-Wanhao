@@ -91,15 +91,15 @@
 /*** Section 4 Drivers Type ***/
 
   /*** XY Drivers ***/
-//#define TMC_2209_STA    // Stock Drivers
-//#define TMC_2208_STA    // Standalone Mode
+//#define TMC_2209_STA      // Stock Drivers
+//#define TMC_2208_STA      // Standalone Mode
 //#define TMC_2100
 //#define A_4988
 //#define LV_8729
-//#define TMC_2208        // UART Mode
-//#define TMC_2209        // UART Mode
+//#define TMC_2208          // UART Mode
+//#define TMC_2209          // UART Mode
 
-  /*** Z E0 E1 Drivers ***/
+  /*** Z Driver ***/
 //#define A_4988_2          // Stock Drivers / Standalone
 //#define TMC_2100_2
 //#define TMC_2209_STA_2    // Stock Drivers / Standalone
@@ -107,6 +107,15 @@
 //#define LV_8729_2
 //#define TMC_2208_2        // UART Mode
 //#define TMC_2209_2        // UART Mode
+
+  /*** E0 E1 Drivers ***/
+//#define A_4988_3          // Stock Drivers / Standalone
+//#define TMC_2100_3
+//#define TMC_2209_STA_3    // Stock Drivers / Standalone
+//#define TMC_2208_STA_3    // Standalone Mode
+//#define LV_8729_3
+//#define TMC_2208_3        // UART Mode
+//#define TMC_2209_3        // UART Mode
 
 /*** Section 5 Bed Leveling ***/
 
@@ -857,6 +866,27 @@
 #ifdef LV_8729_2
     #define drivertype2 LV8729
 #endif
+#ifdef TMC_2100_2
+    #define drivertype2 TMC2100
+#endif
+#ifdef A_4988_3
+    #define drivertype3 A4988
+#endif
+#ifdef TMC_2208_3
+    #define drivertype3 TMC2208
+#endif
+#ifdef TMC_2208_STA_3
+    #define drivertype3 TMC2208_STANDALONE
+#endif
+#ifdef TMC_2209_STA_3
+    #define drivertype3 TMC2209_STANDALONE
+#endif
+#ifdef TMC_2209_3
+    #define drivertype3 TMC2209
+#endif
+#ifdef LV_8729_3
+    #define drivertype3 LV8729
+#endif
 
 #define X_DRIVER_TYPE  drivertype
 #define Y_DRIVER_TYPE  drivertype
@@ -866,8 +896,8 @@
 //#define Z2_DRIVER_TYPE A4988
 //#define Z3_DRIVER_TYPE A4988
 //#define Z4_DRIVER_TYPE A4988
-#define E0_DRIVER_TYPE drivertype2
-#define E1_DRIVER_TYPE drivertype2
+#define E0_DRIVER_TYPE drivertype3
+#define E1_DRIVER_TYPE drivertype3
 //#define E2_DRIVER_TYPE A4988
 //#define E3_DRIVER_TYPE A4988
 //#define E4_DRIVER_TYPE A4988
@@ -1373,7 +1403,7 @@
 // @section extruder
 
 // For direct drive extruder v9 set to true, for geared extruder set to false.
-#if ENABLED(TMC_2209_2) || ENABLED(TMC_2208_2) || ENABLED(TMC_2208_STA_2)|| ENABLED(LV_8729_2)|| ENABLED(TMC_2209_STA_2)
+#if ENABLED(TMC_2209_3) || ENABLED(TMC_2208_3) || ENABLED(TMC_2208_STA_3)|| ENABLED(LV_8729_3)|| ENABLED(TMC_2209_STA_3)
   #ifdef BMG
     #define INVERT_E0_DIR true
     #define INVERT_E1_DIR true
@@ -1392,7 +1422,7 @@
   #endif
 #endif
 
-#if ENABLED(TMC_2100_2) || ENABLED(A_4988_2)
+#if ENABLED(TMC_2100_3) || ENABLED(A_4988_3)
   #ifdef BMG
     #define INVERT_E0_DIR false
     #define INVERT_E1_DIR false
