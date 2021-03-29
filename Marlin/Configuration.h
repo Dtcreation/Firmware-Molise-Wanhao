@@ -961,9 +961,9 @@
     #define eSteps 335   //MATRIX
 #endif
 #ifdef TITAN
-    #define eSteps 392   //STOCK
+    #define eSteps 400   //STOCK
 #endif
-  #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400.5, eSteps }
+  #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80.5, 80.5, 400.5, eSteps }
 
 /**
  * Default Max Feed Rate (mm/s)
@@ -2172,7 +2172,7 @@
  *
  * :{ 'en':'English', 'an':'Aragonese', 'bg':'Bulgarian', 'ca':'Catalan', 'cz':'Czech', 'da':'Danish', 'de':'German', 'el':'Greek', 'el_gr':'Greek (Greece)', 'es':'Spanish', 'eu':'Basque-Euskera', 'fi':'Finnish', 'fr':'French', 'gl':'Galician', 'hr':'Croatian', 'hu':'Hungarian', 'it':'Italian', 'jp_kana':'Japanese', 'ko_KR':'Korean (South Korea)', 'nl':'Dutch', 'pl':'Polish', 'pt':'Portuguese', 'pt_br':'Portuguese (Brazilian)', 'ro':'Romanian', 'ru':'Russian', 'sk':'Slovak', 'sv':'Swedish', 'tr':'Turkish', 'uk':'Ukrainian', 'vi':'Vietnamese', 'zh_CN':'Chinese (Simplified)', 'zh_TW':'Chinese (Traditional)' }
  */
-#define LCD_LANGUAGE fr
+#define LCD_LANGUAGE en
 
 /**
  * LCD Character Set
