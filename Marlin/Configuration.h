@@ -73,17 +73,17 @@
 
 /*** Section 1 Wanhao Printer ***/
 
-//#define D12_230
+#define D12_230
 //#define D12_300
 
 /*** Section 2 Mono or Dual ***/
 
-//#define MONO
+#define MONO
 //#define DUAL
 
 /*** Section 3 Extruder Type ***/
 
-//#define TITAN       // Stock Extruder
+#define TITAN       // Stock Extruder
 //#define BMG         // Choose this if you are using BMG/BMG Wind
 //#define HEMERA      // Choose this if you are using HEMERA
 //#define MATRIX      // Choose this if you are using MATRIX
@@ -91,7 +91,7 @@
 /*** Section 4 Drivers Type ***/
 
   /*** XY Drivers ***/
-//#define TMC_2209_STA      // Stock Drivers
+#define TMC_2209_STA      // Stock Drivers
 //#define TMC_2208_STA      // Standalone Mode
 //#define TMC_2100
 //#define A_4988
@@ -100,7 +100,7 @@
 //#define TMC_2209          // UART Mode
 
   /*** Z Driver ***/
-//#define A_4988_2          // Stock Drivers / Standalone
+#define A_4988_2          // Stock Drivers / Standalone
 //#define TMC_2100_2
 //#define TMC_2209_STA_2    // Stock Drivers / Standalone
 //#define TMC_2208_STA_2    // Standalone Mode
@@ -109,7 +109,7 @@
 //#define TMC_2209_2        // UART Mode
 
   /*** E0 E1 Drivers ***/
-//#define A_4988_3          // Stock Drivers / Standalone
+#define A_4988_3          // Stock Drivers / Standalone
 //#define TMC_2100_3
 //#define TMC_2209_STA_3    // Stock Drivers / Standalone
 //#define TMC_2208_STA_3    // Standalone Mode
@@ -119,7 +119,7 @@
 
 /*** Section 5 Bed Leveling ***/
 
-//#define BLTOUCH      //uncomment if you use a BLTouch
+#define BLTOUCH      //uncomment if you use a BLTouch
   #ifdef BLTOUCH
     #define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
     #define NOZZLE_TO_PROBE_OFFSET { -45, -0.5, 0 }   //Offset preset for this fanduct : Sidewinder X1 Waggster Mod BLTouch with improved Fan Duct  by 3dprintbeginnercom on Thingiverse: https://www.thingiverse.com/thing:3972011
