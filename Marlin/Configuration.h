@@ -122,7 +122,7 @@
 //#define BLTOUCH      //uncomment if you use a BLTouch
   #ifdef BLTOUCH
     #define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
-    #define NOZZLE_TO_PROBE_OFFSET { -45, -0.5, 0 }   //Offset preset for this fanduct : Sidewinder X1 Waggster Mod BLTouch with improved Fan Duct  by 3dprintbeginnercom on Thingiverse: https://www.thingiverse.com/thing:3972011
+    #define NOZZLE_TO_PROBE_OFFSET { -45, -0.7, 0 }   //Offset preset for this fanduct : Sidewinder X1 Waggster Mod BLTouch with improved Fan Duct  by 3dprintbeginnercom on Thingiverse: https://www.thingiverse.com/thing:3972011
   #endif
 
 //#define ZMIN_SENSOR_AS_PROBE                      //uncomment to use Z min as Probe for bed leveling (incompatible with BLTouch)
@@ -963,7 +963,7 @@
 #ifdef TITAN
     #define eSteps 400   //STOCK
 #endif
-  #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80.5, 80.5, 400.5, eSteps }
+  #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 401, eSteps }
 
 /**
  * Default Max Feed Rate (mm/s)
@@ -1047,7 +1047,7 @@
  *
  * See https://github.com/synthetos/TinyG/wiki/Jerk-Controlled-Motion-Explained
  */
-//#define S_CURVE_ACCELERATION
+#define S_CURVE_ACCELERATION
 
 //===========================================================================
 //============================= Z Probe Options =============================
