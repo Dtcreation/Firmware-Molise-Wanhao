@@ -4,7 +4,7 @@
 /**
 * ****************** Molise 1.4 Firmware for Wanhao D12 based on Marlin Bugfix 2.0.x************** **********
 *
-* Molise 1.3 firmware is brought to you by David TOUTON, the awesome 3D printing community, and of course we can't forget the Marlin team who spent countless days, nights and years building Marlin how far it is today.
+* Molise 1.4 firmware is brought to you by David TOUTON, the awesome 3D printing community, and of course we can't forget the Marlin team who spent countless days, nights and years building Marlin how far it is today.
 *
 * Simple and advanced configuration assistant in 7 sections for "stock" or upgraded printer with:
 * - TMC 2100, 2208 or 2209 drivers, A4988 and LV8729
@@ -24,9 +24,9 @@
 *
 * ------------------------------------------------- -------------------------------------------
 * 
-* ******************Firmware Molise 1.3 pour Imprimante Wanhao D12 sur Marlin Bugfix 2.0.x************************
+* ******************Firmware Molise 1.4 pour Imprimante Wanhao D12 sur Marlin Bugfix 2.0.x************************
 *
-* Le firmware Molise 1.3 vous est fourni par David TOUTON, la géniale communauté d’impression 3D, et bien sûr, nous ne pouvons pas oublier l’équipe Marlin qui a passé d’innombrables jours, nuits et années à construire Marlin jusqu’où il est aujourd’hui.
+* Le firmware Molise 1.4 vous est fourni par David TOUTON, la géniale communauté d’impression 3D, et bien sûr, nous ne pouvons pas oublier l’équipe Marlin qui a passé d’innombrables jours, nuits et années à construire Marlin jusqu’où il est aujourd’hui.
 *
 * Assisant de configuration simple et avancé en 7 sections pour imprimante « stock » ou upgradé avec :
 * - TMC 2100, 2208 or 2209 drivers, A4988 and LV8729
