@@ -62,14 +62,11 @@ Le code du fichier `Configuration.h` a été découpé en 7 sections afin de ren
 
 Le firmware Molise 1.4 vous est fourni gratuitement, dans un état « tel quel ». Nous ne pouvons pas être tenus responsables des dommages qu’il pourrait faire à votre imprimante 3D le cas échéant. S’il vous plaît procéder avec prudence.
 
-Pour vous faciliter la tâche, le firmware molise vous est fourni "pré-compilé" pour les 6 cas de figures suivants:
+Pour vous faciliter la tâche, le firmware molise vous est fourni "pré-compilé" pour les 3 cas de figures suivants:
 
-- D12/230 Stock + MBL (Z driver A4988)
-- D12/230 Stock + MBL (Z driver TMC2209)
-- D12/230 Stock + BLTouch (Z driver A4988)
-- D12/230 Stock + BLTouch (Z driver TMC2209)
-- D12/230 Stock + TouchMi (Z driver A4988)
-- D12/230 Stock + TouchMi (Z driver TMC2209)
+- D12/230 Stock + MBL (Z driver A4988) Mono et Dual
+- D12/230 Stock + BLTouch (Z driver A4988) Mono et Dual
+- D12/230 Stock + TouchMi (Z driver A4988) Mono et Dual
 
 Si vous l'aimez ou si vous souhaitez contribuer à d'autres améliorations de ce firmware, veuillez envisager la possibilité de faire un don à :
 
@@ -160,14 +157,11 @@ The code of the `Configuration.h` file has been split into 7 sections to make th
 
 Molise 1.4 firmware is provided to you free of charge, in an "as is" state. We cannot be held responsible for any damage it may do to your 3D printer if it occurs. Please proceed with caution.
 
-To make your task easier, the molise firmware is supplied to you "pre-compiled" for the following 6 scenarios:
+To make your task easier, the molise firmware is supplied to you "pre-compiled" for the following 3 scenarios:
 
-- D12 / 230 Stock + MBL (Z driver A4988)
-- D12 / 230 Stock + MBL (Z driver TMC2209)
-- D12 / 230 Stock + BLTouch (Z driver A4988)
-- D12 / 230 Stock + BLTouch (Z driver TMC2209)
-- D12 / 230 Stock + TouchMi (Z driver A4988)
-- D12 / 230 Stock + TouchMi (Z driver TMC2209)
+- D12/230 Stock + MBL (Z driver A4988) Mono and Dual
+- D12/230 Stock + BLTouch (Z driver A4988) Mono and Dual
+- D12/230 Stock + TouchMi (Z driver A4988) Mono and Dual
 
 If you like it or would like to contribute to other improvements of this firmware, please consider the possibility of donating to:
 
