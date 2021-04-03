@@ -2538,6 +2538,10 @@
   //#define E5_SLAVE_ADDRESS 0
   //#define E6_SLAVE_ADDRESS 0
   //#define E7_SLAVE_ADDRESS 0
+  #ifdef MOTHERBOARD BOARD_MKS_ROBIN_NANO
+  #define E1_SERIAL_TX_PIN                  PA5
+  #define E1_SERIAL_RX_PIN                  PA5
+  #endif
 
   /**
    * Software enable
