@@ -62,11 +62,14 @@ Le code du fichier `Configuration.h` a été découpé en 7 sections afin de ren
 
 Le firmware Molise 1.4 vous est fourni gratuitement, dans un état « tel quel ». Nous ne pouvons pas être tenus responsables des dommages qu’il pourrait faire à votre imprimante 3D le cas échéant. S’il vous plaît procéder avec prudence.
 
-Pour vous faciliter la tâche, le firmware molise vous est fourni "pré-compilé" pour les 3 cas de figures suivants:
+Pour vous faciliter la tâche, le firmware molise vous est fourni "pré-compilé" pour les 6 cas de figures suivants:
 
 - D12/230 Stock + MBL (Z driver A4988) Mono et Dual
 - D12/230 Stock + BLTouch (Z driver A4988) Mono et Dual
 - D12/230 Stock + TouchMi (Z driver A4988) Mono et Dual
+- D12/300 Stock + MBL (Z driver TMC2209) Mono et Dual
+- D12/300 Stock + BLTouch (Z driver TMC2209) Mono et Dual
+- D12/300 Stock + TouchMi (Z driver TMC2209) Mono et Dual
 
 Si vous l'aimez ou si vous souhaitez contribuer à d'autres améliorations de ce firmware, veuillez envisager la possibilité de faire un don à :
 
@@ -81,6 +84,10 @@ Afin de vous aider dans l'installation et la configuration du Firmware, merci de
 PROCÉDURES DE MISE À JOUR DE MARLIN FW:
 
 Copiez le fichier "Robin_nano35.bin" sur la carte SD, insérez la carte dans l'imprimante éteinte, allumez l'imprimante et attendez qu'elle ait fini !!
+
+Si vous voulez le mode Graphique standard, vous devez compiler Molise vous même avec VSCode et rajouter sur la carte SD le répertoire Assets (.pio/builds/mks_robin_nano35)
+
+Vidéo Youtube d'explication pour régler et compiler Molise (Vidéo basée sur Molise Artillery, mais c'est le même principe pour Molise Wanhao) : [Molise Firmware prepare and compile](https://youtu.be/xCyAS7WaRCM)
 ### Changelog
 
 #### 1.4.0
@@ -157,11 +164,14 @@ The code of the `Configuration.h` file has been split into 7 sections to make th
 
 Molise 1.4 firmware is provided to you free of charge, in an "as is" state. We cannot be held responsible for any damage it may do to your 3D printer if it occurs. Please proceed with caution.
 
-To make your task easier, the molise firmware is supplied to you "pre-compiled" for the following 3 scenarios:
+To make your task easier, the molise firmware is supplied to you "pre-compiled" for the following 6 scenarios:
 
 - D12/230 Stock + MBL (Z driver A4988) Mono and Dual
 - D12/230 Stock + BLTouch (Z driver A4988) Mono and Dual
 - D12/230 Stock + TouchMi (Z driver A4988) Mono and Dual
+- D12/300 Stock + MBL (Z driver TMC2209) Mono and Dual
+- D12/300 Stock + BLTouch (Z driver TMC2209) Mono and Dual
+- D12/300 Stock + TouchMi (Z driver TMC2209) Mono and Dual
 
 If you like it or would like to contribute to other improvements of this firmware, please consider the possibility of donating to:
 
@@ -176,6 +186,10 @@ In order to help you in the installation and configuration of the Firmware, plea
 MARLIN FW UPDATE PROCEDURES:
 
 Copy the file "Robin_nano35.bin" to the SD card, insert the card into the turned off printer, turn on the printer and wait for it to finish !!
+
+If you want the standard Graphics mode, you must compile Molise yourself with VSCode and add the Assets directory to the SD card (.pio / builds / mks_robin_nano35)
+
+Youtube video of explanation to adjust and compile Molise (Video based on Molise Artillery, but it is the same principle for Molise Wanhao): [Molise Firmware prepare and compile](https://youtu.be/xCyAS7WaRCM)
 ### Changelog
 
 #### 1.4.0
