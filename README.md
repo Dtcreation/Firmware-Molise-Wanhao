@@ -1,5 +1,7 @@
 # Molise Firmware
 
+![Molise](https://github.com/Dtcreation/Firmware-Molise-Wanhao/releases/download/1.4.0/IMG_0342.4.JPG)
+
 ## FRENCH - ENGLISH DOWN
 
 N'hésitez pas à me soutenir. Payez moi une 🍺 ou un ☕ : [https://paypal.me/dtouton](https://bit.ly/3bXz1Bp)
