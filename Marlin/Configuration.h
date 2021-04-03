@@ -122,7 +122,7 @@
 //#define BLTOUCH      //uncomment if you use a BLTouch
   #ifdef BLTOUCH
     #define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
-    #define NOZZLE_TO_PROBE_OFFSET { -45, -0.7, 0 }   //Offset preset for this fanduct : Sidewinder X1 Waggster Mod BLTouch with improved Fan Duct  by 3dprintbeginnercom on Thingiverse: https://www.thingiverse.com/thing:3972011
+    #define NOZZLE_TO_PROBE_OFFSET { -45, -0.7, 0 }   //Offset preset for this support : https://www.thingiverse.com/thing:4812496
   #endif
 
 //#define ZMIN_SENSOR_AS_PROBE                      //uncomment to use Z min as Probe for bed leveling (incompatible with BLTouch)
@@ -134,7 +134,7 @@
 //#define TOUCH_MI_PROBE                            //uncomment if you use a Touch Mi
   #ifdef TOUCH_MI_PROBE
     #define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
-    #define NOZZLE_TO_PROBE_OFFSET { -30, 0, 0 }  //Offset preset for this fanduct : https://www.thingiverse.com/thing:4713319
+    #define NOZZLE_TO_PROBE_OFFSET { -30, 0, 0 }    //Offset preset for this support : https://www.thingiverse.com/thing:4812496
     #define TOUCH_MI_RETRACT_Z 0.5                  // Height at which the probe retracts
     //#define TOUCH_MI_DEPLOY_XPOS (X_MAX_BED + 2)  // For a magnet on the right side of the bed
     //#define TOUCH_MI_MANUAL_DEPLOY                // For manual deploy (LCD menu)
