@@ -29,7 +29,7 @@ Dernière version de Molise __1.4.0__ basée sur [Marlin BugFix 2.0.x](https://g
 
 Avec la version "Mode Marlin", on perd la prévisualisation de Gcode et le Wifi.
 
-Si vous voullez ces fonctions, il vous faut décommenter //#define GRAPHIC_MODE dans la section 6 pour retrouver le mode graphique plus "standard"
+Si vous voulez ces fonctions, il vous faut décommenter //#define GRAPHIC_MODE dans la section 6 pour retrouver le mode graphique plus "standard"
 
 Pour installer votre BLTouch ou TouchMI, connectez les fils noir et blanc sur le Z- pour le BLTouch et les 3 fils sur le Z- pour le TouchMi
 
