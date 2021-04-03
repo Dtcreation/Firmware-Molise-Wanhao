@@ -89,7 +89,10 @@ Copiez le fichier "Robin_nano35.bin" sur la carte SD, insérez la carte dans l'i
 
 Si vous voulez le mode Graphique standard, vous devez compiler Molise vous même avec VSCode et rajouter sur la carte SD le répertoire Assets (.pio/builds/mks_robin_nano35)
 
-Vidéo Youtube d'explication pour régler et compiler Molise (Vidéo basée sur Molise Artillery, mais c'est le même principe pour Molise Wanhao) : [Molise Firmware prepare and compile](https://youtu.be/xCyAS7WaRCM)
+Vidéo Youtube d'explication pour régler et compiler Molise (Vidéo basée sur Molise Artillery, mais c'est le même principe pour Molise Wanhao)
+
+[![](http://img.youtube.com/vi/xCyAS7WaRCM/0.jpg)](http://www.youtube.com/watch?v=xCyAS7WaRCM "Prepare And Compile Molise")
+
 ### Changelog
 
 #### 1.4.0
@@ -191,7 +194,10 @@ Copy the file "Robin_nano35.bin" to the SD card, insert the card into the turned
 
 If you want the standard Graphics mode, you must compile Molise yourself with VSCode and add the Assets directory to the SD card (.pio / builds / mks_robin_nano35)
 
-Youtube video of explanation to adjust and compile Molise (Video based on Molise Artillery, but it is the same principle for Molise Wanhao): [Molise Firmware prepare and compile](https://youtu.be/xCyAS7WaRCM)
+Youtube video of explanation to adjust and compile Molise (Video based on Molise Artillery, but it is the same principle for Molise Wanhao)
+
+[![](http://img.youtube.com/vi/xCyAS7WaRCM/0.jpg)](http://www.youtube.com/watch?v=xCyAS7WaRCM "Prepare And Compile Molise")
+
 ### Changelog
 
 #### 1.4.0
