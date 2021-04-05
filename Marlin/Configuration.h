@@ -1244,7 +1244,7 @@
 
 // Feedrate (mm/min) for the "accurate" probe of each point
 #ifdef BLTOUCH
-  #define Z_PROBE_SPEED_SLOW (Z_PROBE_SPEED_FAST / 3)
+  #define Z_PROBE_SPEED_SLOW (Z_PROBE_SPEED_FAST / 2)
 #else
   #define Z_PROBE_SPEED_SLOW (Z_PROBE_SPEED_FAST / 2)
 #endif
@@ -1289,7 +1289,7 @@
   #define MULTIPLE_PROBING 2
   //#define EXTRA_PROBING    1
 #else
-  #define MULTIPLE_PROBING 2
+  #define MULTIPLE_PROBING 1
   //#define EXTRA_PROBING    1
 #endif
 
