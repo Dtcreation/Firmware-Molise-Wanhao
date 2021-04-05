@@ -1232,7 +1232,7 @@
       #ifdef MATRIX
       #define PROBING_MARGIN 20
   #else
-    #define PROBING_MARGIN 15
+    #define PROBING_MARGIN 10
 #endif
 #endif
 
