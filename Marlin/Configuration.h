@@ -1289,7 +1289,7 @@
   #define MULTIPLE_PROBING 2
   //#define EXTRA_PROBING    1
 #else
-  #define MULTIPLE_PROBING 2
+  #define MULTIPLE_PROBING 1
   //#define EXTRA_PROBING    1
 #endif
 
