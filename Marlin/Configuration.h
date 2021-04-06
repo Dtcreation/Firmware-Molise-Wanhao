@@ -2,7 +2,7 @@
 //================================== Intro ==================================
 //===========================================================================
 /**
-* ****************** Molise 1.4 Firmware for Wanhao D12 based on Marlin Bugfix 2.0.x************** **********
+*******************Molise 1.4 Firmware for Wanhao D12 based on Marlin Bugfix 2.0.x************************
 *
 * Molise 1.4 firmware is brought to you by David TOUTON, the awesome 3D printing community, and of course we can't forget the Marlin team who spent countless days, nights and years building Marlin how far it is today.
 *
@@ -1289,7 +1289,7 @@
   #define MULTIPLE_PROBING 2
   //#define EXTRA_PROBING    1
 #else
-  #define MULTIPLE_PROBING 1
+  //#define MULTIPLE_PROBING 2
   //#define EXTRA_PROBING    1
 #endif
 
