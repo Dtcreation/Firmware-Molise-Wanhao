@@ -31,7 +31,7 @@ Avec la version "Mode Marlin", on perd la prévisualisation de Gcode et le Wifi.
 
 Si vous voulez ces fonctions, il vous faut décommenter //#define GRAPHIC_MODE dans la section 6 pour retrouver le mode graphique plus "standard"
 
-Pour installer votre BLTouch ou TouchMI, connectez les fils noir et blanc sur le Z- pour le BLTouch et les 3 fils sur le Z- pour le TouchMi
+Pour installer votre BLTouch ou TouchMI, connectez les fils noir et blanc sur le Z- pour le BLTouch et les 3 fils sur le Z- pour le TouchMi !
 
 Voici un listing de ce que propose actuellement le Firmware : 
 
