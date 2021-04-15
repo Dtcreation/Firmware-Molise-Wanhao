@@ -1975,7 +1975,7 @@
 // @section serial
 
 // The ASCII buffer for serial input
-#define MAX_CMD_SIZE 96
+#define MAX_CMD_SIZE 64
 #define BUFSIZE 4
 
 // Transmission to Host Buffer Size
@@ -2163,7 +2163,11 @@
  * Requires NOZZLE_PARK_FEATURE.
  * This feature is required for the default FILAMENT_RUNOUT_SCRIPT.
  */
+#ifdef GRAPHIC_MODE
+//#define ADVANCED_PAUSE_FEATURE
+#else
 #define ADVANCED_PAUSE_FEATURE
+#endif
 #if ENABLED(ADVANCED_PAUSE_FEATURE)
   #define PAUSE_PARK_RETRACT_FEEDRATE         60  // (mm/s) Initial retract feedrate.
   #define PAUSE_PARK_RETRACT_LENGTH            2  // (mm) Initial retract.
