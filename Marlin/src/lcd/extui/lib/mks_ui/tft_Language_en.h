@@ -99,23 +99,9 @@
 
 #define LEVELING_CONF_TITLE_EN          "Machine Settings>Leveling settings"
 #define LEVELING_PARA_CONF_EN           "Leveling settings"
-#define LEVELING_MANUAL_POS_EN          "Manual leveling coordinate settings"
+#define TRAMMING_POS_EN                 "Manual leveling coordinate settings"
 #define LEVELING_AUTO_COMMAND_EN        "AutoLeveling command settings"
 #define LEVELING_AUTO_ZOFFSET_EN        "Nozzle-to-probe offsets settings"
-#define LEVELING_TOUCHMI_EN             "Settings-TouchMi-Probe"
-#define TM_INIT_EN                      "Init"
-#define TM_ZOFFSETPOS_EN                "Zoffset+"
-#define TM_ZOFFSETNEG_EN                "Zoffset-"
-#define TM_SAVE_EN                      "Save"
-#define TM_TEST_EN                      "Test"
-
-#define BLTOUCH_LEVELING_TITTLE_EN      "Machine Settings>BL-Touch Probe"
-#define BLTOUCH_LEVELING_EN             "BL-Touch Probe"
-#define BLTOUCH_INIT_EN                 "Init"
-#define BLTOUCH_ZOFFSETPOS_EN           "Zoffset+"
-#define BLTOUCH_ZOFFSETNEG_EN           "Zoffset-"
-#define BLTOUCH_SAVE_EN                 "Save"
-#define BLTOUCH_TEST_EN                 "Test"
 
 #define LEVELING_PARA_CONF_TITLE_EN     "leveling setting"
 #define AUTO_LEVELING_ENABLE_EN         "Enable auto leveling"
@@ -243,8 +229,6 @@
 #define WIFI_SETTINGS_EN                "Wi-Fi parameter settings"
 #define HOMING_SENSITIVITY_CONF_EN      "Homing sensitivity settings"
 #define ENCODER_SETTINGS_EN             "Rotary encoder settings"
-#define X_MODE_SETTINGS_EN              "X-mode"
-#define HOTEND_OFFSET_SETTINGS_EN       "Hotend-offset"
 
 #define Z2_AND_Z2ENDSTOP_CONF_TITLE_EN  "Z2 Settings"
 #define Z2_ENABLE_EN                    "Z2 Enable"
@@ -285,21 +269,9 @@
 #define ENCODER_CONF_TITLE_EN                 "Machine Settings>Rotary encoder settings"
 #define ENCODER_CONF_TEXT_EN                  "Is the encoder function used?"
 
-#define DUAL_X_MODE_CONF_TITLE_EN             "Machine Settings>Dual x mode"
-#define FULL_CONTROL_MODE_EN	              "Full control mode"
-#define AUTO_PARK_MODE_EN		              "Auto park mode"
-#define DUPLICATION_MODE_EN	                  "Duplication mode"
-#define MIRROR_MODE_EN		                  "Mirrored mode"
-
-#define HOTEND_OFFSET_CONF_TITLE_EN           "Machine Settings>Hotend offset"
-#define HOTEND_OFFSET_X_EN                    "Hotend X2 offset"
-#define HOTEND_OFFSET_Y_EN                    "Hotend Y2 offset"
-#define HOTEND_OFFSET_Z_EN                    "Hotend Z2 offset"
-
 #define TOOL_TEXT_EN            "Tool"
 #define PREHEAT_TEXT_EN         "Preheat"
 #define MOVE_TEXT_EN            "Move"
-#define TEXT_ZOFFSET_EN         "Z offset"
 #define HOME_TEXT_EN            "Home"
 #define PRINT_TEXT_EN           "Printing"
 #define EXTRUDE_TEXT_EN         "Extrusion"
@@ -307,6 +279,8 @@
 #define AUTO_LEVELING_TEXT_EN   "AutoLevel"
 #define SET_TEXT_EN             "Settings"
 #define MORE_TEXT_EN            "More"
+#define MORE_GCODE_EN           "G-Code"
+#define MORE_ENTER_GCODE_EN     "Enter G-Code"
 
 #define ADD_TEXT_EN             "Add"
 #define DEC_TEXT_EN             "Dec"
@@ -427,7 +401,6 @@
 #define FILAMENT_DIALOG_LOAD_COMPLETE_TIPS_EN   "Load filament completed,\nclick <confirm> for return!"
 #define FILAMENT_DIALOG_UNLOAD_COMPLETE_TIPS_EN "Unload filament completed,\nclick <confirm> for return!"
 
-
 #define PRE_HEAT_EXT_TEXT_EN            "E"
 #define PRE_HEAT_BED_TEXT_EN            "Bed"
 
@@ -509,9 +482,7 @@
 #define DIALOG_PRINT_FINISH_EN              "Done print!"
 #define DIALOG_PRINT_TIME_EN                "Print time: "
 #define DIALOG_REPRINT_EN                   "Print again"
-#define DIALOG_WIFI_ENABLE_TIPS_EN          "The wifi module is being configured\nplease wait a moment....."
-#define DIALOG_PAUSING_TIPS_EN              "The machine pauses..."
-#define DIALOG_AUTO_LEVELING_TIPS_EN        "Auto-leveling, please wait..."
+#define DIALOG_WIFI_ENABLE_TIPS_EN "The wifi module is being configured\nplease wait a moment....."
 
 #define HOTBED_ENABLE_EN        "Enable heatbed"
 #define MOTOR_EN_HIGH_LEVEL_EN  "High"
@@ -569,6 +540,7 @@
 #define USB_DRIVE_BACK_EN                 "< Back"
 #define FILE_PAGES_EN                     "%d/%d"
 #define FILE_NEXT_PAGE_EN                 "Next Page"
+#define MEDIA_SELECT_TITLE_EN             "Select Media"
 
 //BUILD PLATE
 #define PLATE_TITLE_EN                    "Build Plate"
@@ -701,14 +673,14 @@
 
 //manual ip
 #define MANUAL_IP_TITLE_EN          "Manual IP"
-#define MANUAL_IP_CANCEL_EN          "< Cancel"
+#define MANUAL_IP_CANCEL_EN         "< Cancel"
 #define MANUAL_IP_APPLY_EN          "Join >"
 #define MANUAL_IP_ADDRESS_EN        "IP Address"
 #define MANUAL_IP_MASK_EN           "Subnet Mask"
 #define MANUAL_IP_GATEWAY_EN        "Default Gateway"
 #define MANUAL_IP_SERVER_EN         "Name Server"
 #define MANUAL_IP_INIT_DATA_EN      "0.0.0.0"
-#define MANUAL_TEXT_POINT_EN         "."
+#define MANUAL_TEXT_POINT_EN        "."
 #define MANUAL_TEXT_ENTER_EN        "enter"
 
 #define TEXT_FORGET_TIPS_TITLE_EN "Forget Network"
@@ -757,10 +729,9 @@
 #define EEPROM_READ_TIPS_EN   "Read settings from EEPROM?"
 #define EEPROM_REVERT_TIPS_EN "Revert settings to factory defaults?"
 
-#define MORE_CUSTOM1_TEXT_EN  USER_DESC_1
-#define MORE_CUSTOM2_TEXT_EN  USER_DESC_2
-#define MORE_CUSTOM3_TEXT_EN  USER_DESC_3
-#define MORE_CUSTOM4_TEXT_EN  USER_DESC_4
-#define MORE_CUSTOM5_TEXT_EN  USER_DESC_5
-#define MORE_CUSTOM6_TEXT_EN  USER_DESC_6
-#define MORE_CUSTOM7_TEXT_EN  USER_DESC_7
+#define MORE_CUSTOM1_TEXT_EN  MAIN_MENU_ITEM_1_DESC
+#define MORE_CUSTOM2_TEXT_EN  MAIN_MENU_ITEM_2_DESC
+#define MORE_CUSTOM3_TEXT_EN  MAIN_MENU_ITEM_3_DESC
+#define MORE_CUSTOM4_TEXT_EN  MAIN_MENU_ITEM_4_DESC
+#define MORE_CUSTOM5_TEXT_EN  MAIN_MENU_ITEM_5_DESC
+#define MORE_CUSTOM6_TEXT_EN  MAIN_MENU_ITEM_6_DESC

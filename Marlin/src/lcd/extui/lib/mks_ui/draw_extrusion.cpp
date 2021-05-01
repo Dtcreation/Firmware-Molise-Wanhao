@@ -29,7 +29,6 @@
 #include "../../../../module/temperature.h"
 #include "../../../../gcode/queue.h"
 #include "../../../../inc/MarlinConfig.h"
-#include "../../../../module/planner.h"
 
 static lv_obj_t *scr;
 extern lv_group_t *g;
@@ -55,38 +54,34 @@ static void event_handler(lv_obj_t *obj, lv_event_t event) {
   if (event != LV_EVENT_RELEASED) return;
   switch (obj->mks_obj_id) {
     case ID_E_ADD:
-      if (thermalManager.temp_hotend[uiCfg.curSprayerChoose].celsius >= EXTRUDE_MINTEMP) {
-        queue.enqueue_now_P(PSTR("G91"));
-        sprintf_P((char *)public_buf_l, PSTR("G1 E%d F%d"), uiCfg.extruStep, 60 * uiCfg.extruSpeed);
-        queue.enqueue_one_now(public_buf_l);
-        queue.enqueue_now_P(PSTR("G90"));
+      if (thermalManager.degHotend(uiCfg.extruderIndex) >= EXTRUDE_MINTEMP) {
+        sprintf_P((char *)public_buf_l, PSTR("G91\nG1 E%d F%d\nG90"), uiCfg.extruStep, 60 * uiCfg.extruSpeed);
+        queue.inject(public_buf_l);
         extrudeAmount += uiCfg.extruStep;
         disp_extru_amount();
       }
       break;
     case ID_E_DEC:
-      if (thermalManager.temp_hotend[uiCfg.curSprayerChoose].celsius >= EXTRUDE_MINTEMP) {
-        queue.enqueue_now_P(PSTR("G91"));
-        sprintf_P((char *)public_buf_l, PSTR("G1 E%d F%d"), 0 - uiCfg.extruStep, 60 * uiCfg.extruSpeed);
+      if (thermalManager.degHotend(uiCfg.extruderIndex) >= EXTRUDE_MINTEMP) {
+        sprintf_P((char *)public_buf_l, PSTR("G91\nG1 E%d F%d\nG90"), 0 - uiCfg.extruStep, 60 * uiCfg.extruSpeed);
         queue.enqueue_one_now(public_buf_l);
-        queue.enqueue_now_P(PSTR("G90"));
         extrudeAmount -= uiCfg.extruStep;
         disp_extru_amount();
       }
       break;
     case ID_E_TYPE:
       if (ENABLED(HAS_MULTI_EXTRUDER)) {
-        if (uiCfg.curSprayerChoose == 0) {
-          uiCfg.curSprayerChoose = 1;
+        if (uiCfg.extruderIndex == 0) {
+          uiCfg.extruderIndex = 1;
           queue.inject_P(PSTR("T1"));
         }
         else {
-          uiCfg.curSprayerChoose = 0;
+          uiCfg.extruderIndex = 0;
           queue.inject_P(PSTR("T0"));
         }
       }
       else
-        uiCfg.curSprayerChoose = 0;
+        uiCfg.extruderIndex = 0;
 
       extrudeAmount = 0;
       disp_hotend_temp();
@@ -112,16 +107,13 @@ static void event_handler(lv_obj_t *obj, lv_event_t event) {
       disp_ext_speed();
       break;
     case ID_E_RETURN:
-      feedrate_mm_s = (float)uiCfg.moveSpeed_bak;
-      if(uiCfg.print_state == PAUSED)
-        planner.set_e_position_mm((destination.e = current_position.e = uiCfg.current_e_position_bak));
-      lv_clear_cur_ui();
-      lv_draw_return_ui();
+      clear_cur_ui();
+      draw_return_ui();
       break;
   }
 }
 
-void lv_draw_extrusion(void) {
+void lv_draw_extrusion() {
   scr = lv_screen_create(EXTRUSION_UI);
   // Create image buttons
   lv_obj_t *buttonAdd = lv_big_button_create(scr, "F:/bmp_in.bin", extrude_menu.in, INTERVAL_V, titleHeight, event_handler, ID_E_ADD);
@@ -161,7 +153,7 @@ void lv_draw_extrusion(void) {
 }
 
 void disp_ext_type() {
-  if (uiCfg.curSprayerChoose == 1) {
+  if (uiCfg.extruderIndex == 1) {
     lv_imgbtn_set_src_both(buttonType, "F:/bmp_extru2.bin");
     if (gCfgItems.multiple_language) {
       lv_label_set_text(labelType, extrude_menu.ext2);
@@ -203,11 +195,7 @@ void disp_ext_speed() {
 
 void disp_hotend_temp() {
   char buf[20] = {0};
-  #if ENABLED(SINGLENOZZLE)
-    sprintf(buf, extrude_menu.temp_value, (int)thermalManager.temp_hotend[0].celsius,  (int)thermalManager.temp_hotend[0].target);
-  #else
-    sprintf(buf, extrude_menu.temp_value, (int)thermalManager.temp_hotend[uiCfg.curSprayerChoose].celsius,  (int)thermalManager.temp_hotend[uiCfg.curSprayerChoose].target);
-  #endif
+  sprintf(buf, extrude_menu.temp_value, thermalManager.wholeDegHotend(uiCfg.extruderIndex), thermalManager.degTargetHotend(uiCfg.extruderIndex));
   strcpy(public_buf_l, extrude_menu.temper_text);
   strcat(public_buf_l, buf);
   lv_label_set_text(tempText, public_buf_l);
@@ -225,7 +213,7 @@ void disp_extru_amount() {
     sprintf(buf1, extrude_menu.count_value_cm, extrudeAmount / 10);
   else
     sprintf(buf1, extrude_menu.count_value_m, extrudeAmount / 1000);
-  strcat(public_buf_l, uiCfg.curSprayerChoose < 1 ? extrude_menu.ext1 : extrude_menu.ext2);
+  strcat(public_buf_l, uiCfg.extruderIndex == 0 ? extrude_menu.ext1 : extrude_menu.ext2);
   strcat(public_buf_l, buf1);
 
   lv_label_set_text(ExtruText, public_buf_l);

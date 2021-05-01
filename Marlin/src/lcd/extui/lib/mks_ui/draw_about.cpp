@@ -38,13 +38,13 @@ static void event_handler(lv_obj_t *obj, lv_event_t event) {
   if (event != LV_EVENT_RELEASED) return;
   switch (obj->mks_obj_id) {
     case ID_A_RETURN:
-      lv_clear_cur_ui();
-      lv_draw_return_ui();
+      clear_cur_ui();
+      draw_return_ui();
       break;
   }
 }
 
-void lv_draw_about(void) {
+void lv_draw_about() {
   scr = lv_screen_create(ABOUT_UI);
   lv_big_button_create(scr, "F:/bmp_return.bin", common_menu.text_back, BTN_X_PIXEL * 3 + INTERVAL_V * 4, BTN_Y_PIXEL + INTERVAL_H + titleHeight, event_handler, ID_A_RETURN);
 

@@ -23,7 +23,7 @@ Molise est un firmware modifié "universel" pour les imprimantes de la marque [W
 
 ### Version actuelle
 
-Dernière version de Molise __1.4.0__ basée sur [Marlin BugFix 2.0.x](https://github.com/MarlinFirmware/Marlin/tree/bugfix-2.0.x)
+Dernière version de Molise __2.0__ basée sur [Marlin 2.0.8](https://github.com/MarlinFirmware/Marlin/tree/bugfix-2.0.x)
 
 ### A propos du Firmware Molise
 
@@ -62,7 +62,7 @@ Le Firmware apporte les modifications suivantes à Marlin (par rapport à la ver
 
 Le code du fichier `Configuration.h` a été découpé en 7 sections afin de rendre le code plus lisible. Ainsi, pour les personnes souhaitant choisir leur configuration et compiler le code à partir des sources, le travail sera plus simple. Pour plus d'explication sur la compilation du code, merci de vous reporter à la page du [wiki dédiée](https://github.com/Dtcreation/Firmware-Molise-Wanhao/wiki)
 
-Le firmware Molise 1.4 vous est fourni gratuitement, dans un état « tel quel ». Nous ne pouvons pas être tenus responsables des dommages qu’il pourrait faire à votre imprimante 3D le cas échéant. S’il vous plaît procéder avec prudence.
+Le firmware Molise 2.0 vous est fourni gratuitement, dans un état « tel quel ». Nous ne pouvons pas être tenus responsables des dommages qu’il pourrait faire à votre imprimante 3D le cas échéant. S’il vous plaît procéder avec prudence.
 
 Pour vous faciliter la tâche, le firmware molise vous est fourni "pré-compilé" pour les 6 cas de figures suivants:
 
@@ -95,13 +95,20 @@ Vidéo Youtube d'explication pour régler et compiler Molise (Vidéo basée sur 
 
 ### Changelog
 
+#### 2.0
+
+- Upgrade to Marlin 2.0.8
+- Speed up Probe
+- BugFix Graphical Mode
+- BugFix Babystepping
+
 #### 1.4.0
 
 - First Release
 
 # Remerciement
 
-Le firmware Molise 1.4 vous est fourni par David TOUTON, [la géniale communauté d’impression 3D sur Facebook](https://www.facebook.com/groups/molisefirmware), et bien sûr, nous ne pouvons pas oublier l’équipe Marlin qui a passé d’innombrables jours, nuits et années à construire Marlin jusqu’où il est aujourd’hui.
+Le firmware Molise 2.0 vous est fourni par David TOUTON, [la géniale communauté d’impression 3D sur Facebook](https://www.facebook.com/groups/molisefirmware), et bien sûr, nous ne pouvons pas oublier l’équipe Marlin qui a passé d’innombrables jours, nuits et années à construire Marlin jusqu’où il est aujourd’hui.
 
 
 
@@ -128,7 +135,7 @@ Molise is a "universal" modified firmware for [Wanhao](https://www.wanhaofrance.
 
 ### Current version
 
-Latest version of Molise __1.4.0__ based on [Marlin BugFix 2.0.x](https://github.com/MarlinFirmware/Marlin/tree/bugfix-2.0.x)
+Latest version of Molise __2.0__ based on [Marlin 2.0.8](https://github.com/MarlinFirmware/Marlin/tree/bugfix-2.0.x)
 
 ### About Molise Firmware
 
@@ -167,7 +174,7 @@ The Firmware makes the following changes to Marlin (compared to the stock versio
 
 The code of the `Configuration.h` file has been split into 7 sections to make the code more readable. So, for people who want to choose their configuration and compile the code from source, the job will be easier. For more explanation on how to compile the code, please refer to the [dedicated wiki page](https://github.com/Dtcreation/Firmware-Molise-Wanhao/wiki)
 
-Molise 1.4 firmware is provided to you free of charge, in an "as is" state. We cannot be held responsible for any damage it may do to your 3D printer if it occurs. Please proceed with caution.
+Molise 2.0 firmware is provided to you free of charge, in an "as is" state. We cannot be held responsible for any damage it may do to your 3D printer if it occurs. Please proceed with caution.
 
 To make your task easier, the molise firmware is supplied to you "pre-compiled" for the following 6 scenarios:
 
@@ -200,10 +207,17 @@ Youtube video of explanation to adjust and compile Molise (Video based on Molise
 
 ### Changelog
 
+#### 2.0
+
+- Upgrade to Marlin 2.0.8
+- Speed up Probe
+- BugFix Graphical Mode
+- BugFix Babystepping
+
 #### 1.4.0
 
 - First Release
 
 # Thanks
 
-Molise 1.4 firmware is provided to you by David TOUTON, [the awesome 3D printing community on Facebook](https://www.facebook.com/groups/molisefirmware), and of course we can't forget the team Marlin who spent countless days, nights and years building Marlin to where it is today.
+Molise 2.0 firmware is provided to you by David TOUTON, [the awesome 3D printing community on Facebook](https://www.facebook.com/groups/molisefirmware), and of course we can't forget the team Marlin who spent countless days, nights and years building Marlin to where it is today.

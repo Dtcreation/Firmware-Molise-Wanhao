@@ -45,7 +45,7 @@ static void event_handler(lv_obj_t *obj, lv_event_t event) {
   switch (obj->mks_obj_id) {
     case ID_JERK_RETURN:
       lv_clear_jerk_settings();
-      lv_draw_return_ui();
+      draw_return_ui();
       break;
     case ID_JERK_X:
       value = XJerk;
@@ -70,23 +70,22 @@ static void event_handler(lv_obj_t *obj, lv_event_t event) {
   }
 }
 
-void lv_draw_jerk_settings(void) {
-  char str_1[16];
+void lv_draw_jerk_settings() {
   scr = lv_screen_create(JERK_UI, machine_menu.JerkConfTitle);
 
-  sprintf_P(public_buf_l, PSTR("%s"), dtostrf(planner.max_jerk[X_AXIS], 1, 1, str_1));
+  dtostrf(planner.max_jerk[X_AXIS], 1, 1, public_buf_l);
   lv_screen_menu_item_1_edit(scr, machine_menu.X_Jerk, PARA_UI_POS_X, PARA_UI_POS_Y, event_handler, ID_JERK_X, 0, public_buf_l);
 
-  sprintf_P(public_buf_l, PSTR("%s"), dtostrf(planner.max_jerk[Y_AXIS], 1, 1, str_1));
+  dtostrf(planner.max_jerk[Y_AXIS], 1, 1, public_buf_l);
   lv_screen_menu_item_1_edit(scr, machine_menu.Y_Jerk, PARA_UI_POS_X, PARA_UI_POS_Y * 2, event_handler, ID_JERK_Y, 1, public_buf_l);
 
-  sprintf_P(public_buf_l, PSTR("%s"), dtostrf(planner.max_jerk[Z_AXIS], 1, 1, str_1));
+  dtostrf(planner.max_jerk[Z_AXIS], 1, 1, public_buf_l);
   lv_screen_menu_item_1_edit(scr, machine_menu.Z_Jerk, PARA_UI_POS_X, PARA_UI_POS_Y * 3, event_handler, ID_JERK_Z, 2, public_buf_l);
 
-  sprintf_P(public_buf_l, PSTR("%s"), dtostrf(planner.max_jerk[E_AXIS], 1, 1, str_1));
+  dtostrf(planner.max_jerk[E_AXIS], 1, 1, public_buf_l);
   lv_screen_menu_item_1_edit(scr, machine_menu.E_Jerk, PARA_UI_POS_X, PARA_UI_POS_Y * 4, event_handler, ID_JERK_E, 3, public_buf_l);
 
-  lv_screen_menu_item_return(scr, event_handler, ID_JERK_RETURN);
+  lv_big_button_create(scr, "F:/bmp_back70x40.bin", common_menu.text_back, PARA_UI_BACL_POS_X, PARA_UI_BACL_POS_Y, event_handler, ID_JERK_RETURN, true);
 }
 
 void lv_clear_jerk_settings() {

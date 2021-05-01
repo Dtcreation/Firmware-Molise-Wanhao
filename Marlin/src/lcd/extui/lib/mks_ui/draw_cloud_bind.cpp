@@ -48,19 +48,19 @@ static void event_handler(lv_obj_t * obj, lv_event_t event) {
   if (event != LV_EVENT_RELEASED) return;
   switch (obj->mks_obj_id) {
     case ID_CLOUD_BIND_RETURN:
-      lv_clear_cur_ui();
-      lv_draw_return_ui();
+      clear_cur_ui();
+      draw_return_ui();
       break;
     case ID_CLOUD_RELEASE_BIND:
       if (cloud_para.state == 0x12) {
-        lv_clear_cur_ui();
+        clear_cur_ui();
         lv_draw_dialog(DIALOG_TYPE_UNBIND);
       }
       break;
   }
 }
 
-void lv_draw_cloud_bind(void) {
+void lv_draw_cloud_bind() {
   lv_obj_t *buttonBack = NULL, *label_Back = NULL;
   scr = lv_screen_create(BIND_UI);
 
@@ -190,7 +190,7 @@ void display_qrcode(uint8_t *qrcode_data) {
 }
 
 void cloud_unbind() {
-  package_to_wifi(WIFI_CLOUD_UNBIND, (uint8_t *)0, 0);
+  package_to_wifi(WIFI_CLOUD_UNBIND, nullptr, 0);
   unbinding_flag = 1;
 }
 

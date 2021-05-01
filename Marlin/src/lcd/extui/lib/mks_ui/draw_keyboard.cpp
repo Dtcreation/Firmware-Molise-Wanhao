@@ -27,36 +27,13 @@
 #include <lv_conf.h>
 
 #include "../../../../inc/MarlinConfig.h"
+#include "../../../../gcode/queue.h"
 
 extern lv_group_t *g;
 static lv_obj_t *scr;
 
 #define LV_KB_CTRL_BTN_FLAGS (LV_BTNM_CTRL_NO_REPEAT | LV_BTNM_CTRL_CLICK_TRIG)
 
-#ifdef FRENCH_KEYBOARD
-static const char * kb_map_lc[] = {"1#", "a", "z", "e", "r", "t", "y", "u", "i", "o", "p", LV_SYMBOL_BACKSPACE, "\n",
-                                   "ABC", "q", "s", "d", "f", "g", "h", "j", "k", "l", "m", LV_SYMBOL_NEW_LINE, "\n",
-                                   "_", "-", "w", "x", "c", "v", "b", "n", ",", ";", ":", "!", "\n",
-                                   LV_SYMBOL_CLOSE, LV_SYMBOL_LEFT, " ", LV_SYMBOL_RIGHT, LV_SYMBOL_OK, ""};
-
-static const lv_btnm_ctrl_t kb_ctrl_lc_map[] = {
-    LV_KB_CTRL_BTN_FLAGS | 5, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 7,
-    LV_KB_CTRL_BTN_FLAGS | 5, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 5,
-                           1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-    LV_KB_CTRL_BTN_FLAGS | 2, 2, 6, 2, LV_KB_CTRL_BTN_FLAGS | 2};
-
-static const char * kb_map_uc[] = {"1#", "A", "Z", "E", "R", "T", "Y", "U", "I", "O", "P", LV_SYMBOL_BACKSPACE, "\n",
-                                   "abc", "Q", "S", "D", "F", "G", "H", "J", "K", "L", "M", LV_SYMBOL_NEW_LINE, "\n",
-                                   "_", "-", "W", "X", "C", "V", "B", "N", "?", ".", "/", "^", "\n",
-                                   LV_SYMBOL_CLOSE, LV_SYMBOL_LEFT, " ", LV_SYMBOL_RIGHT, LV_SYMBOL_OK, ""};
-
-static const lv_btnm_ctrl_t kb_ctrl_uc_map[] = {
-    LV_KB_CTRL_BTN_FLAGS | 5, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 7,
-    LV_KB_CTRL_BTN_FLAGS | 5, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 5,
-                           1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-    LV_KB_CTRL_BTN_FLAGS | 2, 2, 6, 2, LV_KB_CTRL_BTN_FLAGS | 2};
-
-#else
 static const char * kb_map_lc[] = {"1#", "q", "w", "e", "r", "t", "y", "u", "i", "o", "p", LV_SYMBOL_BACKSPACE, "\n",
                                    "ABC", "a", "s", "d", "f", "g", "h", "j", "k", "l", LV_SYMBOL_NEW_LINE, "\n",
                                    "_", "-", "z", "x", "c", "v", "b", "n", "m", ".", ",", ":", "\n",
@@ -70,7 +47,7 @@ static const lv_btnm_ctrl_t kb_ctrl_lc_map[] = {
 
 static const char * kb_map_uc[] = {"1#", "Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", LV_SYMBOL_BACKSPACE, "\n",
                                    "abc", "A", "S", "D", "F", "G", "H", "J", "K", "L", LV_SYMBOL_NEW_LINE, "\n",
-                                   "_", "-", "Z", "X", "C", "V", "B", "N", "M", ".", ",", "^", "\n",
+                                   "_", "-", "Z", "X", "C", "V", "B", "N", "M", ".", ",", ":", "\n",
                                    LV_SYMBOL_CLOSE, LV_SYMBOL_LEFT, " ", LV_SYMBOL_RIGHT, LV_SYMBOL_OK, ""};
 
 static const lv_btnm_ctrl_t kb_ctrl_uc_map[] = {
@@ -78,8 +55,6 @@ static const lv_btnm_ctrl_t kb_ctrl_uc_map[] = {
     LV_KB_CTRL_BTN_FLAGS | 6, 3, 3, 3, 3, 3, 3, 3, 3, 3, 7,
     1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
     LV_KB_CTRL_BTN_FLAGS | 2, 2, 6, 2, LV_KB_CTRL_BTN_FLAGS | 2};
-
-#endif
 
 static const char * kb_map_spec[] = {"0", "1", "2", "3", "4" ,"5", "6", "7", "8", "9", ".", LV_SYMBOL_BACKSPACE, "\n",
                                      "abc", "+", "-", "/", "*", "=", "%", "!", "?", "#", "<", ">", "\n",
@@ -129,14 +104,14 @@ static void lv_kb_event_cb(lv_obj_t *kb, lv_event_t event) {
   else if (strcmp(txt, LV_SYMBOL_CLOSE) == 0) {
     if (kb->event_cb != lv_kb_def_event_cb) {
       lv_clear_keyboard();
-      lv_draw_return_ui();
+      draw_return_ui();
     }
     else {
-      lv_kb_set_ta(kb, nullptr); // De-assign the text area  to hide it cursor if needed
+      lv_kb_set_ta(kb, nullptr); // De-assign the text area to hide its cursor if needed
       lv_obj_del(kb);
       return;
     }
-  return;
+    return;
   }
   else if (strcmp(txt, LV_SYMBOL_OK) == 0) {
     if (kb->event_cb != lv_kb_def_event_cb) {
@@ -146,12 +121,12 @@ static void lv_kb_event_cb(lv_obj_t *kb, lv_event_t event) {
           case wifiName:
             memcpy(uiCfg.wifi_name,ret_ta_txt,sizeof(uiCfg.wifi_name));
             lv_clear_keyboard();
-            lv_draw_return_ui();
+            draw_return_ui();
             break;
           case wifiPassWord:
             memcpy(uiCfg.wifi_key,ret_ta_txt,sizeof(uiCfg.wifi_name));
             lv_clear_keyboard();
-            lv_draw_return_ui();
+            draw_return_ui();
             break;
           case wifiConfig:
             ZERO(uiCfg.wifi_name);
@@ -162,7 +137,7 @@ static void lv_kb_event_cb(lv_obj_t *kb, lv_event_t event) {
 
             gCfgItems.wifi_mode_sel = STA_MODEL;
 
-            package_to_wifi(WIFI_PARA_SET, (uint8_t *)0, 0);
+            package_to_wifi(WIFI_PARA_SET, nullptr, 0);
 
             public_buf_l[0] = 0xA5;
             public_buf_l[1] = 0x09;
@@ -173,18 +148,27 @@ static void lv_kb_event_cb(lv_obj_t *kb, lv_event_t event) {
             public_buf_l[6] = 0x00;
             raw_send_to_wifi((uint8_t*)public_buf_l, 6);
 
-            last_disp_state = KEY_BOARD_UI;
+            last_disp_state = KEYBOARD_UI;
             lv_clear_keyboard();
             wifi_tips_type = TIPS_TYPE_JOINING;
             lv_draw_wifi_tips();
             break;
         #endif // MKS_WIFI_MODULE
-        case gcodeCommand:
+        case autoLevelGcodeCommand:
           uint8_t buf[100];
           strncpy((char *)buf,ret_ta_txt,sizeof(buf));
           update_gcode_command(AUTO_LEVELING_COMMAND_ADDR,buf);
           lv_clear_keyboard();
-          lv_draw_return_ui();
+          draw_return_ui();
+          break;
+        case GCodeCommand:
+          if (!queue.ring_buffer.full(3)) {
+            // Hook anything that goes to the serial port
+            MYSERIAL1.setHook(lv_serial_capt_hook, lv_eom_hook, 0);
+            queue.enqueue_one_now(ret_ta_txt);
+          }
+          lv_clear_keyboard();
+          // draw_return_ui is called in the end of message hook
           break;
         default: break;
       }
@@ -232,7 +216,7 @@ static void lv_kb_event_cb(lv_obj_t *kb, lv_event_t event) {
 }
 
 void lv_draw_keyboard() {
-  scr = lv_screen_create(KEY_BOARD_UI, "");
+  scr = lv_screen_create(KEYBOARD_UI, "");
 
   // Create styles for the keyboard
   static lv_style_t rel_style, pr_style;
@@ -251,10 +235,6 @@ void lv_draw_keyboard() {
 
   // Create a keyboard and apply the styles
   lv_obj_t *kb = lv_kb_create(scr, nullptr);
-  lv_btnm_set_map(kb, kb_map_lc);
-  lv_btnm_set_ctrl_map(kb, kb_ctrl_lc_map);
-  lv_obj_set_base_dir(kb, LV_BIDI_DIR_LTR);
-
   lv_obj_set_event_cb(kb, lv_kb_event_cb);
   lv_kb_set_cursor_manage(kb, true);
   lv_kb_set_style(kb, LV_KB_STYLE_BG, &lv_style_transp_tight);
@@ -268,12 +248,18 @@ void lv_draw_keyboard() {
   // Create a text area. The keyboard will write here
   lv_obj_t *ta = lv_ta_create(scr, nullptr);
   lv_obj_align(ta, nullptr, LV_ALIGN_IN_TOP_MID, 0, 10);
-  if (keyboard_value == gcodeCommand) {
+  switch (keyboard_value) {
+    case autoLevelGcodeCommand:
     get_gcode_command(AUTO_LEVELING_COMMAND_ADDR,(uint8_t *)public_buf_m);
     public_buf_m[sizeof(public_buf_m)-1] = 0;
     lv_ta_set_text(ta, public_buf_m);
-  }
-  else {
+      break;
+    case GCodeCommand:
+      // Start with uppercase by default
+      lv_btnm_set_map(kb, kb_map_uc);
+      lv_btnm_set_ctrl_map(kb, kb_ctrl_uc_map);
+      // Fallthrough
+    default:
     lv_ta_set_text(ta, "");
   }
 

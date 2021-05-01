@@ -47,7 +47,7 @@ static void event_handler(lv_obj_t *obj, lv_event_t event) {
   switch (obj->mks_obj_id) {
     case ID_SENSITIVITY_RETURN:
       lv_clear_homing_sensitivity_settings();
-      lv_draw_return_ui();
+      draw_return_ui();
       break;
     case ID_SENSITIVITY_X:
       value = x_sensitivity;
@@ -74,24 +74,24 @@ static void event_handler(lv_obj_t *obj, lv_event_t event) {
   }
 }
 
-void lv_draw_homing_sensitivity_settings(void) {
+void lv_draw_homing_sensitivity_settings() {
   scr = lv_screen_create(HOMING_SENSITIVITY_UI, machine_menu.HomingSensitivityConfTitle);
 
-  sprintf_P(public_buf_l, PSTR("%d"), TERN(X_SENSORLESS, stepperX.homing_threshold(), 0));
+  itoa(TERN(X_SENSORLESS, stepperX.homing_threshold(), 0), public_buf_l, 10);
   lv_screen_menu_item_1_edit(scr, machine_menu.X_Sensitivity, PARA_UI_POS_X, PARA_UI_POS_Y, event_handler, ID_SENSITIVITY_X, 0, public_buf_l);
 
-  sprintf_P(public_buf_l, PSTR("%d"), TERN(Y_SENSORLESS, stepperY.homing_threshold(), 0));
+  itoa(TERN(Y_SENSORLESS, stepperY.homing_threshold(), 0), public_buf_l, 10);
   lv_screen_menu_item_1_edit(scr, machine_menu.Y_Sensitivity, PARA_UI_POS_X, PARA_UI_POS_Y * 2, event_handler, ID_SENSITIVITY_Y, 1, public_buf_l);
 
-  sprintf_P(public_buf_l, PSTR("%d"), TERN(Z_SENSORLESS, stepperZ.homing_threshold(), 0));
+  itoa(TERN(Z_SENSORLESS, stepperZ.homing_threshold(), 0), public_buf_l, 10);
   lv_screen_menu_item_1_edit(scr, machine_menu.Z_Sensitivity, PARA_UI_POS_X, PARA_UI_POS_Y * 3, event_handler, ID_SENSITIVITY_Z, 2, public_buf_l);
 
   #if Z2_SENSORLESS
-    sprintf_P(public_buf_l, PSTR("%d"), TERN(Z2_SENSORLESS, stepperZ2.homing_threshold(), 0));
+    itoa(TERN(Z2_SENSORLESS, stepperZ2.homing_threshold(), 0), public_buf_l, 10);
     lv_screen_menu_item_1_edit(scr, machine_menu.Z2_Sensitivity, PARA_UI_POS_X, PARA_UI_POS_Y * 4, event_handler, ID_SENSITIVITY_Z2, 3, public_buf_l);
   #endif
 
-  lv_screen_menu_item_return(scr, event_handler, ID_SENSITIVITY_RETURN);
+  lv_big_button_create(scr, "F:/bmp_back70x40.bin", common_menu.text_back, PARA_UI_BACL_POS_X, PARA_UI_BACL_POS_Y, event_handler, ID_SENSITIVITY_RETURN, true);
 }
 
 void lv_clear_homing_sensitivity_settings() {

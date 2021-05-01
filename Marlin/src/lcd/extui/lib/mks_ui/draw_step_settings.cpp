@@ -48,8 +48,8 @@ static void event_handler(lv_obj_t *obj, lv_event_t event) {
   lv_clear_step_settings();
   switch (obj->mks_obj_id) {
     case ID_STEP_RETURN:
-      uiCfg.para_ui_page = 0;
-      lv_draw_return_ui();
+      uiCfg.para_ui_page = false;
+      draw_return_ui();
       return;
     case ID_STEP_X:
       value = Xstep;
@@ -67,42 +67,43 @@ static void event_handler(lv_obj_t *obj, lv_event_t event) {
       value = E1step;
       break;
     case ID_STEP_UP:
-      uiCfg.para_ui_page = 0;
+      uiCfg.para_ui_page = false;
       lv_draw_step_settings();
       return;
     case ID_STEP_DOWN:
-      uiCfg.para_ui_page = 1;
+      uiCfg.para_ui_page = true;
       lv_draw_step_settings();
       return;
   }
   lv_draw_number_key();
 }
 
-void lv_draw_step_settings(void) {
-  char str_1[16];
+void lv_draw_step_settings() {
   scr = lv_screen_create(STEPS_UI, machine_menu.StepsConfTitle);
 
-  if (uiCfg.para_ui_page != 1) {
-    sprintf_P(public_buf_l, PSTR("%s"), dtostrf(planner.settings.axis_steps_per_mm[X_AXIS], 1, 1, str_1));
+  if (!uiCfg.para_ui_page) {
+    dtostrf(planner.settings.axis_steps_per_mm[X_AXIS], 1, 1, public_buf_l);
     lv_screen_menu_item_1_edit(scr, machine_menu.X_Steps, PARA_UI_POS_X, PARA_UI_POS_Y, event_handler, ID_STEP_X, 0, public_buf_l);
 
-    sprintf_P(public_buf_l, PSTR("%s"), dtostrf(planner.settings.axis_steps_per_mm[Y_AXIS], 1, 1, str_1));
+    dtostrf(planner.settings.axis_steps_per_mm[Y_AXIS], 1, 1, public_buf_l);
     lv_screen_menu_item_1_edit(scr, machine_menu.Y_Steps, PARA_UI_POS_X, PARA_UI_POS_Y * 2, event_handler, ID_STEP_Y, 1, public_buf_l);
 
-    sprintf_P(public_buf_l, PSTR("%s"), dtostrf(planner.settings.axis_steps_per_mm[Z_AXIS], 1, 1, str_1));
+    dtostrf(planner.settings.axis_steps_per_mm[Z_AXIS], 1, 1, public_buf_l);
     lv_screen_menu_item_1_edit(scr, machine_menu.Z_Steps, PARA_UI_POS_X, PARA_UI_POS_Y * 3, event_handler, ID_STEP_Z, 2, public_buf_l);
 
-    sprintf_P(public_buf_l, PSTR("%s"), dtostrf(planner.settings.axis_steps_per_mm[E_AXIS], 1, 1, str_1));
+    dtostrf(planner.settings.axis_steps_per_mm[E_AXIS], 1, 1, public_buf_l);
     lv_screen_menu_item_1_edit(scr, machine_menu.E0_Steps, PARA_UI_POS_X, PARA_UI_POS_Y * 4, event_handler, ID_STEP_E0, 3, public_buf_l);
 
-    lv_screen_menu_item_turn_page(scr, machine_menu.next, event_handler, ID_STEP_DOWN);
+    lv_big_button_create(scr, "F:/bmp_back70x40.bin", machine_menu.next, PARA_UI_TURN_PAGE_POS_X, PARA_UI_TURN_PAGE_POS_Y, event_handler, ID_STEP_DOWN, true);
   }
   else {
-    sprintf_P(public_buf_l, PSTR("%s"), dtostrf(planner.settings.axis_steps_per_mm[E_AXIS_N(1)], 1, 1, str_1));
+    dtostrf(planner.settings.axis_steps_per_mm[E_AXIS_N(1)], 1, 1, public_buf_l);
     lv_screen_menu_item_1_edit(scr, machine_menu.E1_Steps, PARA_UI_POS_X, PARA_UI_POS_Y, event_handler, ID_STEP_E1, 0, public_buf_l);
-    lv_screen_menu_item_turn_page(scr, machine_menu.previous, event_handler, ID_STEP_UP);
+
+    lv_big_button_create(scr, "F:/bmp_back70x40.bin", machine_menu.previous, PARA_UI_TURN_PAGE_POS_X, PARA_UI_TURN_PAGE_POS_Y, event_handler, ID_STEP_UP, true);
   }
-  lv_screen_menu_item_return(scr, event_handler, ID_STEP_RETURN);
+
+  lv_big_button_create(scr, "F:/bmp_back70x40.bin", common_menu.text_back, PARA_UI_BACL_POS_X, PARA_UI_BACL_POS_Y, event_handler, ID_STEP_RETURN, true);
 }
 
 void lv_clear_step_settings() {

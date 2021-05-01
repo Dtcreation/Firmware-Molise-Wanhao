@@ -43,7 +43,7 @@ static void event_handler(lv_obj_t *obj, lv_event_t event) {
   switch (obj->mks_obj_id) {
     case ID_MACHINE_RETURN:
       lv_clear_machine_settings();
-      lv_draw_return_ui();
+      draw_return_ui();
       break;
     case ID_MACHINE_ACCELERATION:
       lv_clear_machine_settings();
@@ -62,14 +62,14 @@ static void event_handler(lv_obj_t *obj, lv_event_t event) {
   }
 }
 
-void lv_draw_machine_settings(void) {
+void lv_draw_machine_settings() {
   scr = lv_screen_create(MACHINE_SETTINGS_UI, machine_menu.MachineConfigTitle);
   lv_screen_menu_item(scr, machine_menu.AccelerationConf, PARA_UI_POS_X, PARA_UI_POS_Y, event_handler, ID_MACHINE_ACCELERATION, 0);
   lv_screen_menu_item(scr, machine_menu.MaxFeedRateConf, PARA_UI_POS_X, PARA_UI_POS_Y * 2, event_handler, ID_MACHINE_FEEDRATE, 1);
   #if HAS_CLASSIC_JERK
     lv_screen_menu_item(scr, machine_menu.JerkConf, PARA_UI_POS_X, PARA_UI_POS_Y * 3, event_handler, ID_MACHINE_JERK, 2);
   #endif
-  lv_screen_menu_item_return(scr, event_handler, ID_MACHINE_RETURN);
+  lv_big_button_create(scr, "F:/bmp_back70x40.bin", common_menu.text_back, PARA_UI_BACL_POS_X + 10, PARA_UI_BACL_POS_Y, event_handler, ID_MACHINE_RETURN, true);
 }
 
 void lv_clear_machine_settings() {

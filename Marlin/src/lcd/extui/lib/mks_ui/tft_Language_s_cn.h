@@ -84,24 +84,9 @@
 
 #define LEVELING_CONF_TITLE_CN        "机器参数>调平设置"
 #define LEVELING_PARA_CONF_CN         "调平设置"
-#define LEVELING_MANUAL_POS_CN        "手动调平坐标设置"
+#define TRAMMING_POS_CN               "手动调平坐标设置"
 #define LEVELING_AUTO_COMMAND_CN      "自动调平指令设置"
 #define LEVELING_AUTO_ZOFFSET_CN      "挤出头与调平开关偏移设置"
-
-#define BLTOUCH_LEVELING_TITTLE_CN    "机器参数>BL-Touch Probe"
-#define BLTOUCH_LEVELING_CN           "BL-Touch Probe"
-#define BLTOUCH_INIT_CN               "初始化"
-#define BLTOUCH_ZOFFSETPOS_CN         "Zoffset+"
-#define BLTOUCH_ZOFFSETNEG_CN         "Zoffset-"
-#define BLTOUCH_SAVE_CN               "保存"
-#define BLTOUCH_TEST_CN               "测试"
-
-#define LEVELING_TOUCHMI_CN           "机器参数>TouchMi-Probe"
-#define TM_INIT_CN                    "初始化"
-#define TM_ZOFFSETPOS_CN              "Zoffset+"
-#define TM_ZOFFSETNEG_CN              "Zoffset-"
-#define TM_SAVE_CN                    "保存"
-#define TM_TEST_CN                    "测试"
 
 #define LEVELING_PARA_CONF_TITLE_CN   "调平参数"
 #define AUTO_LEVELING_ENABLE_CN       "自动调平"
@@ -229,8 +214,6 @@
 #define ENABLE_PINS_CONF_CN           "电机使能脚电平设置"
 #define WIFI_SETTINGS_CN              "Wi-Fi参数设置"
 #define ENCODER_SETTINGS_CN           "旋钮设置"
-#define X_MODE_SETTINGS_CN            "打印模式"
-#define HOTEND_OFFSET_SETTINGS_CN     "挤出头偏移"
 
 #define Z2_AND_Z2ENDSTOP_CONF_TITLE_CN  "双z双限位设置"
 #define Z2_ENABLE_CN                    "启用Z2轴"
@@ -270,21 +253,9 @@
 #define ENCODER_CONF_TITLE_CN                 "机器参数>旋钮设置"
 #define ENCODER_CONF_TEXT_CN                  "是否使用旋钮功能?"
 
-#define DUAL_X_MODE_CONF_TITLE_CN             "机器参数>打印模式"
-#define FULL_CONTROL_MODE_CN	              "单头模式"
-#define AUTO_PARK_MODE_CN		              "双头模式"
-#define DUPLICATION_MODE_CN	                  "复制模式"
-#define MIRROR_MODE_CN		                  "镜像模式"
-
-#define HOTEND_OFFSET_CONF_TITLE_CN           "机器参数>挤出头偏移"
-#define HOTEND_OFFSET_X_CN                    "挤出头2 X轴方向偏移"
-#define HOTEND_OFFSET_Y_CN                    "挤出头2 Y轴方向偏移"
-#define HOTEND_OFFSET_Z_CN                    "挤出头2 Z轴方向偏移"
-
 #define TOOL_TEXT_CN                "工具"
 #define PREHEAT_TEXT_CN             "预热"
 #define MOVE_TEXT_CN                "移动"
-#define TEXT_ZOFFSET_CN             "Z offset"
 #define HOME_TEXT_CN                "回零"
 #define PRINT_TEXT_CN               "打印"
 #define EXTRUDE_TEXT_CN             "挤出"
@@ -292,6 +263,8 @@
 #define AUTO_LEVELING_TEXT_CN       "自动调平"
 #define SET_TEXT_CN                 "设置"
 #define MORE_TEXT_CN                "更多"
+#define MORE_GCODE_CN               "G-Code"
+#define MORE_ENTER_GCODE_CN         "Enter G-Code"
 
 #define ADD_TEXT_CN                 "增加"
 #define DEC_TEXT_CN                 "减少"
@@ -491,8 +464,6 @@
 #define DIALOG_PRINT_TIME_CN        "打印时间: "
 #define DIALOG_REPRINT_CN           "再打印一次"
 #define DIALOG_WIFI_ENABLE_TIPS_CN  "wifi模块正在配置中,请稍等......"
-#define DIALOG_PAUSING_TIPS_CN      "机器暂停中..."
-#define DIALOG_AUTO_LEVELING_TIPS_CN    "正在自动调平,请稍等..."
 
 #define TEXT_VALUE_CN               "%d℃/%d℃"
 #define EXTRUDE_TEXT_VALUE_T_CN     ": %d℃"
@@ -524,10 +495,9 @@
 #define EEPROM_READ_TIPS_CN   "是否使用EEPROM参数?"
 #define EEPROM_REVERT_TIPS_CN "是否恢复默认参数?"
 
-#define MORE_CUSTOM1_TEXT_CN  USER_DESC_1
-#define MORE_CUSTOM2_TEXT_CN  USER_DESC_2
-#define MORE_CUSTOM3_TEXT_CN  USER_DESC_3
-#define MORE_CUSTOM4_TEXT_CN  USER_DESC_4
-#define MORE_CUSTOM5_TEXT_CN  USER_DESC_5
-#define MORE_CUSTOM6_TEXT_CN  USER_DESC_6
-#define MORE_CUSTOM7_TEXT_CN  USER_DESC_7
+#define MORE_CUSTOM1_TEXT_CN  MAIN_MENU_ITEM_1_DESC
+#define MORE_CUSTOM2_TEXT_CN  MAIN_MENU_ITEM_2_DESC
+#define MORE_CUSTOM3_TEXT_CN  MAIN_MENU_ITEM_3_DESC
+#define MORE_CUSTOM4_TEXT_CN  MAIN_MENU_ITEM_4_DESC
+#define MORE_CUSTOM5_TEXT_CN  MAIN_MENU_ITEM_5_DESC
+#define MORE_CUSTOM6_TEXT_CN  MAIN_MENU_ITEM_6_DESC

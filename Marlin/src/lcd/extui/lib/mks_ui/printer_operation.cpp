@@ -27,7 +27,6 @@
 #include <lv_conf.h>
 
 #include "../../../../gcode/gcode.h"
-#include "../../../../module/temperature.h"
 #include "../../../../module/planner.h"
 #include "../../../../module/motion.h"
 #include "../../../../sd/cardreader.h"
@@ -41,58 +40,51 @@
 
 extern uint32_t To_pre_view;
 extern bool flash_preview_begin, default_preview_flg, gcode_preview_over;
-void esp_port_begin(uint8_t interrupt);
+
 void printer_state_polling() {
   char str_1[16];
   if (uiCfg.print_state == PAUSING) {
-    lv_clear_cur_ui();
-    lv_draw_dialog(DIALOG_TYPE_MACHINE_PAUSING_TIPS);
     #if ENABLED(SDSUPPORT)
-      while(queue.length) {
-        queue.advance();
-      }
-      planner.synchronize();
-      gcode.process_subcommands_now_P(PSTR("M25"));
-      //save the positon
-      uiCfg.current_x_position_bak = current_position.x;
-      uiCfg.current_y_position_bak = current_position.y;
-      uiCfg.current_z_position_bak = current_position.z;
+      if (!planner.has_blocks_queued() && card.getIndex() > MIN_FILE_PRINTED)
+        uiCfg.waitEndMoves++;
 
-      if (gCfgItems.pausePosZ != (float)-1) {
-        gcode.process_subcommands_now_P(PSTR("G91"));
-        sprintf_P(public_buf_l, PSTR("G1 Z%s"), dtostrf(gCfgItems.pausePosZ, 1, 1, str_1));
-        gcode.process_subcommands_now(public_buf_l);
-        gcode.process_subcommands_now_P(PSTR("G90"));
-      }
-      if (gCfgItems.pausePosX != (float)-1) {
-        sprintf_P(public_buf_l, PSTR("G1 X%s"), dtostrf(gCfgItems.pausePosX, 1, 1, str_1));
-        gcode.process_subcommands_now(public_buf_l);
-      }
-      if (gCfgItems.pausePosY != (float)-1) {
-        sprintf_P(public_buf_l, PSTR("G1 Y%s"), dtostrf(gCfgItems.pausePosY, 1, 1, str_1));
-        gcode.process_subcommands_now(public_buf_l);
-      }
-      uiCfg.print_state = PAUSED;
-      uiCfg.current_e_position_bak = current_position.e;
+      if (uiCfg.waitEndMoves > 20) {
+        uiCfg.waitEndMoves = 0;
+        planner.synchronize();
 
-      gCfgItems.pause_reprint = true;
-      update_spi_flash();
-      lv_clear_cur_ui();
-      lv_draw_return_ui();
+        gcode.process_subcommands_now_P(PSTR("M25"));
+
+        //save the positon
+        uiCfg.current_x_position_bak = current_position.x;
+        uiCfg.current_y_position_bak = current_position.y;
+        uiCfg.current_z_position_bak = current_position.z;
+
+        if (gCfgItems.pausePosZ != (float)-1) {
+          sprintf_P(public_buf_l, PSTR("G91\nG1 Z%s\nG90"), dtostrf(gCfgItems.pausePosZ, 1, 1, str_1));
+          gcode.process_subcommands_now(public_buf_l);
+        }
+        if (gCfgItems.pausePosX != (float)-1 && gCfgItems.pausePosY != (float)-1) {
+          sprintf_P(public_buf_l, PSTR("G1 X%s Y%s"), dtostrf(gCfgItems.pausePosX, 1, 1, str_1), dtostrf(gCfgItems.pausePosY, 1, 1, str_1));
+          gcode.process_subcommands_now(public_buf_l);
+        }
+        uiCfg.print_state = PAUSED;
+        uiCfg.current_e_position_bak = current_position.e;
+
+        gCfgItems.pause_reprint = true;
+        update_spi_flash();
+      }
     #endif
   }
+  else
+    uiCfg.waitEndMoves = 0;
 
   if (uiCfg.print_state == PAUSED) {
   }
 
   if (uiCfg.print_state == RESUMING) {
     if (IS_SD_PAUSED()) {
-      if (gCfgItems.pausePosX != (float)-1) {
-        sprintf_P(public_buf_m, PSTR("G1 X%s"), dtostrf(uiCfg.current_x_position_bak, 1, 1, str_1));
-        gcode.process_subcommands_now(public_buf_m);
-      }
-      if (gCfgItems.pausePosY != (float)-1) {
-        sprintf_P(public_buf_m, PSTR("G1 Y%s"), dtostrf(uiCfg.current_y_position_bak, 1, 1, str_1));
+      if (gCfgItems.pausePosX != (float)-1 && gCfgItems.pausePosY != (float)-1) {
+        sprintf_P(public_buf_m, PSTR("G1 X%s Y%s"), dtostrf(uiCfg.current_x_position_bak, 1, 1, str_1), dtostrf(uiCfg.current_y_position_bak, 1, 1, str_1));
         gcode.process_subcommands_now(public_buf_m);
       }
       if (gCfgItems.pausePosZ != (float)-1) {
@@ -135,10 +127,8 @@ void printer_state_polling() {
         gcode.process_subcommands_now(public_buf_m);
 
         if (gCfgItems.pause_reprint && gCfgItems.pausePosZ != -1.0f) {
-          gcode.process_subcommands_now_P(PSTR("G91"));
-          sprintf_P(public_buf_l, PSTR("G1 Z-%.1f"), gCfgItems.pausePosZ);
+          sprintf_P(public_buf_l, PSTR("G91\nG1 Z-%s\nG90"), dtostrf(gCfgItems.pausePosZ, 1, 1, str_2));
           gcode.process_subcommands_now(public_buf_l);
-          gcode.process_subcommands_now_P(PSTR("G90"));
         }
       #endif
       uiCfg.print_state = WORKING;
@@ -153,23 +143,6 @@ void printer_state_polling() {
     filament_check();
 
   TERN_(MKS_WIFI_MODULE, wifi_looping());
-
-  #if ENABLED(AUTO_BED_LEVELING_BILINEAR)
-    if (uiCfg.autoLeveling) {
-      get_gcode_command(AUTO_LEVELING_COMMAND_ADDR, (uint8_t *)public_buf_m);
-      public_buf_m[sizeof(public_buf_m) - 1] = 0;
-      gcode.process_subcommands_now_P(PSTR(public_buf_m));
-      lv_clear_cur_ui();
-      #ifdef BLTOUCH
-      bltouch_do_init(false);
-      lv_draw_bltouch_settings();
-      #endif
-      #ifdef TOUCH_MI_PROBE
-      lv_draw_touchmi_settings();
-      #endif
-      uiCfg.autoLeveling = 0;
-    }
-  #endif
 }
 
 void filament_pin_setup() {
@@ -185,9 +158,7 @@ void filament_pin_setup() {
 }
 
 void filament_check() {
-  #if (PIN_EXISTS(MT_DET_1) || PIN_EXISTS(MT_DET_2) || PIN_EXISTS(MT_DET_3))
-    const int FIL_DELAY = 20;
-  #endif
+  const int FIL_DELAY = 20;
   #if PIN_EXISTS(MT_DET_1)
     static int fil_det_count_1 = 0;
     if (!READ(MT_DET_1_PIN) && !MT_DET_PIN_INVERTING)
@@ -250,8 +221,8 @@ void filament_check() {
       || fil_det_count_3 >= FIL_DELAY
     #endif
   ) {
-    lv_clear_cur_ui();
-    TERN_(SDSUPPORT, card.pauseSDPrint());
+    clear_cur_ui();
+    card.pauseSDPrint();
     stop_print_time();
     uiCfg.print_state = PAUSING;
 

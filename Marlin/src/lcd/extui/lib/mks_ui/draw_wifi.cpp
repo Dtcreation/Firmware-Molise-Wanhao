@@ -41,7 +41,7 @@ enum {
 
 static void event_handler(lv_obj_t *obj, lv_event_t event) {
   if (event != LV_EVENT_RELEASED) return;
-  lv_clear_cur_ui();
+  clear_cur_ui();
   switch (obj->mks_obj_id) {
     case ID_W_RETURN:
       lv_draw_set();
@@ -59,7 +59,7 @@ static void event_handler(lv_obj_t *obj, lv_event_t event) {
   }
 }
 
-void lv_draw_wifi(void) {
+void lv_draw_wifi() {
   scr = lv_screen_create(WIFI_UI);
 
   lv_obj_t *buttonReconnect = nullptr, *label_Reconnect = nullptr;

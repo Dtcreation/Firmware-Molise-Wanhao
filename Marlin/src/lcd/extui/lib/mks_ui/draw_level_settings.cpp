@@ -35,65 +35,39 @@ enum {
   ID_LEVEL_RETURN = 1,
   ID_LEVEL_POSITION,
   ID_LEVEL_COMMAND,
-  ID_LEVEL_ZOFFSET,
-  ID_LEVEL_BLTOUCH,
-  ID_LEVEL_TOUCHMI         
+  ID_LEVEL_ZOFFSET
 };
 
 static void event_handler(lv_obj_t *obj, lv_event_t event) {
   if (event != LV_EVENT_RELEASED) return;
+  lv_clear_level_settings();
   switch (obj->mks_obj_id) {
     case ID_LEVEL_RETURN:
-      lv_clear_level_settings();
-      lv_draw_return_ui();
+      draw_return_ui();
       break;
     case ID_LEVEL_POSITION:
-      lv_clear_level_settings();
-      lv_draw_manual_level_pos_settings();
+      lv_draw_tramming_pos_settings();
       break;
     case ID_LEVEL_COMMAND:
-      keyboard_value = gcodeCommand;
-      lv_clear_level_settings();
+      keyboard_value = autoLevelGcodeCommand;
       lv_draw_keyboard();
       break;
     #if HAS_BED_PROBE
       case ID_LEVEL_ZOFFSET:
-        lv_clear_level_settings();
         lv_draw_auto_level_offset_settings();
-        break;
-    #endif
-    #if ENABLED(BLTOUCH)
-      case ID_LEVEL_BLTOUCH:
-        last_disp_state = LEVELING_PARA_UI;
-        lv_clear_level_settings();
-        bltouch_do_init(false);
-        lv_draw_bltouch_settings();
-        break;
-    #endif
-    #if ENABLED(TOUCH_MI_PROBE)
-      case ID_LEVEL_TOUCHMI:
-        lv_clear_level_settings();
-        lv_draw_touchmi_settings();
         break;
     #endif
   }
 }
 
-void lv_draw_level_settings(void) {
- 
+void lv_draw_level_settings() {
   scr = lv_screen_create(LEVELING_PARA_UI, machine_menu.LevelingParaConfTitle);
-  lv_screen_menu_item(scr, machine_menu.LevelingManuPosConf, PARA_UI_POS_X, PARA_UI_POS_Y, event_handler, ID_LEVEL_POSITION, 0);
+  lv_screen_menu_item(scr, machine_menu.TrammingPosConf, PARA_UI_POS_X, PARA_UI_POS_Y, event_handler, ID_LEVEL_POSITION, 0);
   lv_screen_menu_item(scr, machine_menu.LevelingAutoCommandConf, PARA_UI_POS_X, PARA_UI_POS_Y * 2, event_handler, ID_LEVEL_COMMAND, 1);
   #if HAS_BED_PROBE
     lv_screen_menu_item(scr, machine_menu.LevelingAutoZoffsetConf, PARA_UI_POS_X, PARA_UI_POS_Y * 3, event_handler, ID_LEVEL_ZOFFSET, 2);
   #endif
-  #if ENABLED(BLTOUCH)
-    lv_screen_menu_item(scr, machine_menu.BLTouchLevelingConf, PARA_UI_POS_X, PARA_UI_POS_Y * 4, event_handler, ID_LEVEL_BLTOUCH, 3);
-  #endif
-  #if ENABLED(TOUCH_MI_PROBE)
-    lv_screen_menu_item(scr, machine_menu.LevelingTouchmiConf, PARA_UI_POS_X, PARA_UI_POS_Y * 4, event_handler, ID_LEVEL_TOUCHMI, 3);
-  #endif
-  lv_screen_menu_item_return(scr, event_handler, ID_LEVEL_RETURN);
+  lv_big_button_create(scr, "F:/bmp_back70x40.bin", common_menu.text_back, PARA_UI_BACL_POS_X + 10, PARA_UI_BACL_POS_Y, event_handler, ID_LEVEL_RETURN, true);
 }
 
 void lv_clear_level_settings() {
@@ -102,4 +76,5 @@ void lv_clear_level_settings() {
   #endif
   lv_obj_del(scr);
 }
+
 #endif // HAS_TFT_LVGL_UI

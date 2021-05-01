@@ -44,7 +44,7 @@ static void event_handler(lv_obj_t *obj, lv_event_t event) {
   lv_clear_pause_position();
   switch (obj->mks_obj_id) {
     case ID_PAUSE_RETURN:
-      lv_draw_return_ui();
+      draw_return_ui();
       return;
     case ID_PAUSE_X:
       value = pause_pos_x;
@@ -59,20 +59,19 @@ static void event_handler(lv_obj_t *obj, lv_event_t event) {
   lv_draw_number_key();
 }
 
-void lv_draw_pause_position(void) {
-  char str_1[16];
+void lv_draw_pause_position() {
   scr = lv_screen_create(PAUSE_POS_UI, machine_menu.PausePosText);
 
-  sprintf_P(public_buf_l, PSTR("%s"), dtostrf(gCfgItems.pausePosX, 1, 1, str_1));
+  dtostrf(gCfgItems.pausePosX, 1, 1, public_buf_l);
   lv_screen_menu_item_1_edit(scr, machine_menu.xPos, PARA_UI_POS_X, PARA_UI_POS_Y, event_handler, ID_PAUSE_X, 0, public_buf_l);
 
-  sprintf_P(public_buf_l, PSTR("%s"), dtostrf(gCfgItems.pausePosY, 1, 1, str_1));
+  dtostrf(gCfgItems.pausePosY, 1, 1, public_buf_l);
   lv_screen_menu_item_1_edit(scr, machine_menu.yPos, PARA_UI_POS_X, PARA_UI_POS_Y * 2, event_handler, ID_PAUSE_Y, 1, public_buf_l);
 
-  sprintf_P(public_buf_l, PSTR("%s"), dtostrf(gCfgItems.pausePosZ, 1, 1, str_1));
+  dtostrf(gCfgItems.pausePosZ, 1, 1, public_buf_l);
   lv_screen_menu_item_1_edit(scr, machine_menu.zPos, PARA_UI_POS_X, PARA_UI_POS_Y * 3, event_handler, ID_PAUSE_Z, 2, public_buf_l);
 
-  lv_screen_menu_item_return(scr, event_handler, ID_PAUSE_RETURN);
+  lv_big_button_create(scr, "F:/bmp_back70x40.bin", common_menu.text_back, PARA_UI_BACL_POS_X, PARA_UI_BACL_POS_Y, event_handler, ID_PAUSE_RETURN, true);
 }
 
 void lv_clear_pause_position() {

@@ -44,7 +44,7 @@ static void event_handler(lv_obj_t *obj, lv_event_t event) {
   switch (obj->mks_obj_id) {
     case ID_PARA_RETURN:
       lv_clear_machine_para();
-      lv_draw_return_ui();
+      draw_return_ui();
       break;
     case ID_PARA_MACHINE:
       lv_clear_machine_para();
@@ -65,13 +65,13 @@ static void event_handler(lv_obj_t *obj, lv_event_t event) {
   }
 }
 
-void lv_draw_machine_para(void) {
+void lv_draw_machine_para() {
   scr = lv_screen_create(MACHINE_PARA_UI);
   lv_screen_menu_item(scr, MachinePara_menu.MachineSetting, PARA_UI_POS_X, PARA_UI_POS_Y, event_handler, ID_PARA_MACHINE, 0);
   lv_screen_menu_item(scr, MachinePara_menu.MotorSetting, PARA_UI_POS_X, PARA_UI_POS_Y * 2, event_handler, ID_PARA_MOTOR, 1);
   lv_screen_menu_item(scr, MachinePara_menu.leveling, PARA_UI_POS_X, PARA_UI_POS_Y * 3, event_handler, ID_PARA_LEVEL, 2);
   lv_screen_menu_item(scr, MachinePara_menu.AdvanceSetting, PARA_UI_POS_X, PARA_UI_POS_Y * 4, event_handler, ID_PARA_ADVANCE, 3);
-  lv_screen_menu_item_return(scr, event_handler, ID_PARA_RETURN);
+  lv_big_button_create(scr, "F:/bmp_back70x40.bin", common_menu.text_back, PARA_UI_BACL_POS_X + 10, PARA_UI_BACL_POS_Y, event_handler, ID_PARA_RETURN, true);
 }
 
 void lv_clear_machine_para() {

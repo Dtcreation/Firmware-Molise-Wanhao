@@ -44,7 +44,7 @@ static void event_handler(lv_obj_t *obj, lv_event_t event) {
   lv_clear_motor_settings();
   switch (obj->mks_obj_id) {
     case ID_MOTOR_RETURN:
-      lv_draw_return_ui();
+      draw_return_ui();
       break;
     case ID_MOTOR_STEPS:
       lv_draw_step_settings();
@@ -68,7 +68,7 @@ static void event_handler(lv_obj_t *obj, lv_event_t event) {
   }
 }
 
-void lv_draw_motor_settings(void) {
+void lv_draw_motor_settings() {
   int index = 0;
 
   scr = lv_screen_create(MOTOR_SETTINGS_UI, machine_menu.MotorConfTitle);
@@ -85,7 +85,7 @@ void lv_draw_motor_settings(void) {
       index++;
     #endif
   #endif
-  lv_screen_menu_item_return(scr, event_handler, ID_MOTOR_RETURN);
+  lv_big_button_create(scr, "F:/bmp_back70x40.bin", common_menu.text_back, PARA_UI_BACL_POS_X + 10, PARA_UI_BACL_POS_Y, event_handler, ID_MOTOR_RETURN, true);
 }
 
 void lv_clear_motor_settings() {

@@ -23,8 +23,6 @@
 
 #if HAS_TFT_LVGL_UI
 
-#include "../../../../MarlinCore.h"
-
 #include "draw_ui.h"
 #include "tft_multi_language.h"
 
@@ -58,7 +56,7 @@ tool_menu_def                tool_menu;
 MachinePara_menu_def         MachinePara_menu;
 pause_msg_def                pause_msg_menu;
 eeprom_def                   eeprom_menu;
-touchmi_menu_def             touchmi_menu;
+media_select_menu_def        media_select_menu;
 
 machine_common_def machine_menu;
 void machine_setting_disp() {
@@ -122,10 +120,10 @@ void machine_setting_disp() {
 
     machine_menu.LevelingParaConfTitle   = LEVELING_CONF_TITLE_CN;
     machine_menu.LevelingParaConf        = LEVELING_PARA_CONF_CN;
-    machine_menu.LevelingManuPosConf     = LEVELING_MANUAL_POS_CN;
+    machine_menu.TrammingPosConf         = TRAMMING_POS_CN;
     machine_menu.LevelingAutoCommandConf = LEVELING_AUTO_COMMAND_CN;
-  	machine_menu.LevelingAutoZoffsetConf = LEVELING_AUTO_ZOFFSET_CN;
-    
+    machine_menu.LevelingAutoZoffsetConf = LEVELING_AUTO_ZOFFSET_CN;
+
     machine_menu.LevelingSubConfTitle = LEVELING_PARA_CONF_TITLE_CN;
     machine_menu.AutoLevelEnable      = AUTO_LEVELING_ENABLE_CN;
     machine_menu.BLtouchEnable        = BLTOUCH_LEVELING_ENABLE_CN;
@@ -182,9 +180,7 @@ void machine_setting_disp() {
     machine_menu.PausePosition         = PAUSE_POSITION_CN;
     machine_menu.WifiSettings          = WIFI_SETTINGS_CN;
     machine_menu.HomingSensitivityConf = HOMING_SENSITIVITY_CONF_CN;
-    machine_menu.EncoderSettings       = ENCODER_SETTINGS_CN;
-    machine_menu.xModeSettings         = X_MODE_SETTINGS_CN;
-    machine_menu.hotendOffsetSettings  = HOTEND_OFFSET_SETTINGS_CN;               
+    machine_menu.EncoderSettings         = ENCODER_SETTINGS_CN;
 
     machine_menu.MaxFeedRateConfTitle = MAXFEEDRATE_CONF_TITLE_CN;
     machine_menu.XMaxFeedRate         = X_MAXFEEDRATE_CN;
@@ -283,40 +279,14 @@ void machine_setting_disp() {
     machine_menu.Yoffset         = OFFSET_Y_CN;
     machine_menu.Zoffset         = OFFSET_Z_CN;
 
-    machine_menu.LevelingTouchmiConf = LEVELING_TOUCHMI_CN;
-    machine_menu.TouchmiInit         = TM_INIT_CN;
-    machine_menu.TouchmiOffsetpos    = TM_ZOFFSETPOS_CN;
-    machine_menu.TouchmiOffsetneg    = TM_ZOFFSETNEG_CN;
-    machine_menu.TouchmiSave         = TM_SAVE_CN;
-    machine_menu.TouchmiTest         = TM_TEST_CN;
-    
-    machine_menu.BLTouchLevelingConfTitle = BLTOUCH_LEVELING_TITTLE_CN;
-    machine_menu.BLTouchLevelingConf      = BLTOUCH_LEVELING_CN;
-    machine_menu.BLTouchInit              = BLTOUCH_INIT_CN;
-    machine_menu.BLTouchOffsetpos         = BLTOUCH_ZOFFSETPOS_CN;
-    machine_menu.BLTouchOffsetneg         = BLTOUCH_ZOFFSETNEG_CN;
-    machine_menu.BLTouchSave              = BLTOUCH_SAVE_CN;
-    machine_menu.BLTouchTest              = BLTOUCH_TEST_CN;
-
     machine_menu.HomingSensitivityConfTitle = HOMING_SENSITIVITY_CONF_TITLE_CN;
     machine_menu.X_Sensitivity              = X_SENSITIVITY_CN;
     machine_menu.Y_Sensitivity              = Y_SENSITIVITY_CN;
     machine_menu.Z_Sensitivity              = Z_SENSITIVITY_CN;
     machine_menu.Z2_Sensitivity             = Z2_SENSITIVITY_CN;
 
-    machine_menu.EncoderConfTitle           = ENCODER_CONF_TITLE_CN;
-    machine_menu.EncoderConfText            = ENCODER_CONF_TEXT_CN;
-
-    machine_menu.XmodeConfigTitle           = DUAL_X_MODE_CONF_TITLE_CN;
-    machine_menu.fullControl                = FULL_CONTROL_MODE_CN;
-    machine_menu.autoPark                   = AUTO_PARK_MODE_CN;
-    machine_menu.duplication                = DUPLICATION_MODE_CN;
-    machine_menu.mirror                     = MIRROR_MODE_CN;
-
-    machine_menu.hotendOffsetConfigTitle    = HOTEND_OFFSET_CONF_TITLE_CN;
-    machine_menu.hotendXoffset              = HOTEND_OFFSET_X_CN;
-    machine_menu.hotendYoffset              = HOTEND_OFFSET_Y_CN;
-    machine_menu.hotendZoffset              = HOTEND_OFFSET_Z_CN;
+    machine_menu.EncoderConfTitle = ENCODER_CONF_TITLE_CN;
+    machine_menu.EncoderConfText              = ENCODER_CONF_TEXT_CN;
   }
   else if (gCfgItems.language == LANG_COMPLEX_CHINESE) {
     MachinePara_menu.title              = MACHINE_PARA_TITLE_T_CN;
@@ -378,10 +348,10 @@ void machine_setting_disp() {
 
     machine_menu.LevelingParaConfTitle   = LEVELING_CONF_TITLE_T_CN;
     machine_menu.LevelingParaConf        = LEVELING_PARA_CONF_T_CN;
-    machine_menu.LevelingManuPosConf     = LEVELING_MANUAL_POS_T_CN;
+    machine_menu.TrammingPosConf         = TRAMMING_POS_T_CN;
     machine_menu.LevelingAutoCommandConf = LEVELING_AUTO_COMMAND_T_CN;
     machine_menu.LevelingAutoZoffsetConf = LEVELING_AUTO_ZOFFSET_T_CN;
-    
+
     machine_menu.LevelingSubConfTitle = LEVELING_PARA_CONF_TITLE_T_CN;
     machine_menu.AutoLevelEnable      = AUTO_LEVELING_ENABLE_T_CN;
     machine_menu.BLtouchEnable        = BLTOUCH_LEVELING_ENABLE_T_CN;
@@ -438,9 +408,7 @@ void machine_setting_disp() {
     machine_menu.PausePosition         = PAUSE_POSITION_T_CN;
     machine_menu.WifiSettings          = WIFI_SETTINGS_T_CN;
     machine_menu.HomingSensitivityConf = HOMING_SENSITIVITY_CONF_T_CN;
-    machine_menu.EncoderSettings       = ENCODER_SETTINGS_T_CN;
-    machine_menu.xModeSettings         = X_MODE_SETTINGS_T_CN;
-    machine_menu.hotendOffsetSettings  = HOTEND_OFFSET_SETTINGS_T_CN;  
+    machine_menu.EncoderSettings         = ENCODER_SETTINGS_T_CN;
 
     machine_menu.MaxFeedRateConfTitle = MAXFEEDRATE_CONF_TITLE_T_CN;
     machine_menu.XMaxFeedRate         = X_MAXFEEDRATE_T_CN;
@@ -540,40 +508,14 @@ void machine_setting_disp() {
     machine_menu.Yoffset         = OFFSET_Y_T_CN;
     machine_menu.Zoffset         = OFFSET_Z_T_CN;
 
-    machine_menu.LevelingTouchmiConf = LEVELING_TOUCHMI_T_CN;
-    machine_menu.TouchmiInit         = TM_INIT_T_CN;
-    machine_menu.TouchmiOffsetpos    = TM_ZOFFSETPOS_T_CN;
-    machine_menu.TouchmiOffsetneg    = TM_ZOFFSETNEG_T_CN;
-    machine_menu.TouchmiSave         = TM_SAVE_T_CN;
-    machine_menu.TouchmiTest         = TM_TEST_T_CN;
-
-    machine_menu.BLTouchLevelingConfTitle = BLTOUCH_LEVELING_TITTLE_T_CN;
-    machine_menu.BLTouchLevelingConf      = BLTOUCH_LEVELING_T_CN;
-    machine_menu.BLTouchInit              = BLTOUCH_INIT_T_CN;
-    machine_menu.BLTouchOffsetpos         = BLTOUCH_ZOFFSETPOS_T_CN;
-    machine_menu.BLTouchOffsetneg         = BLTOUCH_ZOFFSETNEG_T_CN;
-    machine_menu.BLTouchSave              = BLTOUCH_SAVE_T_CN;
-    machine_menu.BLTouchTest              = BLTOUCH_TEST_T_CN;
-
     machine_menu.HomingSensitivityConfTitle = HOMING_SENSITIVITY_CONF_TITLE_T_CN;
     machine_menu.X_Sensitivity              = X_SENSITIVITY_T_CN;
     machine_menu.Y_Sensitivity              = Y_SENSITIVITY_T_CN;
     machine_menu.Z_Sensitivity              = Z_SENSITIVITY_T_CN;
     machine_menu.Z2_Sensitivity             = Z2_SENSITIVITY_T_CN;
 
-    machine_menu.EncoderConfTitle           = ENCODER_CONF_TITLE_T_CN;
-    machine_menu.EncoderConfText            = ENCODER_CONF_TEXT_T_CN;
-
-    machine_menu.XmodeConfigTitle           = DUAL_X_MODE_CONF_TITLE_T_CN;
-    machine_menu.fullControl                = FULL_CONTROL_MODE_T_CN;
-    machine_menu.autoPark                   = AUTO_PARK_MODE_T_CN;
-    machine_menu.duplication                = DUPLICATION_MODE_T_CN;
-    machine_menu.mirror                     = MIRROR_MODE_T_CN;
-
-    machine_menu.hotendOffsetConfigTitle    = HOTEND_OFFSET_CONF_TITLE_T_CN;
-    machine_menu.hotendXoffset              = HOTEND_OFFSET_X_T_CN;
-    machine_menu.hotendYoffset              = HOTEND_OFFSET_Y_T_CN;
-    machine_menu.hotendZoffset              = HOTEND_OFFSET_Z_T_CN;
+    machine_menu.EncoderConfTitle = ENCODER_CONF_TITLE_T_CN;
+    machine_menu.EncoderConfText              = ENCODER_CONF_TEXT_T_CN;
   }
   else {
     MachinePara_menu.title              = MACHINE_PARA_TITLE_EN;
@@ -635,10 +577,10 @@ void machine_setting_disp() {
 
     machine_menu.LevelingParaConfTitle   = LEVELING_CONF_TITLE_EN;
     machine_menu.LevelingParaConf        = LEVELING_PARA_CONF_EN;
-    machine_menu.LevelingManuPosConf     = LEVELING_MANUAL_POS_EN;
+    machine_menu.TrammingPosConf         = TRAMMING_POS_EN;
     machine_menu.LevelingAutoCommandConf = LEVELING_AUTO_COMMAND_EN;
     machine_menu.LevelingAutoZoffsetConf = LEVELING_AUTO_ZOFFSET_EN;
-    
+
     machine_menu.LevelingSubConfTitle = LEVELING_PARA_CONF_TITLE_EN;
     machine_menu.AutoLevelEnable      = AUTO_LEVELING_ENABLE_EN;
     machine_menu.BLtouchEnable        = BLTOUCH_LEVELING_ENABLE_EN;
@@ -696,9 +638,7 @@ void machine_setting_disp() {
     machine_menu.PausePosition         = PAUSE_POSITION_EN;
     machine_menu.WifiSettings          = WIFI_SETTINGS_EN;
     machine_menu.HomingSensitivityConf = HOMING_SENSITIVITY_CONF_EN;
-    machine_menu.EncoderSettings       = ENCODER_SETTINGS_EN;
-    machine_menu.xModeSettings         = X_MODE_SETTINGS_EN;
-    machine_menu.hotendOffsetSettings  = HOTEND_OFFSET_SETTINGS_EN;
+    machine_menu.EncoderSettings         = ENCODER_SETTINGS_EN;
 
     machine_menu.MaxFeedRateConfTitle = MAXFEEDRATE_CONF_TITLE_EN;
     machine_menu.XMaxFeedRate         = X_MAXFEEDRATE_EN;
@@ -800,40 +740,14 @@ void machine_setting_disp() {
     machine_menu.Yoffset         = OFFSET_Y_EN;
     machine_menu.Zoffset         = OFFSET_Z_EN;
 
-    machine_menu.LevelingTouchmiConf = LEVELING_TOUCHMI_EN;
-    machine_menu.TouchmiInit         = TM_INIT_EN;
-    machine_menu.TouchmiOffsetpos    = TM_ZOFFSETPOS_EN;
-    machine_menu.TouchmiOffsetneg    = TM_ZOFFSETNEG_EN;
-    machine_menu.TouchmiSave         = TM_SAVE_EN;
-    machine_menu.TouchmiTest         = TM_TEST_EN;
-
-    machine_menu.BLTouchLevelingConfTitle = BLTOUCH_LEVELING_TITTLE_EN;
-    machine_menu.BLTouchLevelingConf      = BLTOUCH_LEVELING_EN;
-    machine_menu.BLTouchInit              = BLTOUCH_INIT_EN;
-    machine_menu.BLTouchOffsetpos         = BLTOUCH_ZOFFSETPOS_EN;
-    machine_menu.BLTouchOffsetneg         = BLTOUCH_ZOFFSETNEG_EN;
-    machine_menu.BLTouchSave              = BLTOUCH_SAVE_EN;
-    machine_menu.BLTouchTest              = BLTOUCH_TEST_EN;
-
     machine_menu.HomingSensitivityConfTitle = HOMING_SENSITIVITY_CONF_TITLE_EN;
     machine_menu.X_Sensitivity              = X_SENSITIVITY_EN;
     machine_menu.Y_Sensitivity              = Y_SENSITIVITY_EN;
     machine_menu.Z_Sensitivity              = Z_SENSITIVITY_EN;
     machine_menu.Z2_Sensitivity             = Z2_SENSITIVITY_EN;
 
-    machine_menu.EncoderConfTitle           = ENCODER_CONF_TITLE_EN;
-    machine_menu.EncoderConfText            = ENCODER_CONF_TEXT_EN;
-
-    machine_menu.XmodeConfigTitle           = DUAL_X_MODE_CONF_TITLE_EN;
-    machine_menu.fullControl                = FULL_CONTROL_MODE_EN;
-    machine_menu.autoPark                   = AUTO_PARK_MODE_EN;
-    machine_menu.duplication                = DUPLICATION_MODE_EN;
-    machine_menu.mirror                     = MIRROR_MODE_EN;
-
-    machine_menu.hotendOffsetConfigTitle    = HOTEND_OFFSET_CONF_TITLE_EN;
-    machine_menu.hotendXoffset              = HOTEND_OFFSET_X_EN;
-    machine_menu.hotendYoffset              = HOTEND_OFFSET_Y_EN;
-    machine_menu.hotendZoffset              = HOTEND_OFFSET_Z_EN;
+    machine_menu.EncoderConfTitle = ENCODER_CONF_TITLE_EN;
+    machine_menu.EncoderConfText              = ENCODER_CONF_TEXT_EN;
   }
 }
 
@@ -855,7 +769,6 @@ void disp_language_init() {
   move_menu.step_01mm  = TEXT_01MM;
   move_menu.step_1mm   = TEXT_1MM;
   move_menu.step_10mm  = TEXT_10MM;
-  move_menu.zoffset    = TEXT_ZOFFSET;
 
   home_menu.home_x   = HOME_X_TEXT;
   home_menu.home_y   = HOME_Y_TEXT;
@@ -903,11 +816,15 @@ void disp_language_init() {
   wifi_menu.disconnected = WIFI_DISCONNECTED_TEXT;
   wifi_menu.exception    = WIFI_EXCEPTION_TEXT;
 
-  printing_menu.temp1    = TEXT_VALUE;
-  printing_menu.temp2    = TEXT_VALUE;
-  printing_menu.bed_temp = TEXT_VALUE;
+  printing_menu.temp1    = TEXT_VALUE_TARGET;
+  printing_menu.temp2    = TEXT_VALUE_TARGET;
+  printing_menu.bed_temp = TEXT_VALUE_TARGET;
 
   filament_menu.stat_temp = TEXT_VALUE;
+
+  media_select_menu.title    = MEDIA_SELECT_TITLE_EN;
+  media_select_menu.sd_disk  = SD_CARD_TITLE_EN;
+  media_select_menu.usb_disk = USB_DRIVE_TITLE_EN;
 
   machine_menu.key_0     = KEYBOARD_KEY0_EN;
   machine_menu.key_1     = KEYBOARD_KEY1_EN;
@@ -977,14 +894,12 @@ void disp_language_init() {
       preheat_menu.hotbed       = HEATBED_TEXT_CN;
       preheat_menu.off          = CLOSE_TEXT_CN;
 
-      preheat_menu.value_state  = TEXT_VALUE_CN;
-      preheat_menu.step_1c      = TEXT_1C_CN;
-      preheat_menu.step_5c      = TEXT_5C_CN;
-      preheat_menu.step_10c     = TEXT_10C_CN;
+      preheat_menu.value_state = TEXT_VALUE_CN;
+      preheat_menu.step_1c     = TEXT_1C_CN;
+      preheat_menu.step_5c     = TEXT_5C_CN;
+      preheat_menu.step_10c    = TEXT_10C_CN;
       //
-      move_menu.title           = MOVE_TEXT_CN;
-      move_menu.zoffset         = TEXT_ZOFFSET_CN;
-
+      move_menu.title = MOVE_TEXT_CN;
       //
       home_menu.title    = TITLE_HOME_CN;
       home_menu.stopmove = HOME_STOPMOVE_CN;
@@ -1032,27 +947,26 @@ void disp_language_init() {
       filesys_menu.sd_sys  = SD_CARD_TEXT_CN;
       filesys_menu.usb_sys = U_DISK_TEXT_CN;
       //
-      more_menu.title   = TITLE_MORE_CN;
-      #if ENABLED(USER_CMD_1_ENABLE)
+      more_menu.title       = TITLE_MORE_CN;
+      more_menu.gcode       = MORE_GCODE_CN;
+      more_menu.entergcode  = MORE_ENTER_GCODE_CN;
+      #if HAS_USER_ITEM(1)
         more_menu.custom1 = MORE_CUSTOM1_TEXT_CN;
       #endif
-      #if ENABLED(USER_CMD_2_ENABLE)
+      #if HAS_USER_ITEM(2)
         more_menu.custom2 = MORE_CUSTOM2_TEXT_CN;
       #endif
-      #if ENABLED(USER_CMD_3_ENABLE)
+      #if HAS_USER_ITEM(3)
         more_menu.custom3 = MORE_CUSTOM3_TEXT_CN;
       #endif
-      #if ENABLED(USER_CMD_4_ENABLE)
+      #if HAS_USER_ITEM(4)
         more_menu.custom4 = MORE_CUSTOM4_TEXT_CN;
       #endif
-      #if ENABLED(USER_CMD_5_ENABLE)
+      #if HAS_USER_ITEM(5)
         more_menu.custom5 = MORE_CUSTOM5_TEXT_CN;
       #endif
-      #if ENABLED(USER_CMD_6_ENABLE)
+      #if HAS_USER_ITEM(6)
         more_menu.custom6 = MORE_CUSTOM6_TEXT_CN;
-      #endif
-      #if ENABLED(USER_CMD_7_ENABLE)
-        more_menu.custom7 = MORE_CUSTOM7_TEXT_CN;
       #endif
       // WIFI
       wifi_menu.title = WIFI_TEXT;
@@ -1093,7 +1007,6 @@ void disp_language_init() {
       filament_menu.filament_dialog_unload_heat_confirm = FILAMENT_DIALOG_UNLOAD_CONFIRM_TIPS_CN;
       filament_menu.filament_dialog_unloading           = FILAMENT_DIALOG_UNLOADING_TIPS_CN;
       filament_menu.filament_dialog_unload_completed    = FILAMENT_DIALOG_UNLOAD_COMPLETE_TIPS_CN;
-
 
       //
       language_menu.title = TITLE_LANGUAGE_CN;
@@ -1157,12 +1070,10 @@ void disp_language_init() {
       print_file_dialog_menu.close_machine_error = DIALOG_ERROR_TIPS2_CN;
       print_file_dialog_menu.filament_no_press   = DIALOG_FILAMENT_NO_PRESS_CN;
 
-      print_file_dialog_menu.print_finish       = DIALOG_PRINT_FINISH_CN;
-      print_file_dialog_menu.print_time         = DIALOG_PRINT_TIME_CN;
-      print_file_dialog_menu.reprint            = DIALOG_REPRINT_CN;
-      print_file_dialog_menu.wifi_enable_tips   = DIALOG_WIFI_ENABLE_TIPS_CN;
-      print_file_dialog_menu.machinePausingTips = DIALOG_PAUSING_TIPS_CN;
-      print_file_dialog_menu.autolevelingTips   = DIALOG_AUTO_LEVELING_TIPS_CN;
+      print_file_dialog_menu.print_finish     = DIALOG_PRINT_FINISH_CN;
+      print_file_dialog_menu.print_time       = DIALOG_PRINT_TIME_CN;
+      print_file_dialog_menu.reprint          = DIALOG_REPRINT_CN;
+      print_file_dialog_menu.wifi_enable_tips = DIALOG_WIFI_ENABLE_TIPS_CN;
 
       pause_msg_menu.pausing       = MESSAGE_PAUSING_CN;
       pause_msg_menu.changing      = MESSAGE_CHANGING_CN;
@@ -1235,7 +1146,6 @@ void disp_language_init() {
             preheat_menu.step_10c     = TEXT_10C_T_CN;
             //
             move_menu.title   = MOVE_TEXT_T_CN;
-            move_menu.zoffset = TEXT_ZOFFSET_T_CN;
             //
             home_menu.title    = TITLE_HOME_T_CN;
             home_menu.stopmove = HOME_STOPMOVE_T_CN;
@@ -1282,30 +1192,29 @@ void disp_language_init() {
             filesys_menu.sd_sys   = SD_CARD_TEXT_T_CN;
             filesys_menu.usb_sys  = U_DISK_TEXT_T_CN;
             //
-            more_menu.title = TITLE_MORE_T_CN;
-            #if ENABLED(USER_CMD_1_ENABLE)
-              more_menu.custom1 = MORE_CUSTOM1_TEXT_T_CN;
+            more_menu.title       = TITLE_MORE_T_CN;
+            more_menu.gcode       = MORE_GCODE_T_CN;
+            more_menu.entergcode  = MORE_ENTER_GCODE_T_CN;
+            #if HAS_USER_ITEM(1)
+              more_menu.custom1 = MORE_CUSTOM1_TEXT_CN;
             #endif
-            #if ENABLED(USER_CMD_2_ENABLE)
-              more_menu.custom2 = MORE_CUSTOM2_TEXT_T_CN;
+            #if HAS_USER_ITEM(2)
+              more_menu.custom2 = MORE_CUSTOM2_TEXT_CN;
             #endif
-            #if ENABLED(USER_CMD_3_ENABLE)
-              more_menu.custom3 = MORE_CUSTOM3_TEXT_T_CN;
+            #if HAS_USER_ITEM(3)
+              more_menu.custom3 = MORE_CUSTOM3_TEXT_CN;
             #endif
-            #if ENABLED(USER_CMD_4_ENABLE)
-              more_menu.custom4 = MORE_CUSTOM4_TEXT_T_CN;
+            #if HAS_USER_ITEM(4)
+              more_menu.custom4 = MORE_CUSTOM4_TEXT_CN;
             #endif
-            #if ENABLED(USER_CMD_5_ENABLE)
-              more_menu.custom5 = MORE_CUSTOM5_TEXT_T_CN;
+            #if HAS_USER_ITEM(5)
+              more_menu.custom5 = MORE_CUSTOM5_TEXT_CN;
             #endif
-            #if ENABLED(USER_CMD_6_ENABLE)
-              more_menu.custom6 = MORE_CUSTOM6_TEXT_T_CN;
-            #endif
-            #if ENABLED(USER_CMD_7_ENABLE)
-              more_menu.custom7 = MORE_CUSTOM7_TEXT_T_CN;
+            #if HAS_USER_ITEM(6)
+              more_menu.custom6 = MORE_CUSTOM6_TEXT_CN;
             #endif
             // WIFI
-            wifi_menu.title = WIFI_TEXT;
+            wifi_menu.title     = WIFI_TEXT;
             wifi_menu.cloud     = CLOUD_TEXT_T_CN;
             wifi_menu.reconnect = WIFI_RECONNECT_TEXT_T_CN;
             // CLOUD
@@ -1409,8 +1318,6 @@ void disp_language_init() {
             print_file_dialog_menu.print_time          = DIALOG_PRINT_TIME_T_CN;
             print_file_dialog_menu.reprint             = DIALOG_REPRINT_T_CN;
             print_file_dialog_menu.wifi_enable_tips    = DIALOG_WIFI_ENABLE_TIPS_T_CN;
-            print_file_dialog_menu.machinePausingTips  = DIALOG_PAUSING_TIPS_T_CN;
-            print_file_dialog_menu.autolevelingTips    = DIALOG_AUTO_LEVELING_TIPS_T_CN;
 
             pause_msg_menu.pausing       = MESSAGE_PAUSING_T_CN;
             pause_msg_menu.changing      = MESSAGE_CHANGING_T_CN;
@@ -1474,8 +1381,7 @@ void disp_language_init() {
             preheat_menu.hotbed       = HEATBED_TEXT_EN;
             preheat_menu.off          = CLOSE_TEXT_EN;
             //
-            move_menu.title = TITLE_MOVE_EN;
-            move_menu.zoffset = TEXT_ZOFFSET_EN;
+            move_menu.title    = TITLE_MOVE_EN;
             //
             home_menu.title    = TITLE_HOME_EN;
             home_menu.stopmove = HOME_STOPMOVE_EN;
@@ -1517,27 +1423,27 @@ void disp_language_init() {
             set_menu.shutdown     = SHUTDOWN_TEXT_EN;
             set_menu.machine_para = MACHINE_PARA_EN;
             set_menu.eepromSet    = EEPROM_SETTINGS_EN;
+            //
             more_menu.title       = TITLE_MORE_EN;
-            #if ENABLED(USER_CMD_1_ENABLE)
+            more_menu.gcode       = MORE_GCODE_EN;
+            more_menu.entergcode  = MORE_ENTER_GCODE_EN;
+            #if HAS_USER_ITEM(1)
               more_menu.custom1 = MORE_CUSTOM1_TEXT_EN;
             #endif
-            #if ENABLED(USER_CMD_2_ENABLE)
+            #if HAS_USER_ITEM(2)
               more_menu.custom2 = MORE_CUSTOM2_TEXT_EN;
             #endif
-            #if ENABLED(USER_CMD_3_ENABLE)
+            #if HAS_USER_ITEM(3)
               more_menu.custom3 = MORE_CUSTOM3_TEXT_EN;
             #endif
-            #if ENABLED(USER_CMD_4_ENABLE)
+            #if HAS_USER_ITEM(4)
               more_menu.custom4 = MORE_CUSTOM4_TEXT_EN;
             #endif
-            #if ENABLED(USER_CMD_5_ENABLE)
+            #if HAS_USER_ITEM(5)
               more_menu.custom5 = MORE_CUSTOM5_TEXT_EN;
             #endif
-            #if ENABLED(USER_CMD_6_ENABLE)
+            #if HAS_USER_ITEM(6)
               more_menu.custom6 = MORE_CUSTOM6_TEXT_EN;
-            #endif
-            #if ENABLED(USER_CMD_7_ENABLE)
-              more_menu.custom7 = MORE_CUSTOM7_TEXT_EN;
             #endif
 
             //
@@ -1545,7 +1451,7 @@ void disp_language_init() {
             filesys_menu.sd_sys  = SD_CARD_TEXT_EN;
             filesys_menu.usb_sys = U_DISK_TEXT_EN;
             // WIFI
-            wifi_menu.title = WIFI_TEXT;
+            wifi_menu.title     = WIFI_TEXT;
             wifi_menu.cloud     = CLOUD_TEXT_EN;
             wifi_menu.reconnect = WIFI_RECONNECT_TEXT_EN;
 
@@ -1646,8 +1552,6 @@ void disp_language_init() {
             print_file_dialog_menu.print_time            = DIALOG_PRINT_TIME_EN;
             print_file_dialog_menu.reprint               = DIALOG_REPRINT_EN;
             print_file_dialog_menu.wifi_enable_tips      = DIALOG_WIFI_ENABLE_TIPS_EN;
-            print_file_dialog_menu.machinePausingTips    = DIALOG_PAUSING_TIPS_EN;
-            print_file_dialog_menu.autolevelingTips      = DIALOG_AUTO_LEVELING_TIPS_EN;
 
             pause_msg_menu.pausing       = MESSAGE_PAUSING_EN;
             pause_msg_menu.changing      = MESSAGE_CHANGING_EN;
@@ -1711,8 +1615,7 @@ void disp_language_init() {
             preheat_menu.hotbed       = HEATBED_TEXT_RU;
             preheat_menu.off          = CLOSE_TEXT_RU;
             //
-            move_menu.title = MOVE_TEXT_RU;
-            move_menu.zoffset = TEXT_ZOFFSET_RU;
+            move_menu.title    = MOVE_TEXT_RU;
             //
             home_menu.title    = TITLE_HOME_RU;
             home_menu.stopmove = HOME_STOPMOVE_RU;
@@ -1755,26 +1658,25 @@ void disp_language_init() {
             set_menu.machine_para = MACHINE_PARA_RU;
             set_menu.eepromSet    = EEPROM_SETTINGS_RU;
             more_menu.title       = TITLE_MORE_RU;
-            #if ENABLED(USER_CMD_1_ENABLE)
+            more_menu.gcode       = MORE_GCODE_RU;
+            more_menu.entergcode  = MORE_ENTER_GCODE_RU;
+            #if HAS_USER_ITEM(1)
               more_menu.custom1 = MORE_CUSTOM1_TEXT_RU;
             #endif
-            #if ENABLED(USER_CMD_2_ENABLE)
+            #if HAS_USER_ITEM(2)
               more_menu.custom2 = MORE_CUSTOM2_TEXT_RU;
             #endif
-            #if ENABLED(USER_CMD_3_ENABLE)
+            #if HAS_USER_ITEM(3)
               more_menu.custom3 = MORE_CUSTOM3_TEXT_RU;
             #endif
-            #if ENABLED(USER_CMD_4_ENABLE)
+            #if HAS_USER_ITEM(4)
               more_menu.custom4 = MORE_CUSTOM4_TEXT_RU;
             #endif
-            #if ENABLED(USER_CMD_5_ENABLE)
+            #if HAS_USER_ITEM(5)
               more_menu.custom5 = MORE_CUSTOM5_TEXT_RU;
             #endif
-            #if ENABLED(USER_CMD_6_ENABLE)
+            #if HAS_USER_ITEM(6)
               more_menu.custom6 = MORE_CUSTOM6_TEXT_RU;
-            #endif
-            #if ENABLED(USER_CMD_7_ENABLE)
-              more_menu.custom7 = MORE_CUSTOM7_TEXT_RU;
             #endif
             //
             filesys_menu.title   = TITLE_FILESYS_RU;
@@ -1808,15 +1710,13 @@ void disp_language_init() {
             machine_menu.FilamentConf          = MACHINE_FILAMENT_CONFIG_RU;
             machine_menu.EncoderSettings       = ENCODER_SETTINGS_RU;
             machine_menu.AdvancedConfTitle     = ADVANCED_CONF_TITLE_RU;
-            machine_menu.xModeSettings         = X_MODE_SETTINGS_RU;
-            machine_menu.hotendOffsetSettings  = HOTEND_OFFSET_SETTINGS_RU;
 
             machine_menu.LevelingParaConfTitle   = LEVELING_CONF_TITLE_RU;
             machine_menu.LevelingParaConf        = LEVELING_PARA_CONF_RU;
-            machine_menu.LevelingManuPosConf     = LEVELING_MANUAL_POS_RU;
-          	machine_menu.LevelingAutoCommandConf = LEVELING_AUTO_COMMAND_RU;
-          	machine_menu.LevelingAutoZoffsetConf = LEVELING_AUTO_ZOFFSET_RU;
-            
+            machine_menu.TrammingPosConf         = TRAMMING_POS_RU;
+            machine_menu.LevelingAutoCommandConf = LEVELING_AUTO_COMMAND_RU;
+            machine_menu.LevelingAutoZoffsetConf = LEVELING_AUTO_ZOFFSET_RU;
+
             machine_menu.AccelerationConfTitle = ACCELERATION_CONF_TITLE_RU;
             machine_menu.PrintAcceleration     = PRINT_ACCELERATION_RU;
             machine_menu.RetractAcceleration   = RETRACT_ACCELERATION_RU;
@@ -1871,21 +1771,6 @@ void disp_language_init() {
             machine_menu.Yoffset         = OFFSET_Y_RU;
             machine_menu.Zoffset         = OFFSET_Z_RU;
 
-            machine_menu.LevelingTouchmiConf = LEVELING_TOUCHMI_RU;
-            machine_menu.TouchmiInit         = TM_INIT_RU;
-            machine_menu.TouchmiOffsetpos    = TM_ZOFFSETPOS_RU;
-            machine_menu.TouchmiOffsetneg    = TM_ZOFFSETNEG_RU;
-            machine_menu.TouchmiSave         = TM_SAVE_RU;
-            machine_menu.TouchmiTest         = TM_TEST_RU;
-
-            machine_menu.BLTouchLevelingConfTitle = BLTOUCH_LEVELING_TITTLE_RU;
-            machine_menu.BLTouchLevelingConf      = BLTOUCH_LEVELING_RU;
-            machine_menu.BLTouchInit              = BLTOUCH_INIT_RU;
-            machine_menu.BLTouchOffsetpos         = BLTOUCH_ZOFFSETPOS_RU;
-            machine_menu.BLTouchOffsetneg         = BLTOUCH_ZOFFSETNEG_RU;
-            machine_menu.BLTouchSave              = BLTOUCH_SAVE_RU;
-            machine_menu.BLTouchTest              = BLTOUCH_TEST_RU;
-
             machine_menu.FilamentConfTitle   = FILAMENT_CONF_TITLE_RU;
             machine_menu.InLength            = FILAMENT_IN_LENGTH_RU;
             machine_menu.InSpeed             = FILAMENT_IN_SPEED_RU;
@@ -1896,17 +1781,6 @@ void disp_language_init() {
             machine_menu.EncoderConfTitle    = ENCODER_CONF_TITLE_RU;
             machine_menu.EncoderConfText     = ENCODER_CONF_TEXT_RU;
 
-            machine_menu.XmodeConfigTitle    = DUAL_X_MODE_CONF_TITLE_RU;
-            machine_menu.fullControl         = FULL_CONTROL_MODE_RU;
-            machine_menu.autoPark            = AUTO_PARK_MODE_RU;
-            machine_menu.duplication         = DUPLICATION_MODE_RU;
-            machine_menu.mirror              = MIRROR_MODE_RU;
-
-            machine_menu.hotendOffsetConfigTitle = HOTEND_OFFSET_SETTINGS_RU;
-            machine_menu.hotendXoffset           = HOTEND_OFFSET_X_RU;
-            machine_menu.hotendYoffset           = HOTEND_OFFSET_Y_RU;
-            machine_menu.hotendZoffset           = HOTEND_OFFSET_Z_RU;
-            
             cloud_menu.title        = TITLE_CLOUD_TEXT_RU;
             cloud_menu.bind         = CLOUD_BINDED_RU;
             cloud_menu.binded       = CLOUD_BINDED_RU;
@@ -2003,8 +1877,6 @@ void disp_language_init() {
             print_file_dialog_menu.print_time            = DIALOG_PRINT_TIME_RU;
             print_file_dialog_menu.reprint               = DIALOG_REPRINT_RU;
             print_file_dialog_menu.wifi_enable_tips      = DIALOG_WIFI_ENABLE_TIPS_RU;
-            print_file_dialog_menu.machinePausingTips    = DIALOG_PAUSING_TIPS_RU;
-            print_file_dialog_menu.autolevelingTips      = DIALOG_AUTO_LEVELING_TIPS_RU;
 
             pause_msg_menu.pausing       = MESSAGE_PAUSING_RU;
             pause_msg_menu.changing      = MESSAGE_CHANGING_RU;
@@ -2069,7 +1941,6 @@ void disp_language_init() {
             preheat_menu.off          = CLOSE_TEXT_SP;
             //
             move_menu.title = MOVE_TEXT_SP;
-            move_menu.zoffset = TEXT_ZOFFSET_SP;
             //
             home_menu.title    = TITLE_HOME_SP;
             home_menu.home_x   = HOME_X_TEXT_SP;
@@ -2116,26 +1987,25 @@ void disp_language_init() {
             set_menu.machine_para = MACHINE_PARA_SP;
             set_menu.eepromSet    = EEPROM_SETTINGS_SP;
             more_menu.title       = TITLE_MORE_SP;
-            #if ENABLED(USER_CMD_1_ENABLE)
+            more_menu.gcode       = MORE_GCODE_SP;
+            more_menu.entergcode  = MORE_ENTER_GCODE_SP;
+            #if HAS_USER_ITEM(1)
               more_menu.custom1 = MORE_CUSTOM1_TEXT_SP;
             #endif
-            #if ENABLED(USER_CMD_2_ENABLE)
+            #if HAS_USER_ITEM(2)
               more_menu.custom2 = MORE_CUSTOM2_TEXT_SP;
             #endif
-            #if ENABLED(USER_CMD_3_ENABLE)
+            #if HAS_USER_ITEM(3)
               more_menu.custom3 = MORE_CUSTOM3_TEXT_SP;
             #endif
-            #if ENABLED(USER_CMD_4_ENABLE)
+            #if HAS_USER_ITEM(4)
               more_menu.custom4 = MORE_CUSTOM4_TEXT_SP;
             #endif
-            #if ENABLED(USER_CMD_5_ENABLE)
+            #if HAS_USER_ITEM(5)
               more_menu.custom5 = MORE_CUSTOM5_TEXT_SP;
             #endif
-            #if ENABLED(USER_CMD_6_ENABLE)
+            #if HAS_USER_ITEM(6)
               more_menu.custom6 = MORE_CUSTOM6_TEXT_SP;
-            #endif
-            #if ENABLED(USER_CMD_7_ENABLE)
-              more_menu.custom7 = MORE_CUSTOM7_TEXT_SP;
             #endif
             //
             filesys_menu.title   = TITLE_FILESYS_SP;
@@ -2143,7 +2013,7 @@ void disp_language_init() {
             filesys_menu.usb_sys = U_DISK_TEXT_SP;
 
             // WIFI
-            wifi_menu.title = WIFI_TEXT;
+            wifi_menu.title     = WIFI_TEXT;
             wifi_menu.cloud     = CLOUD_TEXT_SP;
             wifi_menu.reconnect = WIFI_RECONNECT_TEXT_SP;
 
@@ -2244,8 +2114,6 @@ void disp_language_init() {
             print_file_dialog_menu.print_time            = DIALOG_PRINT_TIME_SP;
             print_file_dialog_menu.reprint               = DIALOG_REPRINT_SP;
             print_file_dialog_menu.wifi_enable_tips      = DIALOG_WIFI_ENABLE_TIPS_SP;
-            print_file_dialog_menu.machinePausingTips    = DIALOG_PAUSING_TIPS_SP;
-            print_file_dialog_menu.autolevelingTips      = DIALOG_AUTO_LEVELING_TIPS_SP;
 
             pause_msg_menu.pausing       = MESSAGE_PAUSING_SP;
             pause_msg_menu.changing      = MESSAGE_CHANGING_SP;
@@ -2314,7 +2182,6 @@ void disp_language_init() {
           preheat_menu.off          = CLOSE_TEXT_FR;
           //
           move_menu.title = MOVE_TEXT_FR;
-          move_menu.zoffset = TEXT_ZOFFSET_FR;
           //
           home_menu.title    = TITLE_HOME_FR;
           home_menu.stopmove = HOME_STOPMOVE_FR;
@@ -2354,26 +2221,25 @@ void disp_language_init() {
           set_menu.machine_para = MACHINE_PARA_FR;
           set_menu.eepromSet    = EEPROM_SETTINGS_FR;
           more_menu.title       = TITLE_MORE_FR;
-          #if ENABLED(USER_CMD_1_ENABLE)
+          more_menu.gcode       = MORE_GCODE_FR;
+          more_menu.entergcode  = MORE_ENTER_GCODE_FR;
+          #if HAS_USER_ITEM(1)
             more_menu.custom1 = MORE_CUSTOM1_TEXT_FR;
           #endif
-          #if ENABLED(USER_CMD_2_ENABLE)
+          #if HAS_USER_ITEM(2)
             more_menu.custom2 = MORE_CUSTOM2_TEXT_FR;
           #endif
-          #if ENABLED(USER_CMD_3_ENABLE)
+          #if HAS_USER_ITEM(3)
             more_menu.custom3 = MORE_CUSTOM3_TEXT_FR;
           #endif
-          #if ENABLED(USER_CMD_4_ENABLE)
+          #if HAS_USER_ITEM(4)
             more_menu.custom4 = MORE_CUSTOM4_TEXT_FR;
           #endif
-          #if ENABLED(USER_CMD_5_ENABLE)
+          #if HAS_USER_ITEM(5)
             more_menu.custom5 = MORE_CUSTOM5_TEXT_FR;
           #endif
-          #if ENABLED(USER_CMD_6_ENABLE)
+          #if HAS_USER_ITEM(6)
             more_menu.custom6 = MORE_CUSTOM6_TEXT_FR;
-          #endif
-          #if ENABLED(USER_CMD_7_ENABLE)
-            more_menu.custom7 = MORE_CUSTOM7_TEXT_FR;
           #endif
           //
           filesys_menu.title          = TITLE_FILESYS_FR;
@@ -2383,7 +2249,7 @@ void disp_language_init() {
           file_menu.no_file           = NO_FILE_FR;
           file_menu.no_file_and_check = NO_FILE_FR;
           // WIFI
-          wifi_menu.title = WIFI_NAME_TEXT_FR;
+          wifi_menu.title     = WIFI_NAME_TEXT_FR;
           wifi_menu.cloud     = CLOUD_TEXT_FR;
           wifi_menu.reconnect = WIFI_RECONNECT_TEXT_FR;
 
@@ -2482,8 +2348,6 @@ void disp_language_init() {
           print_file_dialog_menu.print_time            = DIALOG_PRINT_TIME_FR;
           print_file_dialog_menu.reprint               = DIALOG_REPRINT_FR;
           print_file_dialog_menu.wifi_enable_tips      = DIALOG_WIFI_ENABLE_TIPS_FR;
-          print_file_dialog_menu.machinePausingTips    = DIALOG_PAUSING_TIPS_FR;
-          print_file_dialog_menu.autolevelingTips      = DIALOG_AUTO_LEVELING_TIPS_FR;
 
           pause_msg_menu.pausing       = MESSAGE_PAUSING_FR;
           pause_msg_menu.changing      = MESSAGE_CHANGING_FR;
@@ -2550,7 +2414,6 @@ void disp_language_init() {
           preheat_menu.off          = CLOSE_TEXT_IT;
           //
           move_menu.title = MOVE_TEXT_IT;
-          move_menu.zoffset = TEXT_ZOFFSET_IT;
           //
           home_menu.title    = TITLE_HOME_IT;
           home_menu.stopmove = HOME_STOPMOVE_IT;
@@ -2593,26 +2456,25 @@ void disp_language_init() {
           set_menu.machine_para = MACHINE_PARA_IT;
           set_menu.eepromSet    = EEPROM_SETTINGS_IT;
           more_menu.title       = TITLE_MORE_IT;
-          #if ENABLED(USER_CMD_1_ENABLE)
+          more_menu.gcode       = MORE_GCODE_IT;
+          more_menu.entergcode  = MORE_ENTER_GCODE_IT;
+          #if HAS_USER_ITEM(1)
             more_menu.custom1 = MORE_CUSTOM1_TEXT_IT;
           #endif
-          #if ENABLED(USER_CMD_2_ENABLE)
+          #if HAS_USER_ITEM(2)
             more_menu.custom2 = MORE_CUSTOM2_TEXT_IT;
           #endif
-          #if ENABLED(USER_CMD_3_ENABLE)
+          #if HAS_USER_ITEM(3)
             more_menu.custom3 = MORE_CUSTOM3_TEXT_IT;
           #endif
-          #if ENABLED(USER_CMD_4_ENABLE)
+          #if HAS_USER_ITEM(4)
             more_menu.custom4 = MORE_CUSTOM4_TEXT_IT;
           #endif
-          #if ENABLED(USER_CMD_5_ENABLE)
+          #if HAS_USER_ITEM(5)
             more_menu.custom5 = MORE_CUSTOM5_TEXT_IT;
           #endif
-          #if ENABLED(USER_CMD_6_ENABLE)
+          #if HAS_USER_ITEM(6)
             more_menu.custom6 = MORE_CUSTOM6_TEXT_IT;
-          #endif
-          #if ENABLED(USER_CMD_7_ENABLE)
-            more_menu.custom7 = MORE_CUSTOM7_TEXT_IT;
           #endif
           //
           filesys_menu.title   = TITLE_FILESYS_IT;
@@ -2620,7 +2482,7 @@ void disp_language_init() {
           filesys_menu.usb_sys = U_DISK_TEXT_IT;
 
           // WIFI
-          wifi_menu.title = WIFI_NAME_TEXT_IT;
+          wifi_menu.title     = WIFI_NAME_TEXT_IT;
           wifi_menu.cloud     = CLOSE_TEXT_IT;
           wifi_menu.reconnect = WIFI_RECONNECT_TEXT_IT;
 
@@ -2719,8 +2581,6 @@ void disp_language_init() {
           print_file_dialog_menu.print_time            = DIALOG_PRINT_TIME_IT;
           print_file_dialog_menu.reprint               = DIALOG_REPRINT_IT;
           print_file_dialog_menu.wifi_enable_tips      = DIALOG_WIFI_ENABLE_TIPS_IT;
-          print_file_dialog_menu.machinePausingTips    = DIALOG_PAUSING_TIPS_IT;
-          print_file_dialog_menu.autolevelingTips      = DIALOG_AUTO_LEVELING_TIPS_IT;
 
           pause_msg_menu.pausing       = MESSAGE_PAUSING_IT;
           pause_msg_menu.changing      = MESSAGE_CHANGING_IT;
@@ -2787,8 +2647,7 @@ void disp_language_init() {
       preheat_menu.hotbed       = HEATBED_TEXT_EN;
       preheat_menu.off          = CLOSE_TEXT_EN;
       //
-      move_menu.title           = TITLE_MOVE_EN;
-      move_menu.zoffset         = TEXT_ZOFFSET_EN;
+      move_menu.title = TITLE_MOVE_EN;
       //
       home_menu.title    = TITLE_HOME_EN;
       home_menu.stopmove = HOME_STOPMOVE_EN;
@@ -2831,34 +2690,33 @@ void disp_language_init() {
       set_menu.machine_para = MACHINE_PARA_EN;
       set_menu.eepromSet    = EEPROM_SETTINGS_EN;
       //
-      more_menu.title   = TITLE_MORE_EN;
-      #if ENABLED(USER_CMD_1_ENABLE)
+      more_menu.title       = TITLE_MORE_EN;
+      more_menu.gcode       = MORE_GCODE_EN;
+      more_menu.entergcode  = MORE_ENTER_GCODE_EN;
+      #if HAS_USER_ITEM(1)
         more_menu.custom1 = MORE_CUSTOM1_TEXT_EN;
       #endif
-      #if ENABLED(USER_CMD_2_ENABLE)
+      #if HAS_USER_ITEM(2)
         more_menu.custom2 = MORE_CUSTOM2_TEXT_EN;
       #endif
-      #if ENABLED(USER_CMD_3_ENABLE)
+      #if HAS_USER_ITEM(3)
         more_menu.custom3 = MORE_CUSTOM3_TEXT_EN;
       #endif
-      #if ENABLED(USER_CMD_4_ENABLE)
+      #if HAS_USER_ITEM(4)
         more_menu.custom4 = MORE_CUSTOM4_TEXT_EN;
       #endif
-      #if ENABLED(USER_CMD_5_ENABLE)
+      #if HAS_USER_ITEM(5)
         more_menu.custom5 = MORE_CUSTOM5_TEXT_EN;
       #endif
-      #if ENABLED(USER_CMD_6_ENABLE)
+      #if HAS_USER_ITEM(6)
         more_menu.custom6 = MORE_CUSTOM6_TEXT_EN;
-      #endif
-      #if ENABLED(USER_CMD_7_ENABLE)
-        more_menu.custom7 = MORE_CUSTOM7_TEXT_EN;
       #endif
       //
       filesys_menu.title   = TITLE_FILESYS_EN;
       filesys_menu.sd_sys  = SD_CARD_TEXT_EN;
       filesys_menu.usb_sys = U_DISK_TEXT_EN;
       // WIFI
-      wifi_menu.title = WIFI_TEXT;
+      wifi_menu.title     = WIFI_TEXT;
       wifi_menu.cloud     = CLOUD_TEXT_EN;
       wifi_menu.reconnect = WIFI_RECONNECT_TEXT_EN;
 
@@ -2959,8 +2817,6 @@ void disp_language_init() {
       print_file_dialog_menu.print_time            = DIALOG_PRINT_TIME_EN;
       print_file_dialog_menu.reprint               = DIALOG_REPRINT_EN;
       print_file_dialog_menu.wifi_enable_tips      = DIALOG_WIFI_ENABLE_TIPS_EN;
-      print_file_dialog_menu.machinePausingTips    = DIALOG_PAUSING_TIPS_EN;
-      print_file_dialog_menu.autolevelingTips      = DIALOG_AUTO_LEVELING_TIPS_EN;
 
       pause_msg_menu.pausing       = MESSAGE_PAUSING_EN;
       pause_msg_menu.changing      = MESSAGE_CHANGING_EN;

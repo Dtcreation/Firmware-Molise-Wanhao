@@ -66,15 +66,16 @@ uint8_t sel_id = 0;
     //root2.rewind();
     //SERIAL_ECHOLN(list_file.curDirPath);
 
-    if (curDirLever != 0) card.cd(list_file.curDirPath);
-    else card.cdroot(); // while(card.cdup());
+    if (curDirLever != 0)
+      card.cd(list_file.curDirPath);
+    else
+      card.cdroot();
 
     const uint16_t fileCnt = card.get_num_Files();
 
     for (uint16_t i = 0; i < fileCnt; i++) {
       if (list_file.Sd_file_cnt == list_file.Sd_file_offset) {
-        const uint16_t nr = SD_ORDER(i, fileCnt);
-        card.getfilename_sorted(nr);
+        card.getfilename_sorted(SD_ORDER(i, fileCnt));
 
         list_file.IsFolder[valid_name_cnt] = card.flag.filenameIsDir;
         strcpy(list_file.file_name[valid_name_cnt], list_file.curDirPath);
@@ -102,14 +103,14 @@ uint8_t sel_id = 0;
 
 bool have_pre_pic(char *path) {
   #if ENABLED(SDSUPPORT)
-    char *ps1;//, *ps2;//, *cur_name = strrchr(path, '/');
-    card.openFileRead(path);
-    card.read(public_buf, 256);
+    char *ps1, *ps2, *cur_name = strrchr(path, '/');
+    card.openFileRead(cur_name);
+    card.read(public_buf, 512);
     ps1 = strstr((char *)public_buf, ";simage:");
-    //card.read(public_buf, 512);
-    //ps2 = strstr((char *)public_buf, ";simage:");
+    card.read(public_buf, 512);
+    ps2 = strstr((char *)public_buf, ";simage:");
     card.closefile();
-    if (ps1) return true;
+    if (ps1 || ps2) return true;
   #endif
 
   return false;
@@ -176,7 +177,7 @@ static void event_handler(lv_obj_t *obj, lv_event_t event) {
     }
     else {
       lv_clear_print_file();
-      lv_draw_ready_print();
+      TERN(MULTI_VOLUME, lv_draw_media_select(), lv_draw_ready_print());
     }
   }
   else {
@@ -205,7 +206,7 @@ static void event_handler(lv_obj_t *obj, lv_event_t event) {
   }
 }
 
-void lv_draw_print_file(void) {
+void lv_draw_print_file() {
   //uint8_t i;
   uint8_t file_count;
 
@@ -243,10 +244,11 @@ void lv_draw_print_file(void) {
   }
   */
 }
-static char test_public_buf_l[(SHORT_NAME_LEN + 1) * MAX_DIR_LEVEL + strlen("S:/") + 1];
+static char test_public_buf_l[40];
 void disp_gcode_icon(uint8_t file_num) {
   uint8_t i;
 
+  // TODO: set current media title?!
   scr = lv_screen_create(PRINT_FILE_UI, "");
 
   // Create image buttons
@@ -359,12 +361,12 @@ uint32_t lv_open_gcode_file(char *path) {
   #if ENABLED(SDSUPPORT)
     uint32_t *ps4;
     uint32_t pre_sread_cnt = UINT32_MAX;
-    //char *cur_name;
+    char *cur_name;
 
-    //cur_name = strrchr(path, '/');
+    cur_name = strrchr(path, '/');
 
-    card.openFileRead(path);
-    card.read(public_buf, 256);
+    card.openFileRead(cur_name);
+    card.read(public_buf, 512);
     ps4 = (uint32_t *)strstr((char *)public_buf, ";simage:");
     // Ignore the beginning message of gcode file
     if (ps4) {
@@ -457,7 +459,7 @@ void lv_gcode_file_read(uint8_t *data_buf) {
 void lv_close_gcode_file() {TERN_(SDSUPPORT, card.closefile());}
 
 void lv_gcode_file_seek(uint32_t pos) {
-  TERN_(SDSUPPORT, card.setIndex(pos));
+  card.setIndex(pos);
 }
 
 void cutFileName(char *path, int len, int bytePerLine, char *outStr) {
