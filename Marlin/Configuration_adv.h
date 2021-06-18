@@ -2520,7 +2520,11 @@
   #endif
 
   #if AXIS_IS_TMC(Y)
+    #ifdef D12_300
+    #define Y_CURRENT       900
+    #else
     #define Y_CURRENT       700
+    #endif
     #define Y_CURRENT_HOME  Y_CURRENT
     #define Y_MICROSTEPS     16
     #define Y_RSENSE          0.11
@@ -2538,7 +2542,11 @@
   #endif
 
   #if AXIS_IS_TMC(Z)
+    #ifdef D12_300
+    #define Z_CURRENT       900
+    #else
     #define Z_CURRENT       800
+    #endif
     #define Z_CURRENT_HOME  Z_CURRENT
     #define Z_MICROSTEPS     16
     #define Z_RSENSE          0.11
@@ -2574,7 +2582,11 @@
   #endif
 
   #if AXIS_IS_TMC(E0)
+    #ifdef D12_300
+    #define E0_CURRENT      750
+    #else
     #define E0_CURRENT      900
+    #endif
     #define E0_MICROSTEPS    16
     #define E0_RSENSE         0.11
     #define E0_CHAIN_POS     -1
@@ -2699,7 +2711,7 @@
   #define E1_SERIAL_TX_PIN                  PA5
   #define E1_SERIAL_RX_PIN                  PA5
   #endif
-
+  
   /**
    * Software enable
    *
