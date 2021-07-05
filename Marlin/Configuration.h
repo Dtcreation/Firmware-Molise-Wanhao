@@ -124,6 +124,7 @@
     #define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
     #define Z_MIN_PROBE_REPEATABILITY_TEST
     #define NOZZLE_TO_PROBE_OFFSET { -45, -0.7, 0 }   //Offset preset for this support : https://www.thingiverse.com/thing:4812496
+    //#define NOZZLE_TO_PROBE_OFFSET { 28, -33, 0 }       //Offset preset for this fanduct fot Direct Drive MOD : https://www.thingiverse.com/thing:3972011
   #endif
 
 //#define ZMIN_SENSOR_AS_PROBE                      //uncomment to use Z min as Probe for bed leveling (incompatible with BLTouch)
@@ -146,6 +147,7 @@
 /*** Section 6 Options ***/
 
 //#define GRAPHIC_MODE                           // If you prefere TFT Graphic Mode
+//#define DDRIVE                                 // If you upgrade your D12/300 with Molise Direct Drive MOD
 
 /*** Section 7 Sensorless Homing XY ***/
 
@@ -1040,7 +1042,7 @@
     #define eSteps 335   //MATRIX
 #endif
 #ifdef TITAN
-    #define eSteps 400   //STOCK
+    #define eSteps 435   //STOCK
 #endif
   #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 401, eSteps }
 
@@ -1049,7 +1051,11 @@
  * Override with M203
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
+#ifndef DDRIVE
 #define DEFAULT_MAX_FEEDRATE          { 500, 500, 5, 50 }
+  #else
+  #define DEFAULT_MAX_FEEDRATE          { 1200, 1200, 30, 70 }
+#endif
 
 //#define LIMITED_MAX_FR_EDITING        // Limit edit via M203 or LCD to DEFAULT_MAX_FEEDRATE * 2
 #if ENABLED(LIMITED_MAX_FR_EDITING)
@@ -1062,8 +1068,11 @@
  * Override with M201
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
+#ifndef DDRIVE
 #define DEFAULT_MAX_ACCELERATION      { 400, 400, 400, 5000 }
-
+  #else
+  #define DEFAULT_MAX_ACCELERATION      { 1000, 1000, 100, 10000 }
+#endif
 //#define LIMITED_MAX_ACCEL_EDITING     // Limit edit via M201 or LCD to DEFAULT_MAX_ACCELERATION * 2
 #if ENABLED(LIMITED_MAX_ACCEL_EDITING)
   #define MAX_ACCEL_EDIT_VALUES       { 6000, 6000, 200, 20000 } // ...or, set your own edit limits
@@ -1077,10 +1086,15 @@
  *   M204 R    Retract Acceleration
  *   M204 T    Travel Acceleration
  */
+#ifndef DDRIVE
 #define DEFAULT_ACCELERATION          400    // X, Y, Z and E acceleration for printing moves
 #define DEFAULT_RETRACT_ACCELERATION  400    // E acceleration for retracts
 #define DEFAULT_TRAVEL_ACCELERATION   400    // X, Y, Z acceleration for travel (non printing) moves
-
+  #else
+  #define DEFAULT_ACCELERATION          1000    // X, Y, Z and E acceleration for printing moves
+  #define DEFAULT_RETRACT_ACCELERATION  3000    // E acceleration for retracts
+  #define DEFAULT_TRAVEL_ACCELERATION   1000    // X, Y, Z acceleration for travel (non printing) moves
+#endif
 /**
  * Default Jerk limits (mm/s)
  * Override with M205 X Y Z E
@@ -1103,7 +1117,7 @@
   #endif
 #endif
 
-#define DEFAULT_EJERK    1.0  // May be used by Linear Advance
+#define DEFAULT_EJERK    5.0  // May be used by Linear Advance
 
 /**
  * Junction Deviation Factor
@@ -1113,7 +1127,7 @@
  *   https://blog.kyneticcnc.com/2018/10/computing-junction-deviation-for-marlin.html
  */
 #if DISABLED(CLASSIC_JERK)
-  #define JUNCTION_DEVIATION_MM 0.02 // (mm) Distance from real junction edge
+  #define JUNCTION_DEVIATION_MM 0.013 // (mm) Distance from real junction edge
   #define JD_HANDLE_SMALL_SEGMENTS    // Use curvature estimation instead of just the junction angle
                                       // for small segments (< 1mm) with large junction angles (> 135°).
 #endif
@@ -1424,7 +1438,7 @@
   //#define WAIT_FOR_BED_HEATER     // Wait for bed to heat back up between probes (to improve accuracy)
   //#define WAIT_FOR_HOTEND         // Wait for hotend to heat back up between probes (to improve accuracy & prevent cold extrude)
 #endif
-//#define PROBING_FANS_OFF          // Turn fans off when probing
+#define PROBING_FANS_OFF          // Turn fans off when probing
 //#define PROBING_STEPPERS_OFF      // Turn steppers off (unless needed to hold position) when probing
 //#define DELAY_BEFORE_PROBING 200  // (ms) To prevent vibrations from triggering piezo sensors
 
@@ -1560,16 +1574,24 @@
   #define Y_BED_SIZE 230
 #endif
 #ifdef D12_300
-  #define X_BED_SIZE 300
-  #define Y_BED_SIZE 300
+  #define X_BED_SIZE 310
+  #define Y_BED_SIZE 310
 #endif
 
 // Travel limits (mm) after homing, corresponding to endstop positions.
+#ifndef DDRIVE
 #define X_MIN_POS 0
 #define Y_MIN_POS 0
 #define Z_MIN_POS 0
 #define X_MAX_POS X_BED_SIZE
 #define Y_MAX_POS Y_BED_SIZE
+  #else
+  #define X_MIN_POS -10
+  #define Y_MIN_POS -27
+  #define Z_MIN_POS 0
+  #define X_MAX_POS 300
+  #define Y_MAX_POS 283
+#endif
 #ifdef D12_230
   #define Z_MAX_POS 240
 #endif
@@ -1809,7 +1831,7 @@
     #define MESH_TEST_HOTEND_TEMP  205    // (°C) Default nozzle temperature for G26.
     #define MESH_TEST_BED_TEMP      60    // (°C) Default bed temperature for G26.
     #define G26_XY_FEEDRATE         20    // (mm/s) Feedrate for G26 XY moves.
-    #define G26_XY_FEEDRATE_TRAVEL  50    // (mm/s) Feedrate for G26 XY travel moves.
+    #define G26_XY_FEEDRATE_TRAVEL 100    // (mm/s) Feedrate for G26 XY travel moves.
     #define G26_RETRACT_MULTIPLIER   1.0  // G26 Q (retraction) used by default between mesh test elements.
   #endif
 
@@ -1898,7 +1920,7 @@
 #define LEVEL_BED_CORNERS
 
 #if ENABLED(LEVEL_BED_CORNERS)
-  #define LEVEL_CORNERS_INSET_LFRB { 50, 50, 50, 50 } // (mm) Left, Front, Right, Back insets
+  #define LEVEL_CORNERS_INSET_LFRB { 60, 50, 60, 70 } // (mm) Left, Front, Right, Back insets
   #define LEVEL_CORNERS_HEIGHT      0.0   // (mm) Z height of nozzle at leveling points
   #define LEVEL_CORNERS_Z_HOP       4.0   // (mm) Z height of nozzle between leveling points
   //#define LEVEL_CENTER_TOO              // Move to the center after the last corner
@@ -2088,7 +2110,7 @@
 // Preheat Constants - Up to 5 are supported without changes
 //
 #define PREHEAT_1_LABEL       "PLA"
-#define PREHEAT_1_TEMP_HOTEND 180
+#define PREHEAT_1_TEMP_HOTEND 190
 #define PREHEAT_1_TEMP_BED     60
 #define PREHEAT_1_TEMP_CHAMBER 35
 #define PREHEAT_1_FAN_SPEED     0 // Value from 0 to 255
