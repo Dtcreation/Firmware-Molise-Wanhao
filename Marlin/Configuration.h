@@ -74,16 +74,16 @@
 /*** Section 1 Wanhao Printer ***/
 
 //#define D12_230
-#define D12_300
+//#define D12_300
 
 /*** Section 2 Mono or Dual ***/
 
-#define MONO
+//#define MONO
 //#define DUAL
 
 /*** Section 3 Extruder Type ***/
 
-#define TITAN       // Stock Extruder
+//#define TITAN       // Stock Extruder
 //#define BMG         // Choose this if you are using BMG/BMG Wind
 //#define HEMERA      // Choose this if you are using HEMERA
 //#define MATRIX      // Choose this if you are using MATRIX
@@ -97,7 +97,7 @@
 //#define A_4988
 //#define LV_8729
 //#define TMC_2208          // UART Mode
-#define TMC_2209          // UART Mode
+//#define TMC_2209          // UART Mode
 
   /*** Z Driver ***/
 //#define A_4988_2          // Stock Drivers / Standalone
@@ -106,7 +106,7 @@
 //#define TMC_2208_STA_2    // Standalone Mode
 //#define LV_8729_2
 //#define TMC_2208_2        // UART Mode
-#define TMC_2209_2        // UART Mode
+//#define TMC_2209_2        // UART Mode
 
   /*** E0 E1 Drivers ***/
 //#define A_4988_3          // Stock Drivers / Standalone
@@ -115,16 +115,16 @@
 //#define TMC_2208_STA_3    // Standalone Mode
 //#define LV_8729_3
 //#define TMC_2208_3        // UART Mode
-#define TMC_2209_3        // UART Mode
+//#define TMC_2209_3        // UART Mode
 
 /*** Section 5 Bed Leveling ***/
 
-#define BLTOUCH      //uncomment if you use a BLTouch
+//#define BLTOUCH      //uncomment if you use a BLTouch
   #ifdef BLTOUCH
     #define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
     #define Z_MIN_PROBE_REPEATABILITY_TEST
-    //#define NOZZLE_TO_PROBE_OFFSET { -45, -0.7, 0 }   //Offset preset for this support : https://www.thingiverse.com/thing:4812496
-    #define NOZZLE_TO_PROBE_OFFSET { 28, -33, 0 }       //Offset preset for this fanduct fot Direct Drive MOD : https://www.thingiverse.com/thing:3972011
+    #define NOZZLE_TO_PROBE_OFFSET { -45, -0.7, 0 }   //Offset preset for this support : https://www.thingiverse.com/thing:4812496
+    //#define NOZZLE_TO_PROBE_OFFSET { 28, -33, 0 }       //Offset preset for this fanduct fot Direct Drive MOD : https://www.thingiverse.com/thing:3972011
   #endif
 
 //#define ZMIN_SENSOR_AS_PROBE                      //uncomment to use Z min as Probe for bed leveling (incompatible with BLTouch)
@@ -147,7 +147,7 @@
 /*** Section 6 Options ***/
 
 //#define GRAPHIC_MODE                           // If you prefere TFT Graphic Mode
-#define DDRIVE                                 // If you upgrade your D12/300 with Molise Direct Drive MOD
+//#define DDRIVE                                 // If you upgrade your D12/300 with Molise Direct Drive MOD
 
 /*** Section 7 Sensorless Homing XY ***/
 
@@ -1920,7 +1920,7 @@
 #define LEVEL_BED_CORNERS
 
 #if ENABLED(LEVEL_BED_CORNERS)
-  #define LEVEL_CORNERS_INSET_LFRB { 60, 60, 60, 60 } // (mm) Left, Front, Right, Back insets
+  #define LEVEL_CORNERS_INSET_LFRB { 60, 50, 60, 70 } // (mm) Left, Front, Right, Back insets
   #define LEVEL_CORNERS_HEIGHT      0.0   // (mm) Z height of nozzle at leveling points
   #define LEVEL_CORNERS_Z_HOP       4.0   // (mm) Z height of nozzle between leveling points
   //#define LEVEL_CENTER_TOO              // Move to the center after the last corner
