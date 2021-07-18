@@ -1044,7 +1044,7 @@
     #define eSteps 406.54   //STOCK
   #endif
 #endif
-  #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 401, eSteps }
+  #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 404, eSteps }
 
 /**
  * Default Max Feed Rate (mm/s)
