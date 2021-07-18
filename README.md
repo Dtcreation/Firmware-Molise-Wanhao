@@ -95,6 +95,12 @@ Vidéo Youtube d'explication pour régler et compiler Molise (Vidéo basée sur 
 
 ### Changelog
 
+#### 2.3
+
+- Upgrade Marlin 2.0.9.1
+- Bugfix + Adjustments
+- Add Molise Direct Drive Mod For D12/300 BETA
+
 #### 2.0
 
 - Upgrade to Marlin 2.0.8
@@ -206,6 +212,12 @@ Youtube video of explanation to adjust and compile Molise (Video based on Molise
 [![](http://img.youtube.com/vi/xCyAS7WaRCM/0.jpg)](http://www.youtube.com/watch?v=xCyAS7WaRCM "Prepare And Compile Molise")
 
 ### Changelog
+
+#### 2.3
+
+- Upgrade Marlin 2.0.9.1
+- Bugfix + Adjustments
+- Add Molise Direct Drive Mod For D12/300 BETA
 
 #### 2.0
 
