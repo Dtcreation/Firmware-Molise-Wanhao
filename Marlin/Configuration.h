@@ -1038,7 +1038,11 @@
     #define eSteps 335   //MATRIX
 #endif
 #ifdef TITAN
-    #define eSteps 435   //STOCK
+  #ifdef DDRIVE
+  #define eSteps 448.45   //STOCK
+    #else
+    #define eSteps 406.54   //STOCK
+  #endif
 #endif
   #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 401, eSteps }
 
