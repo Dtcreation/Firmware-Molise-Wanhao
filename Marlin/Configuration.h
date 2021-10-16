@@ -1039,7 +1039,7 @@
 #endif
 #ifdef TITAN
   #ifdef DDRIVE
-  #define eSteps 448.45   //STOCK
+  #define eSteps 442   //STOCK
     #else
     #define eSteps 406.54   //STOCK
   #endif
@@ -1590,7 +1590,7 @@
   #define Y_MIN_POS -27
   #define Z_MIN_POS 0
   #define X_MAX_POS 300
-  #define Y_MAX_POS 283
+  #define Y_MAX_POS 275
 #endif
 #ifdef D12_230
   #define Z_MAX_POS 240
