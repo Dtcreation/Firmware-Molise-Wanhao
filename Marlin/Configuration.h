@@ -1575,7 +1575,7 @@
 #endif
 #ifdef D12_300
   #define X_BED_SIZE 310
-  #define Y_BED_SIZE 310
+  #define Y_BED_SIZE 300
 #endif
 
 // Travel limits (mm) after homing, corresponding to endstop positions.
