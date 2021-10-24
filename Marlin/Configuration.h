@@ -147,7 +147,7 @@
 /*** Section 6 Options ***/
 
 //#define GRAPHIC_MODE                           // If you prefere TFT Graphic Mode
-//#define DDRIVE                                 // If you upgrade your D12/300 with Molise Direct Drive MOD
+//#define DDRIVE                                 // If you upgrade your D12/300 with Molise Direct Drive MOD https://www.thingiverse.com/thing:5029253
 
 /*** Section 7 Sensorless Homing XY ***/
 
