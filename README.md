@@ -23,7 +23,7 @@ Molise est un firmware modifié "universel" pour les imprimantes de la marque [W
 
 ### Version actuelle
 
-Dernière version de Molise __2.0__ basée sur [Marlin 2.0.8](https://github.com/MarlinFirmware/Marlin/tree/bugfix-2.0.x)
+Dernière version de Molise __2.0__ basée sur [Marlin 2.0.9](https://github.com/MarlinFirmware/Marlin/tree/bugfix-2.0.x)
 
 ### A propos du Firmware Molise
 
@@ -95,6 +95,13 @@ Vidéo Youtube d'explication pour régler et compiler Molise (Vidéo basée sur 
 
 ### Changelog
 
+
+#### 2.4
+
+- Upgrade Marlin 2.0.9.2
+- Improuve graphic mode
+- Add Molise Direct Drive Mod For D12/300
+
 #### 2.3
 
 - Upgrade Marlin 2.0.9.1
@@ -141,7 +148,7 @@ Molise is a "universal" modified firmware for [Wanhao](https://www.wanhaofrance.
 
 ### Current version
 
-Latest version of Molise __2.0__ based on [Marlin 2.0.8](https://github.com/MarlinFirmware/Marlin/tree/bugfix-2.0.x)
+Latest version of Molise __2.0__ based on [Marlin 2.0.9](https://github.com/MarlinFirmware/Marlin/tree/bugfix-2.0.x)
 
 ### About Molise Firmware
 
@@ -212,6 +219,13 @@ Youtube video of explanation to adjust and compile Molise (Video based on Molise
 [![](http://img.youtube.com/vi/xCyAS7WaRCM/0.jpg)](http://www.youtube.com/watch?v=xCyAS7WaRCM "Prepare And Compile Molise")
 
 ### Changelog
+
+
+#### 2.4
+
+- Upgrade Marlin 2.0.9.2
+- Improuve graphic mode
+- Add Molise Direct Drive Mod For D12/300
 
 #### 2.3
 
