@@ -75,6 +75,7 @@
 
 //#define D12_230
 //#define D12_300
+//#define D12_500
 
 /*** Section 2 Mono or Dual ***/
 
@@ -282,6 +283,9 @@
   #endif
 #ifdef D12_300
     #define CUSTOM_MACHINE_NAME "Wanhao D12-300"
+  #endif
+#ifdef D12_500
+    #define CUSTOM_MACHINE_NAME "Wanhao D12-500"
   #endif
 
 // Printer's unique ID, used by some programs to differentiate between machines.
@@ -1713,6 +1717,10 @@
   #define X_BED_SIZE 310
   #define Y_BED_SIZE 300
 #endif
+#ifdef D12_500
+  #define X_BED_SIZE 500
+  #define Y_BED_SIZE 500
+#endif
 
 // Travel limits (mm) after homing, corresponding to endstop positions.
 #ifndef DDRIVE
@@ -1733,6 +1741,9 @@
 #endif
 #ifdef D12_300
   #define Z_MAX_POS 400
+#endif
+#ifdef D12_500
+  #define Z_MAX_POS 500
 #endif
 
 /**

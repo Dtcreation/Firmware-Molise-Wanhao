@@ -2626,7 +2626,7 @@
   #endif
 
   #if AXIS_IS_TMC(Y)
-    #ifdef D12_300
+    #if ENABLED(D12_300) || ENABLED(D12_500)
     #define Y_CURRENT       900
     #else
     #define Y_CURRENT       700
@@ -2648,7 +2648,7 @@
   #endif
 
   #if AXIS_IS_TMC(Z)
-    #ifdef D12_300
+    #if ENABLED(D12_300) || ENABLED(D12_500)
     #define Z_CURRENT       900
     #else
     #define Z_CURRENT       800
