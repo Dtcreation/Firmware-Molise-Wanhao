@@ -2059,8 +2059,7 @@
   #ifdef ZMIN_SENSOR_AS_PROBE
     #define AUTO_BED_LEVELING_BILINEAR
   #else
-    #define MESH_BED_LEVELING
-    #ifdef MESH_BED_LEVELING
+      #ifdef MESH_BED_LEVELING
       #define BABYSTEP_MBL_Z_OFFSET
     #endif
   #endif
@@ -2199,7 +2198,11 @@
 #ifdef GRAPHIC_MODE
 //#define LCD_BED_LEVELING
 #else
+  #ifdef AUTO_BED_LEVELING
 #define LCD_BED_LEVELING
+  #else
+  //#define LCD_BED_LEVELING
+#endif
 #endif
 
 #if ENABLED(LCD_BED_LEVELING)
@@ -2433,7 +2436,7 @@
 
 #if ENABLED(NOZZLE_PARK_FEATURE)
   // Specify a park position as { X, Y, Z_raise }
-  #define NOZZLE_PARK_POINT { (X_MIN_POS + 10), (Y_Min_POS + 10), 40 }
+  #define NOZZLE_PARK_POINT { (X_MIN_POS + 10), (Y_MIN_POS + 10), 40 }
   #define NOZZLE_PARK_MOVE          0   // Park motion: 0 = XY Move, 1 = X Only, 2 = Y Only, 3 = X before Y, 4 = Y before X
   #define NOZZLE_PARK_Z_RAISE_MIN  20   // (mm) Always raise Z by at least this distance
   #define NOZZLE_PARK_XY_FEEDRATE 100   // (mm/s) X and Y axes feedrate (also used for delta Z axis)
