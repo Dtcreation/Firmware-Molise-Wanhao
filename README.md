@@ -17,13 +17,14 @@ Rejoignez notre groupe facebook : [Molise Firmware](https://bit.ly/2P9pVZy)
 Pour télécharger les supports à imprimer pour BLTouch ou TouchMi : [Thingiverse](https://bit.ly/3rF2LaX)
 
 Merci à [hotends.fr](https://bit.ly/3r2AuLa) pour les supports du TouchMi
+
 ### Qu'est ce que le firmware Molise
 
 Molise est un firmware modifié "universel" pour les imprimantes de la marque [Wanhao](https://www.wanhaofrance.com/). Le firmware support atuellement la D12/230 et la D12/300.
 
 ### Version actuelle
 
-Dernière version de Molise __2.0__ basée sur [Marlin 2.0.9](https://github.com/MarlinFirmware/Marlin/tree/bugfix-2.0.x)
+Dernière version de Molise __3.1__ basée sur [Marlin 2.1](https://github.com/MarlinFirmware/Marlin/releases/tag/2.1)
 
 ### A propos du Firmware Molise
 
@@ -33,9 +34,9 @@ Si vous voulez ces fonctions, il vous faut décommenter //#define GRAPHIC_MODE d
 
 Pour installer votre BLTouch ou TouchMI, connectez les fils noir et blanc sur le Z- pour le BLTouch et les 3 fils sur le Z- pour le TouchMi !
 
-Voici un listing de ce que propose actuellement le Firmware : 
+Voici un listing de ce que propose actuellement le Firmware :
 
-Le Firmware supporte actuellement le hardware suivant : 
+Le Firmware supporte actuellement le hardware suivant :
 
 - Drivers A4988, TMC 2100, 2208 ou 2209 et LV8729
 - Carte mère MKS Robin Nano V1.2
@@ -62,7 +63,7 @@ Le Firmware apporte les modifications suivantes à Marlin (par rapport à la ver
 
 Le code du fichier `Configuration.h` a été découpé en 7 sections afin de rendre le code plus lisible. Ainsi, pour les personnes souhaitant choisir leur configuration et compiler le code à partir des sources, le travail sera plus simple. Pour plus d'explication sur la compilation du code, merci de vous reporter à la page du [wiki dédiée](https://github.com/Dtcreation/Firmware-Molise-Wanhao/wiki)
 
-Le firmware Molise 2.0 vous est fourni gratuitement, dans un état « tel quel ». Nous ne pouvons pas être tenus responsables des dommages qu’il pourrait faire à votre imprimante 3D le cas échéant. S’il vous plaît procéder avec prudence.
+Le firmware Molise 3.1 vous est fourni gratuitement, dans un état « tel quel ». Nous ne pouvons pas être tenus responsables des dommages qu’il pourrait faire à votre imprimante 3D le cas échéant. S’il vous plaît procéder avec prudence.
 
 Pour vous faciliter la tâche, le firmware molise vous est fourni "pré-compilé" pour les 6 cas de figures suivants:
 
@@ -75,7 +76,7 @@ Pour vous faciliter la tâche, le firmware molise vous est fourni "pré-compilé
 
 Si vous l'aimez ou si vous souhaitez contribuer à d'autres améliorations de ce firmware, veuillez envisager la possibilité de faire un don à :
 
-https://paypal.me/dtouton
+<https://paypal.me/dtouton>
 
 Merci !
 
@@ -95,6 +96,10 @@ Vidéo Youtube d'explication pour régler et compiler Molise (Vidéo basée sur 
 
 ### Changelog
 
+#### 3.1
+
+- Upgrade Marlin 2.1
+- Add Support for D12/500
 
 #### 2.4
 
@@ -121,9 +126,7 @@ Vidéo Youtube d'explication pour régler et compiler Molise (Vidéo basée sur 
 
 # Remerciement
 
-Le firmware Molise 2.0 vous est fourni par David TOUTON, [la géniale communauté d’impression 3D sur Facebook](https://www.facebook.com/groups/molisefirmware), et bien sûr, nous ne pouvons pas oublier l’équipe Marlin qui a passé d’innombrables jours, nuits et années à construire Marlin jusqu’où il est aujourd’hui.
-
-
+Le firmware Molise 3.1 vous est fourni par David TOUTON, [la géniale communauté d’impression 3D sur Facebook](https://www.facebook.com/groups/molisefirmware), et bien sûr, nous ne pouvons pas oublier l’équipe Marlin qui a passé d’innombrables jours, nuits et années à construire Marlin jusqu’où il est aujourd’hui.
 
 ## ENGLISH
 
@@ -142,13 +145,14 @@ Join our facebook group: [Molise Firmware](https://bit.ly/2P9pVZy)
 To download the printable media for BLTouch or TouchMi: [Thingiverse](https://bit.ly/3rF2LaX)
 
 Thanks to [hotends.fr](https://bit.ly/3r2AuLa) for the TouchMi support
+
 ### What is Molise firmware
 
 Molise is a "universal" modified firmware for [Wanhao](https://www.wanhaofrance.com/) brand printers. The firmware also supports the D12 / 230 and the D12 / 300.
 
 ### Current version
 
-Latest version of Molise __2.0__ based on [Marlin 2.0.9](https://github.com/MarlinFirmware/Marlin/tree/bugfix-2.0.x)
+Latest version of Molise __3.1__ based on [Marlin 2.1](https://github.com/MarlinFirmware/Marlin/releases/tag/2.1)
 
 ### About Molise Firmware
 
@@ -187,7 +191,7 @@ The Firmware makes the following changes to Marlin (compared to the stock versio
 
 The code of the `Configuration.h` file has been split into 7 sections to make the code more readable. So, for people who want to choose their configuration and compile the code from source, the job will be easier. For more explanation on how to compile the code, please refer to the [dedicated wiki page](https://github.com/Dtcreation/Firmware-Molise-Wanhao/wiki)
 
-Molise 2.0 firmware is provided to you free of charge, in an "as is" state. We cannot be held responsible for any damage it may do to your 3D printer if it occurs. Please proceed with caution.
+Molise 3.1 firmware is provided to you free of charge, in an "as is" state. We cannot be held responsible for any damage it may do to your 3D printer if it occurs. Please proceed with caution.
 
 To make your task easier, the molise firmware is supplied to you "pre-compiled" for the following 6 scenarios:
 
@@ -200,7 +204,7 @@ To make your task easier, the molise firmware is supplied to you "pre-compiled" 
 
 If you like it or would like to contribute to other improvements of this firmware, please consider the possibility of donating to:
 
-https://paypal.me/dtouton
+<https://paypal.me/dtouton>
 
 Thank you !
 
@@ -220,6 +224,10 @@ Youtube video of explanation to adjust and compile Molise (Video based on Molise
 
 ### Changelog
 
+#### 3.1
+
+- Upgrade Marlin 2.1
+- Add Support for D12/500
 
 #### 2.4
 
@@ -246,4 +254,4 @@ Youtube video of explanation to adjust and compile Molise (Video based on Molise
 
 # Thanks
 
-Molise 2.0 firmware is provided to you by David TOUTON, [the awesome 3D printing community on Facebook](https://www.facebook.com/groups/molisefirmware), and of course we can't forget the team Marlin who spent countless days, nights and years building Marlin to where it is today.
+Molise 3.1 firmware is provided to you by David TOUTON, [the awesome 3D printing community on Facebook](https://www.facebook.com/groups/molisefirmware), and of course we can't forget the team Marlin who spent countless days, nights and years building Marlin to where it is today.
