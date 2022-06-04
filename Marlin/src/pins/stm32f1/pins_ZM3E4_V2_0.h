@@ -16,7 +16,7 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
  */
 #pragma once
@@ -30,9 +30,9 @@
 
 #if NO_EEPROM_SELECTED
   #define FLASH_EEPROM_EMULATION
-  #define EEPROM_PAGE_SIZE      (0x800) // 2KB
+  #define EEPROM_PAGE_SIZE      (0x800) // 2K
   #define EEPROM_START_ADDRESS  (0x08000000 + (STM32_FLASH_SIZE) * 1024 - 2 * EEPROM_PAGE_SIZE)
-  #define MARLIN_EEPROM_SIZE    EEPROM_PAGE_SIZE  // 2KB
+  #define MARLIN_EEPROM_SIZE    EEPROM_PAGE_SIZE  // 2K
 #endif
 
 //#define OPTION_DUALZ_DRIVE
@@ -305,7 +305,7 @@
 #endif
 
 // Alter timing for graphical display
-#if ENABLED(U8GLIB_ST7920)
+#if IS_U8GLIB_ST7920
   #define BOARD_ST7920_DELAY_1               200  // Tclk_fall <200ns
   #define BOARD_ST7920_DELAY_2               250  // Tdata_width >200ns
   #define BOARD_ST7920_DELAY_3               200  // Tclk_rise <200ns

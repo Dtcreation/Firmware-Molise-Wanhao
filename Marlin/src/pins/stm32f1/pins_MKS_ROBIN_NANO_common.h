@@ -26,13 +26,13 @@
  */
 
 #if HOTENDS > 2 || E_STEPPERS > 2
-  #error "MKS Robin nano supports up to 2 hotends / E-steppers. Comment out this line to continue."
+  #error "MKS Robin nano boards support up to 2 hotends / E steppers."
 #endif
 
 #define BOARD_NO_NATIVE_USB
 
 // Avoid conflict with TIMER_SERVO when using the STM32 HAL
-#define TEMP_TIMER                             5
+#define TEMP_TIMER  5
 
 //
 // EEPROM
@@ -42,9 +42,9 @@
 #endif
 #if EITHER(NO_EEPROM_SELECTED, FLASH_EEPROM_EMULATION)
   #define FLASH_EEPROM_EMULATION
-  #define EEPROM_PAGE_SIZE     (0x800U) // 2KB
+  #define EEPROM_PAGE_SIZE     (0x800U) // 2K
   #define EEPROM_START_ADDRESS (0x8000000UL + (STM32_FLASH_SIZE) * 1024UL - (EEPROM_PAGE_SIZE) * 2UL)
-  #define MARLIN_EEPROM_SIZE    EEPROM_PAGE_SIZE  // 2KB
+  #define MARLIN_EEPROM_SIZE    EEPROM_PAGE_SIZE  // 2K
 #endif
 
 #define SPI_DEVICE                             2
@@ -92,37 +92,11 @@
 #define TEMP_1_PIN                          PC2   // TH2
 #define TEMP_BED_PIN                        PC0   // TB1
 
-#if HAS_TMC_UART
-
-  #define X_SERIAL_TX_PIN                   PA10
-  #define X_SERIAL_RX_PIN                   PA10
-
-  #define Y_SERIAL_TX_PIN                   PA9
-  #define Y_SERIAL_RX_PIN                   PA9
-
-  #define Z_SERIAL_TX_PIN                   PC7
-  #define Z_SERIAL_RX_PIN                   PC7
-
-  #define E0_SERIAL_TX_PIN                  PC13
-  #define E0_SERIAL_RX_PIN                  PC13
-
-  // Reduce baud rate to improve software serial reliability
-  #define TMC_BAUD_RATE                    19200
-#endif // HAS_TMC_UART
 //
 // Heaters / Fans
 //
 #ifndef HEATER_0_PIN
   #define HEATER_0_PIN                      PC3
-#endif
-#if HOTENDS == 1 && DISABLED(HEATERS_PARALLEL)
-  #ifndef FAN1_PIN
-    #define FAN1_PIN                        PB0
-  #endif
-#else
-  #ifndef HEATER_1_PIN
-    #define HEATER_1_PIN                    PB0
-  #endif
 #endif
 #ifndef FAN_PIN
   #define FAN_PIN                           PB1   // FAN
@@ -131,12 +105,22 @@
   #define HEATER_BED_PIN                    PA0
 #endif
 
+#if HOTENDS == 1 && DISABLED(HEATERS_PARALLEL)
+  #ifndef FAN1_PIN
+    #define FAN1_PIN                        PB0
+  #endif
+#elif !defined(HEATER_1_PIN)
+  #define HEATER_1_PIN                      PB0
+#endif
+
 //
 // Power Supply Control
 //
 #if ENABLED(MKS_PWC)
   #if ENABLED(TFT_LVGL_UI)
-    #undef PSU_CONTROL
+    #if ENABLED(PSU_CONTROL)
+      #error "PSU_CONTROL is incompatible with MKS_PWC plus TFT_LVGL_UI."
+    #endif
     #undef MKS_PWC
     #define SUICIDE_PIN                     PB2
     #define SUICIDE_PIN_STATE               LOW
