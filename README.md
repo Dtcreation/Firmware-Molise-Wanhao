@@ -24,7 +24,7 @@ Molise est un firmware modifié "universel" pour les imprimantes de la marque [W
 
 ### Version actuelle
 
-Dernière version de Molise __3.1__ basée sur [Marlin 2.1](https://github.com/MarlinFirmware/Marlin/releases/tag/2.1)
+Dernière version de Molise __4.0__ basée sur [Marlin 2.1](https://github.com/MarlinFirmware/Marlin/releases/tag/2.1)
 
 ### A propos du Firmware Molise
 
@@ -96,9 +96,9 @@ Vidéo Youtube d'explication pour régler et compiler Molise (Vidéo basée sur 
 
 ### Changelog
 
-#### 3.1
+#### 4.0
 
-- Upgrade Marlin 2.1
+- Upgrade Marlin 2.1.2
 - Add Support for D12/500
 
 #### 2.4
@@ -126,7 +126,7 @@ Vidéo Youtube d'explication pour régler et compiler Molise (Vidéo basée sur 
 
 # Remerciement
 
-Le firmware Molise 3.1 vous est fourni par David TOUTON, [la géniale communauté d’impression 3D sur Facebook](https://www.facebook.com/groups/molisefirmware), et bien sûr, nous ne pouvons pas oublier l’équipe Marlin qui a passé d’innombrables jours, nuits et années à construire Marlin jusqu’où il est aujourd’hui.
+Le firmware Molise 4.0 vous est fourni par David TOUTON, [la géniale communauté d’impression 3D sur Facebook](https://www.facebook.com/groups/molisefirmware), et bien sûr, nous ne pouvons pas oublier l’équipe Marlin qui a passé d’innombrables jours, nuits et années à construire Marlin jusqu’où il est aujourd’hui.
 
 ## ENGLISH
 
@@ -152,7 +152,7 @@ Molise is a "universal" modified firmware for [Wanhao](https://www.wanhaofrance.
 
 ### Current version
 
-Latest version of Molise __3.1__ based on [Marlin 2.1](https://github.com/MarlinFirmware/Marlin/releases/tag/2.1)
+Latest version of Molise __4.0__ based on [Marlin 2.1](https://github.com/MarlinFirmware/Marlin/releases/tag/2.1)
 
 ### About Molise Firmware
 
@@ -224,9 +224,9 @@ Youtube video of explanation to adjust and compile Molise (Video based on Molise
 
 ### Changelog
 
-#### 3.1
+#### 4.0
 
-- Upgrade Marlin 2.1
+- Upgrade Marlin 2.1.2
 - Add Support for D12/500
 
 #### 2.4
@@ -254,4 +254,4 @@ Youtube video of explanation to adjust and compile Molise (Video based on Molise
 
 # Thanks
 
-Molise 3.1 firmware is provided to you by David TOUTON, [the awesome 3D printing community on Facebook](https://www.facebook.com/groups/molisefirmware), and of course we can't forget the team Marlin who spent countless days, nights and years building Marlin to where it is today.
+Molise 4.0 firmware is provided to you by David TOUTON, [the awesome 3D printing community on Facebook](https://www.facebook.com/groups/molisefirmware), and of course we can't forget the team Marlin who spent countless days, nights and years building Marlin to where it is today.
