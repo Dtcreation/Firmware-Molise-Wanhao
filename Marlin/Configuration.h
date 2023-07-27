@@ -2,7 +2,7 @@
 //================================== Intro ==================================
 //===========================================================================
 /**
-*******************Molise 4.0 Firmware for Wanhao D12 based on Marlin 2.1.2************************
+*******************Molise 4.1 Firmware for Wanhao D12 based on Marlin 2.1.2************************
 *
 * Molise 4.0 firmware is brought to you by David TOUTON, the awesome 3D printing community, and of course we can't forget the Marlin team who spent countless days, nights and years building Marlin how far it is today.
 *
@@ -24,7 +24,7 @@
 *
 * ------------------------------------------------- -------------------------------------------
 * 
-* ******************Firmware Molise 2.0 pour Imprimante Wanhao D12 sur Marlin 2.0.9************************
+* ******************Firmware Molise 4.1 pour Imprimante Wanhao D12 sur Marlin 2.1.2************************
 *
 * Le firmware Molise 2.0 vous est fourni par David TOUTON, la géniale communauté d’impression 3D, et bien sûr, nous ne pouvons pas oublier l’équipe Marlin qui a passé d’innombrables jours, nuits et années à construire Marlin jusqu’où il est aujourd’hui.
 *

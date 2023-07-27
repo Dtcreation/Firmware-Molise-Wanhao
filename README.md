@@ -24,7 +24,7 @@ Molise est un firmware modifié "universel" pour les imprimantes de la marque [W
 
 ### Version actuelle
 
-Dernière version de Molise __4.0__ basée sur [Marlin 2.1](https://github.com/MarlinFirmware/Marlin/releases/tag/2.1)
+Dernière version de Molise __4.1__ basée sur [Marlin 2.1.2](https://github.com/MarlinFirmware/Marlin/releases/tag/2.1)
 
 ### A propos du Firmware Molise
 
@@ -152,7 +152,7 @@ Molise is a "universal" modified firmware for [Wanhao](https://www.wanhaofrance.
 
 ### Current version
 
-Latest version of Molise __4.0__ based on [Marlin 2.1](https://github.com/MarlinFirmware/Marlin/releases/tag/2.1)
+Latest version of Molise __4.1__ based on [Marlin 2.1.2](https://github.com/MarlinFirmware/Marlin/releases/tag/2.1)
 
 ### About Molise Firmware
 
@@ -254,4 +254,4 @@ Youtube video of explanation to adjust and compile Molise (Video based on Molise
 
 # Thanks
 
-Molise 4.0 firmware is provided to you by David TOUTON, [the awesome 3D printing community on Facebook](https://www.facebook.com/groups/molisefirmware), and of course we can't forget the team Marlin who spent countless days, nights and years building Marlin to where it is today.
+Molise 4.1 firmware is provided to you by David TOUTON, [the awesome 3D printing community on Facebook](https://www.facebook.com/groups/molisefirmware), and of course we can't forget the team Marlin who spent countless days, nights and years building Marlin to where it is today.
